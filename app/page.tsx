@@ -30,7 +30,7 @@ export default function Home() {
         <div className="logo-container">
           <div className="logo-image">
             <Image
-              src="/img/logo.png"
+              src="logo.png"
               alt="BAS Rocketry Logo"
               width={40}
               height={40}
