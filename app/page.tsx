@@ -35,6 +35,7 @@ export default function Home() {
               width={40}
               height={40}
               className="logo-img"
+              priority
             />
           </div>
           <div className="logo">BAS Rocketry</div>
