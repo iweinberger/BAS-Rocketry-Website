@@ -30,7 +30,7 @@ export default function Home() {
         <div className="logo-container">
           <div className="logo-image">
             <Image
-              src="https://cdn-icons-png.flaticon.com/512/1995/1995572.png"
+              src="/img/logo.png"
               alt="BAS Rocketry Logo"
               width={40}
               height={40}
