@@ -31,11 +31,10 @@ export default function Home() {
           <div className="logo-image">
             <Image
               src="/logo.png"
-              alt="BAS Rocketry Logo" 
-              width={40}
-              height={40}
+              alt="BAS Rocketry Logo"
+              width={60}
+              height={60}
               className="logo-img"
-              style={{ filter: 'none' }}
               priority
             />
           </div>
