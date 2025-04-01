@@ -58,7 +58,7 @@ export default function Home() {
         <div className="hero-content">
           <h1>Welcome to BAS Rocketry</h1>
           <p>Building the future of space exploration, one rocket at a time! 🚀</p>
-          <a href="#about" className="cta-button">Join Our Mission</a>
+          <a href="#about" className="cta-button">Learn More</a>
         </div>
       </section>
 
