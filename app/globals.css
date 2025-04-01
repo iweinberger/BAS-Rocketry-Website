@@ -1,7 +1,6 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import '@fortawesome/fontawesome-free/css/all.min.css';
 
+/* Global Styles */
 :root {
     --primary-color: #131342;
     --secondary-color: #ffffff;
@@ -22,7 +21,7 @@ html {
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: var(--text-color);
 }
@@ -206,6 +205,50 @@ body {
     font-size: 2.5rem;
     margin-bottom: 1rem;
     color: var(--secondary-color);
+}
+
+/* Team Section */
+.team {
+    padding: 5rem 5%;
+    background-color: var(--light-gray);
+}
+
+.team h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.team-member {
+    text-align: center;
+    background-color: var(--secondary-color);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.team-member:hover {
+    transform: translateY(-5px);
+}
+
+.member-image {
+    width: 150px;
+    height: 150px;
+    background: var(--gradient);
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    position: relative;
+    overflow: hidden;
 }
 
 /* Projects Section */

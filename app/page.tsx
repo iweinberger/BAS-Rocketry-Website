@@ -1,28 +1,52 @@
 'use client';
 
-import Link from 'next/link';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faRocket, faUsers, faTrophy } from '@fortawesome/free-solid-svg-icons';
-import { faInstagram, faTiktok, faYoutube, faDiscord } from '@fortawesome/free-brands-svg-icons';
+import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 export default function Home() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar?.classList.add('scrolled');
+      } else {
+        navbar?.classList.remove('scrolled');
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <main>
       <nav className="navbar">
         <div className="logo-container">
           <div className="logo-image">
-            <img src="https://cdn-icons-png.flaticon.com/512/1995/1995572.png" alt="BAS Rocketry Logo" className="logo-img" />
+            <Image
+              src="https://cdn-icons-png.flaticon.com/512/1995/1995572.png"
+              alt="BAS Rocketry Logo"
+              width={40}
+              height={40}
+              className="logo-img"
+            />
           </div>
           <div className="logo">BAS Rocketry</div>
         </div>
-        <div className="nav-links">
-          <Link href="/">Home</Link>
-          <Link href="/#about">About</Link>
-          <Link href="/team">Team</Link>
-          <Link href="/#projects">Projects</Link>
-          <Link href="/#contact">Contact</Link>
+        <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#team">Team</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
         </div>
-        <div className="hamburger">
+        <div className="hamburger" onClick={toggleMenu}>
           <span></span>
           <span></span>
           <span></span>
@@ -33,7 +57,7 @@ export default function Home() {
         <div className="hero-content">
           <h1>Welcome to BAS Rocketry</h1>
           <p>Building the future of space exploration, one rocket at a time! 🚀</p>
-          <Link href="/#about" className="cta-button">Join Our Mission</Link>
+          <a href="#about" className="cta-button">Join Our Mission</a>
         </div>
       </section>
 
@@ -45,20 +69,41 @@ export default function Home() {
           </div>
           <div className="about-stats">
             <div className="stat">
-              <FontAwesomeIcon icon={faRocket} />
+              <i className="fas fa-rocket"></i>
               <h3>10+</h3>
               <p>Epic Launches</p>
             </div>
             <div className="stat">
-              <FontAwesomeIcon icon={faUsers} />
+              <i className="fas fa-users"></i>
               <h3>20+</h3>
               <p>Awesome Team Members</p>
             </div>
             <div className="stat">
-              <FontAwesomeIcon icon={faTrophy} />
+              <i className="fas fa-trophy"></i>
               <h3>5+</h3>
               <p>Cool Awards</p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="team" className="team">
+        <h2>Meet Our Team</h2>
+        <div className="team-grid">
+          <div className="team-member">
+            <div className="member-image"></div>
+            <h3>Team Captain</h3>
+            <p>Leading the Mission</p>
+          </div>
+          <div className="team-member">
+            <div className="member-image"></div>
+            <h3>Rocket Designer</h3>
+            <p>Making Rockets Fly</p>
+          </div>
+          <div className="team-member">
+            <div className="member-image"></div>
+            <h3>Safety Pro</h3>
+            <p>Keeping Us Safe</p>
           </div>
         </div>
       </section>
@@ -103,10 +148,10 @@ export default function Home() {
               <p>High School Campus, Space City</p>
             </div>
             <div className="social-links">
-              <a href="#"><FontAwesomeIcon icon={faInstagram} /></a>
-              <a href="#"><FontAwesomeIcon icon={faTiktok} /></a>
-              <a href="#"><FontAwesomeIcon icon={faYoutube} /></a>
-              <a href="#"><FontAwesomeIcon icon={faDiscord} /></a>
+              <a href="#"><i className="fab fa-instagram"></i></a>
+              <a href="#"><i className="fab fa-tiktok"></i></a>
+              <a href="#"><i className="fab fa-youtube"></i></a>
+              <a href="#"><i className="fab fa-discord"></i></a>
             </div>
           </div>
         </div>
@@ -120,11 +165,11 @@ export default function Home() {
           </div>
           <div className="footer-section">
             <h3>Quick Links</h3>
-            <Link href="/">Home</Link>
-            <Link href="/#about">About</Link>
-            <Link href="/team">Team</Link>
-            <Link href="/#projects">Projects</Link>
-            <Link href="/#contact">Contact</Link>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#team">Team</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
           </div>
         </div>
         <div className="footer-bottom">
