@@ -105,7 +105,7 @@ export default function Home() {
           <div className="team-member">
             <div className="member-image"></div>
             <h3>Yekutiel Yunger - Avionics Lead</h3>
-            <p>Making sure we don't encounter a "Huston, we have a problem"</p>
+            <p>Making sure we don't encounter a "Houston, we have a problem"</p>
           </div>
           <div className="team-member">
             <div className="member-image"></div>
