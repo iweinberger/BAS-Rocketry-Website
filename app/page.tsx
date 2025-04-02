@@ -46,6 +46,7 @@ export default function Home() {
           <a href="#team">Team</a>
           <a href="#projects">Projects</a>
           <a href="#contact">Contact</a>
+          <a href="/donations">Donate</a>
         </div>
         <div className="hamburger" onClick={toggleMenu}>
           <span></span>
@@ -89,7 +90,7 @@ export default function Home() {
       </section>
 
       <section id="team" className="team">
-        <h2>Meet Our Team</h2>
+        <h2>Meet Our Team Leads</h2>
         <div className="team-grid">
           <div className="team-member">
             <div className="member-image"></div>

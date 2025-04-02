@@ -492,4 +492,78 @@ footer {
 .team-member,
 .project-card {
     animation: fadeIn 1s ease-out;
+}
+
+.donations {
+  padding: 100px 20px;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.donations h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #333;
+}
+
+.donations-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.donations-text {
+  max-width: 600px;
+  text-align: center;
+}
+
+.donations-text p {
+  margin-bottom: 20px;
+  line-height: 1.6;
+  color: #666;
+}
+
+.donations-text ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.donations-text li {
+  margin: 10px 0;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.donations-text li:before {
+  content: "🚀";
+}
+
+.donations-iframe {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .donations-content {
+    padding: 0 20px;
+  }
+  
+  .donations-iframe {
+    width: 100%;
+    max-width: 512px;
+  }
+  
+  .donations-iframe iframe {
+    width: 100%;
+    height: 512px;
+  }
 } 
