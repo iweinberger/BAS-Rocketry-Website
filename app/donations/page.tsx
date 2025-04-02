@@ -40,6 +40,7 @@ export default function Donations() {
           <a href="/#team">Team</a>
           <a href="/#projects">Projects</a>
           <a href="/#contact">Contact</a>
+          <a href="/donations">Donate</a>
         </div>
       </nav>
 
