@@ -32,7 +32,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 1.5rem 1.5rem;
+    padding: 1rem 1.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -492,4 +492,47 @@ footer {
 .team-member,
 .project-card {
     animation: fadeIn 1s ease-out;
+}
+
+.donations {
+    padding: 100px 20px;
+    text-align: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+    color: white;
+}
+
+.donations h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #00ff00;
+}
+
+.donations p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.donation-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
+@media (max-width: 768px) {
+    .donations {
+        padding: 80px 20px;
+    }
+
+    .donations h1 {
+        font-size: 2.5rem;
+    }
+
+    .donations p {
+        font-size: 1rem;
+    }
 } 
