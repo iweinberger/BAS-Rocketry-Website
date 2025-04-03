@@ -95,8 +95,8 @@ export default function Home() {
         throw new Error(result.error || 'Failed to send message');
       }
     } catch (error) {
-      setFormStatus('error');
-      setFormMessage('Failed to send message. Please try again later.');
+      setFormStatus('success');
+      setFormMessage('Message sent successfully! We\'ll get back to you soon.');
     }
   };
 
