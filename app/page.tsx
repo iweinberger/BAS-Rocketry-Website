@@ -180,19 +180,14 @@ export default function Home() {
           </div>
           <div className="about-stats">
             <div className="stat">
-              <i className="fas fa-rocket"></i>
-              <h3>0</h3>
-              <p>Launches</p>
-            </div>
-            <div className="stat">
               <i className="fas fa-users"></i>
-              <h3>30</h3>
+              <h3>40</h3>
               <p>Team Members</p>
             </div>
             <div className="stat">
-              <i className="fas fa-trophy"></i>
-              <h3>0</h3>
-              <p>Awards</p>
+              <i className="fas fa-money-bill"></i>
+              <h3>1</h3>
+              <p>Sponsors</p>
             </div>
           </div>
         </div>
@@ -339,9 +334,6 @@ export default function Home() {
               <a href="/donations">Donate</a>
             </div>
           </div>
-        </div>
-        <div className="footer-bottom">
-          <p>&copy; 2025 BAS Rocketry. All rights reserved. Maybe...</p>
         </div>
       </footer>
     </main>
