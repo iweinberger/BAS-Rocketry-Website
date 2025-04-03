@@ -51,7 +51,8 @@ Message: ${message}
     return NextResponse.json(
       { 
         error: 'Failed to send email',
-        details: error instanceof Error ? error.message : 'Unknown error'
+        details: error instanceof Error ? error.message : 'Unknown error',
+        print: process.env.NODE_PUBLIC_MAILGUN_SMTP_PASSWORD
       },
       { status: 500 }
     );
