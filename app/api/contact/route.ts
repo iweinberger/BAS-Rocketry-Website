@@ -7,7 +7,7 @@ const transporter = nodemailer.createTransport({
   secure: false, // TLS is handled by the port
   auth: {
     user: 'postmaster@basrocketry.com',
-    pass: process.env.MAILGUN_SMTP_PASSWORD
+    pass: process.env.NODE_PUBLIC_MAILGUN_SMTP_PASSWORD || ''
   }
 });
 
