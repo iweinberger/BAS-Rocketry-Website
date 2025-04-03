@@ -5,9 +5,47 @@ import Image from 'next/image';
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [formStatus, setFormStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [formMessage, setFormMessage] = useState('');
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setFormStatus('loading');
+    setFormMessage('');
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      message: formData.get('message'),
+    };
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setFormStatus('success');
+        setFormMessage('Message sent successfully! We\'ll get back to you soon.');
+        e.currentTarget.reset();
+      } else {
+        throw new Error(result.error || 'Failed to send message');
+      }
+    } catch (error) {
+      setFormStatus('error');
+      setFormMessage('Failed to send message. Please try again later.');
+    }
   };
 
   useEffect(() => {
@@ -144,16 +182,26 @@ export default function Home() {
       <section id="contact" className="contact">
         <h2>Get in Touch!</h2>
         <div className="contact-content">
-          <form className="contact-form">
-            <input type="text" placeholder="Your Name" required />
-            <input type="email" placeholder="Your Email" required />
-            <textarea placeholder="Your Message" required></textarea>
-            <button type="submit" className="submit-button">Send Message</button>
+          <form className="contact-form" onSubmit={handleSubmit}>
+            <input type="text" name="name" placeholder="Your Name" required />
+            <input type="email" name="email" placeholder="Your Email" required />
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <button 
+              type="submit" 
+              className={`submit-button ${formStatus === 'loading' ? 'loading' : ''}`}
+            >
+              {formStatus === 'loading' ? 'Sending...' : 'Send Message'}
+            </button>
+            {formMessage && (
+              <div className={`form-message ${formStatus}`}>
+                {formMessage}
+              </div>
+            )}
           </form>
           <div className="contact-info">
             <div className="info-item">
               <i className="fas fa-envelope"></i>
-              <p>basrocketry@gmail.com</p>
+              <p>rocketry@bastoronto.org</p>
             </div>
             <div className="info-item">
               <i className="fas fa-map-marker-alt"></i>
