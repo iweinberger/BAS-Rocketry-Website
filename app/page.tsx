@@ -99,35 +99,34 @@ export default function Home() {
           </div>
           <div className="team-member">
             <h3>Noam Wolfe - Propulsion Lead</h3>
-              </div>
+             <div></div>
               <div className="member-image"></div>
                 <p>Making the "Boom" in the Rocket possible</p>
           </div>
           <div className="team-member">
             <h3>Yekutiel Yunger - Avionics Lead</h3>
-              </div>
+              <div></div>
               <div className="member-image"></div>
                 <p>Making sure we don't encounter a "Houston, we have a problem"</p>
           </div>
           <div className="team-member">
             <h3>Sammy Simon - Recovery Lead</h3>
-              </div>
+              <div></div>
               <div className="member-image"></div>
                 <p>Landing the Rocket in One Piece</p>
           </div>
           <div className="team-member">
             <h3>Benjamin Dahari - Financial Lead</h3>
-              </div>
+              <div></div>
               <div className="member-image"></div>
                 <p>Keeping the Money Flowing</p>
           </div>
           <div className="team-member">
-            <h3>Eli Scharf - Media</h3> <br>
-              <h3>Lead</h3>
-              </div>
+            <h3>Eli Scharf - Media Lead</h3>
+              <div></div>
               <div className="member-image"></div>
                 <p>Showing the World</p>
-          </div>
+            </div>
           
         </div>
       </section>
