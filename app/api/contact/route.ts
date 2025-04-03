@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
+console.log("This is a test")
 console.log(process.env.MAILGUN_SMTP_PASSWORD);
 console.log(process.env.NODE_PUBLIC_MAILGUN_SMTP_PASSWORD);
 const pass = process.env.NODE_PUBLIC_MAILGUN_SMTP_PASSWORD;
