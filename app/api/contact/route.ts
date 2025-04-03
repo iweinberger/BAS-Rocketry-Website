@@ -13,10 +13,6 @@ const transporter = nodemailer.createTransport({
   }
 });
 
-export async function GET(request: Request) {  
-  return NextResponse.json({ message: "Logging completed" + process.env.NEXT_PUBLIC_MAILGUN_SMTP_PASSWORD});
-}
-
 export async function POST(request: Request) {
   try {
     const { name, email, message } = await request.json();
