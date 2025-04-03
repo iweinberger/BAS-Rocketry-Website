@@ -156,6 +156,11 @@ export default function Home() {
                 <p>Benjamin Dahari</p>
           </div>
           <div className="team-member">
+            <h3>Safety Lead</h3>
+              <div className="member-image"></div>
+                <p>Raphie Sayegh</p>
+          </div>
+          <div className="team-member">
             <h3>Media & Outreach Lead</h3>
               <div className="member-image"></div>
                 <p>Eli Scharf</p>
