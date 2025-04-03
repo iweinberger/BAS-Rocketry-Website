@@ -131,34 +131,34 @@ export default function Home() {
         <h2>Meet Our Team</h2>
         <div className="team-grid">
           <div className="team-member">
-            <h3>Ilan Weinberger - Team Captain</h3>
+            <h3>Team Captain</h3>
               <div className="member-image"></div>
-                <p>Leading the Launch</p>
+                <p>Ilan Weinberger</p>
           </div>
           <div className="team-member">
-            <h3>Noam Wolfe - Propulsion Lead</h3>
+            <h3>Propulsion Lead</h3>
               <div className="member-image"></div>
-                <p>Making the "Boom" in the Rocket possible</p>
+                <p>Noam Wolfe</p>
           </div>
           <div className="team-member">
-            <h3>Yekutiel Yunger - Avionics Lead</h3>
+            <h3>Avionics Lead</h3>
               <div className="member-image"></div>
-                <p>Making sure we don't encounter a "Houston, we have a problem"</p>
+                <p>Yekutial Yunger</p>
           </div>
           <div className="team-member">
-            <h3>Sammy Simon - Recovery Lead</h3>
+            <h3>Recovery Lead</h3>
               <div className="member-image"></div>
-                <p>Landing the Rocket in One Piece</p>
+                <p>Sammy Simon</p>
           </div>
           <div className="team-member">
-            <h3>Benjamin Dahari - Financial Lead</h3>
+            <h3>Financial Lead</h3>
               <div className="member-image"></div>
-                <p>Keeping the Money Flowing</p>
+                <p>Benjamin Dahari</p>
           </div>
           <div className="team-member">
-            <h3>Eli Scharf - Media & Outreach Lead</h3>
+            <h3>Media & Outreach Lead</h3>
               <div className="member-image"></div>
-                <p>Showing the World</p>
+                <p>Eli Scharf</p>
             </div>
           
         </div>
