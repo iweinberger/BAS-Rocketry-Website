@@ -93,9 +93,9 @@ export default function Home() {
         <h2>Meet Our Team Leads</h2>
         <div className="team-grid">
           <div className="team-member">
-            <div className="member-image"></div>
             <h3>Ilan Weinberger - Team Captain</h3>
             <p>Leading the Launch</p>
+            <div className="member-image"></div>
           </div>
           <div className="team-member">
             <div className="member-image"></div>
