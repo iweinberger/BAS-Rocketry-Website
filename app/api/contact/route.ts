@@ -1,13 +1,17 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
+console.log(process.env.MAILGUN_SMTP_PASSWORD);
+console.log(process.env.NODE_PUBLIC_MAILGUN_SMTP_PASSWORD);
+const pass = process.env.NODE_PUBLIC_MAILGUN_SMTP_PASSWORD;
+
 const transporter = nodemailer.createTransport({
   host: 'smtp.mailgun.org',
   port: 587,
   secure: false, // TLS is handled by the port
   auth: {
     user: 'postmaster@basrocketry.com',
-    pass: process.env.NODE_PUBLIC_MAILGUN_SMTP_PASSWORD || ''
+    pass: pass || ''
   }
 });
 
@@ -52,9 +56,8 @@ Message: ${message}
       { 
         error: 'Failed to send email',
         details: error instanceof Error ? error.message : 'Unknown error',
-        print: process.env.NODE_PUBLIC_MAILGUN_SMTP_PASSWORD
       },
       { status: 500 }
     );
   }
-} 
+}
