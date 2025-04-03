@@ -23,10 +23,7 @@ export async function GET(request: Request) {
   console.log("Environment:", process.env.NODE_ENV);
   console.log("SMTP Password:", process.env.NODE_PUBLIC_MAILGUN_SMTP_PASSWORD);
   
-  return NextResponse.json({ message: "Logging completed" });
-  return NextResponse.json({ message: process.env.NODE_PUBLIC_MAILGUN_SMTP_PASSWORD });
-  return NextResponse.json({ message: process.env.MAILGUN_SMTP_PASSWORD });
-  return NextResponse.json({ message: process.env.NODE_ENV });
+  return NextResponse.json({ message: "Logging completed" + process.env.NODE_PUBLIC_MAILGUN_SMTP_PASSWORD + process.env.MAILGUN_SMTP_PASSWORD + request.url + request.method});
 }
 
 export async function POST(request: Request) {
