@@ -17,9 +17,13 @@ const transporter = nodemailer.createTransport({
 });
 
 export async function GET(request: Request) {
-
-  console.log("This is a test")
-  console.log(process.env.NODE_PUBLIC_MAILGUN_SMTP_PASSWORD)
+  console.log("GET request received");
+  console.log("Request URL:", request.url);
+  console.log("Request method:", request.method);
+  console.log("Environment:", process.env.NODE_ENV);
+  console.log("SMTP Password:", process.env.NODE_PUBLIC_MAILGUN_SMTP_PASSWORD);
+  
+  return NextResponse.json({ message: "Logging completed" });
 }
 
 export async function POST(request: Request) {
