@@ -95,7 +95,7 @@ export default function Home() {
           <div className="team-member">
             <h3>Ilan Weinberger - Team Captain</h3>
             <p>Leading the Launch</p>
-            <div className="member-image"></div>
+              <div className="member-image"></div>
           </div>
           <div className="team-member">
             <div className="member-image"></div>
