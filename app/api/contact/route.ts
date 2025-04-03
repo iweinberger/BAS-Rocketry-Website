@@ -1,10 +1,7 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
-console.log("This is a test")
-console.log(process.env.MAILGUN_SMTP_PASSWORD);
-console.log(process.env.NODE_PUBLIC_MAILGUN_SMTP_PASSWORD);
-const pass = process.env.NODE_PUBLIC_MAILGUN_SMTP_PASSWORD;
+const pass = process.env.NEXT_PUBLIC_MAILGUN_SMTP_PASSWORD;
 
 const transporter = nodemailer.createTransport({
   host: 'smtp.mailgun.org',
@@ -16,14 +13,8 @@ const transporter = nodemailer.createTransport({
   }
 });
 
-export async function GET(request: Request) {
-  console.log("GET request received");
-  console.log("Request URL:", request.url);
-  console.log("Request method:", request.method);
-  console.log("Environment:", process.env.NODE_ENV);
-  console.log("SMTP Password:", process.env.NODE_PUBLIC_MAILGUN_SMTP_PASSWORD);
-  
-  return NextResponse.json({ message: "Logging completed" + process.env.NODE_PUBLIC_MAILGUN_SMTP_PASSWORD + process.env.MAILGUN_SMTP_PASSWORD + request.url + request.method});
+export async function GET(request: Request) {  
+  return NextResponse.json({ message: "Logging completed" + process.env.NEXT_PUBLIC_MAILGUN_SMTP_PASSWORD});
 }
 
 export async function POST(request: Request) {
