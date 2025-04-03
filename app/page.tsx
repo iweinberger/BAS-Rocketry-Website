@@ -58,7 +58,7 @@ export default function Home() {
       <section id="home" className="hero">
         <div className="hero-content">
           <h1>Welcome to BAS Rocketry</h1>
-          <p>Building the future of space exploration, one rocket at a time! 🚀</p>
+          <p>TEST TEST🚀</p>
           <a href="#about" className="cta-button">Learn More</a>
         </div>
       </section>
