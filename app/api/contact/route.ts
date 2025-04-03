@@ -16,6 +16,12 @@ const transporter = nodemailer.createTransport({
   }
 });
 
+export async function GET(request: Request) {
+
+  console.log("This is a test")
+  console.log(process.env.NODE_PUBLIC_MAILGUN_SMTP_PASSWORD)
+}
+
 export async function POST(request: Request) {
   try {
     const { name, email, message } = await request.json();
