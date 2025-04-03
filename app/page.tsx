@@ -122,7 +122,8 @@ export default function Home() {
                 <p>Keeping the Money Flowing</p>
           </div>
           <div className="team-member">
-            <h3>Eli Scharf - Media Lead</h3>
+            <h3>Eli Scharf - Media</h3> <br>
+              <h3>Lead</h3>
               </div>
               <div className="member-image"></div>
                 <p>Showing the World</p>
