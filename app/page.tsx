@@ -72,18 +72,18 @@ export default function Home() {
           <div className="about-stats">
             <div className="stat">
               <i className="fas fa-rocket"></i>
-              <h3>0+</h3>
+              <h3>0</h3>
               <p>Launches</p>
             </div>
             <div className="stat">
               <i className="fas fa-users"></i>
-              <h3>40+</h3>
+              <h3>40</h3>
               <p>Team Members</p>
             </div>
             <div className="stat">
               <i className="fas fa-trophy"></i>
-              <h3>5+</h3>
-              <p>Cool Awards</p>
+              <h3>0</h3>
+              <p>Awards</p>
             </div>
           </div>
         </div>
