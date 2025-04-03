@@ -244,7 +244,7 @@ body {
     height: 150px;
     background: var(--gradient);
     border-radius: 50%;
-    margin: 0 auto 1.5rem;
+    margin: 1.5rem auto 1.5rem;
     position: relative;
     overflow: hidden;
 }
