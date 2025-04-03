@@ -1,14 +1,32 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 
 export default function Donations() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const hamburgerRef = useRef<HTMLDivElement>(null);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        menuRef.current &&
+        hamburgerRef.current &&
+        !menuRef.current.contains(event.target as Node) &&
+        !hamburgerRef.current.contains(event.target as Node)
+      ) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,7 +58,7 @@ export default function Donations() {
           </div>
           <div className="logo">BAS Rocketry</div>
         </div>
-        <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
+        <div ref={menuRef} className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
           <a href="/">Home</a>
           <a href="/#about">About</a>
           <a href="/#team">Team</a>
@@ -48,7 +66,7 @@ export default function Donations() {
           <a href="/#contact">Contact</a>
           <a href="/donations" className="active">Donate</a>
         </div>
-        <div className="hamburger" onClick={toggleMenu}>
+        <div ref={hamburgerRef} className={`hamburger ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu}>
           <span></span>
           <span></span>
           <span></span>

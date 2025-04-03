@@ -1,12 +1,57 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [formStatus, setFormStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [formMessage, setFormMessage] = useState('');
+  const [selectedProject, setSelectedProject] = useState<number | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const hamburgerRef = useRef<HTMLDivElement>(null);
+
+  const projects = [
+    {
+      title: "Initial Rocket",
+      description: "Our first ever solid engine rocket with TVC",
+      eta: "Q3 2025",
+      progress: 15,
+      image: "/projects/alpha.png",
+      keyPoints: [
+        "Advanced telemetry system with real-time data transmission",
+        "Target altitude: ~7,000 feet",
+        "Working thrust vector control system",
+        "Basic recovery system"
+      ]
+    },
+    {
+      title: "Project Fluid",
+      description: "Making our first ever liquid engine rocket",
+      eta: "Q2 2026",
+      progress: 1,
+      image: "/projects/beta.png",
+      keyPoints: [
+        "Custom liquid propellant motor design",
+        "Basic Liquid Propellant Thrust Vector Control",
+        "Advanced recovery system"
+      ]
+    },
+    {
+      title: "Project End Game",
+      description: "Launching a custom propulsion system in our rocket",
+      eta: "Q3 2026",
+      progress: 1,
+      image: "/projects/gamma.png",
+      keyPoints: [
+        "Custom liquid propellant motor design",
+        "Thrust vector control system",
+        "Fully designed avionics package",
+        "Custom auto-landing system"
+      ]
+    }
+  ];
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -48,6 +93,16 @@ export default function Home() {
     }
   };
 
+  const openProjectModal = (index: number) => {
+    setSelectedProject(index);
+    setIsModalOpen(true);
+  };
+
+  const closeProjectModal = () => {
+    setIsModalOpen(false);
+    setSelectedProject(null);
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       const navbar = document.querySelector('.navbar');
@@ -60,6 +115,22 @@ export default function Home() {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        menuRef.current &&
+        hamburgerRef.current &&
+        !menuRef.current.contains(event.target as Node) &&
+        !hamburgerRef.current.contains(event.target as Node)
+      ) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
   return (
@@ -78,7 +149,7 @@ export default function Home() {
           </div>
           <div className="logo">BAS Rocketry</div>
         </div>
-        <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
+        <div ref={menuRef} className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
           <a href="#home">Home</a>
           <a href="#about">About</a>
           <a href="#team">Team</a>
@@ -86,7 +157,7 @@ export default function Home() {
           <a href="#contact">Contact</a>
           <a href="/donations">Donate</a>
         </div>
-        <div className="hamburger" onClick={toggleMenu}>
+        <div ref={hamburgerRef} className={`hamburger ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu}>
           <span></span>
           <span></span>
           <span></span>
@@ -115,7 +186,7 @@ export default function Home() {
             </div>
             <div className="stat">
               <i className="fas fa-users"></i>
-              <h3>40</h3>
+              <h3>30</h3>
               <p>Team Members</p>
             </div>
             <div className="stat">
@@ -170,24 +241,54 @@ export default function Home() {
       </section>
 
       <section id="projects" className="projects">
-        <h2>Our Awesome Projects</h2>
+        <h2>Our Rocketry Plans</h2>
         <div className="project-grid">
-          <div className="project-card">
-            <div className="project-image"></div>
-            <h3>Project Alpha</h3>
-            <p>Our first high-altitude rocket with cool telemetry</p>
-          </div>
-          <div className="project-card">
-            <div className="project-image"></div>
-            <h3>Project Beta</h3>
-            <p>Making our recovery system super reliable</p>
-          </div>
-          <div className="project-card">
-            <div className="project-image"></div>
-            <h3>Project Gamma</h3>
-            <p>Building a powerful propulsion system</p>
-          </div>
+          {projects.map((project, index) => (
+            <div key={index} className="project-card" onClick={() => openProjectModal(index)}>
+              <div className="project-image">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  width={400}
+                  height={200}
+                  className="project-img"
+                />
+              </div>
+              <p>{project.description}</p>
+              <div className="project-title">{project.title}</div>
+              <div className="project-eta">ETA: {project.eta}</div>
+              <div className="progress-bar">
+                <div className="progress" style={{ width: `${project.progress}%` }}></div>
+              </div>
+            </div>
+          ))}
         </div>
+
+        {isModalOpen && selectedProject !== null && (
+          <div className="project-modal" onClick={closeProjectModal}>
+            <div className="modal-content" onClick={e => e.stopPropagation()}>
+              <button className="close-modal" onClick={closeProjectModal}>&times;</button>
+              <h2>{projects[selectedProject].title}</h2>
+              <p>{projects[selectedProject].description}</p>
+              <div className="modal-progress">
+                <h3>Development Progress</h3>
+                <div className="progress-bar">
+                  <div className="progress" style={{ width: `${projects[selectedProject].progress}%` }}></div>
+                </div>
+                <span>{projects[selectedProject].progress}% Complete</span>
+              </div>
+              <div className="key-points">
+                <h3>Key Points</h3>
+                <ul>
+                  {projects[selectedProject].keyPoints.map((point, idx) => (
+                    <li key={idx}>{point}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="eta">Estimated Completion: {projects[selectedProject].eta}</div>
+            </div>
+          </div>
+        )}
       </section>
 
       <section id="contact" className="contact">
@@ -224,17 +325,19 @@ export default function Home() {
       <footer>
         <div className="footer-content">
           <div className="footer-section">
-            <h3>BAS Rocketry</h3>
-            <p>It's not rocket science... Right</p>
+            <h3>BAS ROCKETRY</h3>
+            <p>It's not rocket science... Right?</p>
           </div>
           <div className="footer-section">
-            <h3>Quick Links</h3>
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#team">Team</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-            <a href="/donations">Donate</a>
+            <h3>QUICK LINKS</h3>
+            <div className="footer-links">
+              <a href="#home">Home</a>
+              <a href="#about">About</a>
+              <a href="#team">Team</a>
+              <a href="#projects">Projects</a>
+              <a href="#contact">Contact</a>
+              <a href="/donations">Donate</a>
+            </div>
           </div>
         </div>
         <div className="footer-bottom">
