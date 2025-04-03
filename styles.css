@@ -236,6 +236,10 @@ body {
     transition: transform 0.3s ease;
 }
 
+.team-member h3 {
+    padding-bottom: 1.2rem;
+}
+
 .team-member:hover {
     transform: translateY(-5px);
 }
