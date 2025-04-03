@@ -1,3 +1,8 @@
+/**
+ * I see you're a future engineer too! 
+ * Email us at rocketry@bastoronto.org to talk or work with us!
+ */
+
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
@@ -9,6 +14,8 @@ export default function Home() {
   const [formMessage, setFormMessage] = useState('');
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showHiddenMessage, setShowHiddenMessage] = useState(false);
+  const [typedText, setTypedText] = useState('');
   const menuRef = useRef<HTMLDivElement>(null);
   const hamburgerRef = useRef<HTMLDivElement>(null);
 
@@ -133,8 +140,49 @@ export default function Home() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  useEffect(() => {
+    const handleKeyPress = (e: KeyboardEvent) => {
+      setTypedText(prev => {
+        const newText = prev + e.key.toLowerCase();
+        if (newText.includes('bas-rocketry')) {
+          setShowHiddenMessage(true);
+          return '';
+        }
+        return newText.slice(-20);
+      });
+    };
+
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setShowHiddenMessage(false);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    window.addEventListener('keydown', handleEscape);
+    return () => {
+      window.removeEventListener('keydown', handleKeyPress);
+      window.removeEventListener('keydown', handleEscape);
+    };
+  }, []);
+
+  const closeHiddenMessage = (e: React.MouseEvent) => {
+    if (e.target === e.currentTarget) {
+      setShowHiddenMessage(false);
+    }
+  };
+
   return (
     <main>
+      {showHiddenMessage && (
+        <div className="hidden-message" onClick={closeHiddenMessage}>
+          <div className="hidden-message-content">
+            <button className="close-hidden-message" onClick={() => setShowHiddenMessage(false)}>&times;</button>
+            <h3>Welcome to the club!</h3>
+            <p>Email us at <a href="mailto:rocketry@bastoronto.org">rocketry@bastoronto.org</a>, we would love to hear and work with you!</p>
+          </div>
+        </div>
+      )}
       <nav className="navbar">
         <div className="logo-container">
           <div className="logo-image">

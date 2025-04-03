@@ -16,6 +16,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <meta name="future-engineer" content="I see you're a future engineer too! Email us at rocketry@bastoronto.org to talk or work with us!" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+      </head>
       <body className={inter.className}>{children}</body>
     </html>
   )

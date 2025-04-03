@@ -1030,4 +1030,109 @@ footer {
     .sponsor-card h2 {
         font-size: 1.5rem;
     }
+}
+
+/* Hidden Message */
+.hidden-message {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.5s ease;
+}
+
+.hidden-message-content {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    color: var(--primary-color);
+    max-width: 400px;
+    width: 90%;
+    animation: slideIn 0.5s ease;
+    border: 3px solid var(--primary-color);
+    position: relative;
+}
+
+.close-hidden-message {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.close-hidden-message:hover {
+    background: rgba(19, 19, 66, 0.1);
+    transform: rotate(90deg);
+}
+
+.hidden-message-content h3 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.hidden-message-content p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+.hidden-message-content a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    background: var(--gradient);
+    color: white;
+    display: inline-block;
+    margin-top: 1rem;
+}
+
+.hidden-message-content a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(19, 19, 66, 0.2);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 } 
