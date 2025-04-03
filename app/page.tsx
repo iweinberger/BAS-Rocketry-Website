@@ -128,7 +128,7 @@ export default function Home() {
       </section>
 
       <section id="team" className="team">
-        <h2>Meet Our Team Leads</h2>
+        <h2>Meet Our Team</h2>
         <div className="team-grid">
           <div className="team-member">
             <h3>Ilan Weinberger - Team Captain</h3>
@@ -137,31 +137,26 @@ export default function Home() {
           </div>
           <div className="team-member">
             <h3>Noam Wolfe - Propulsion Lead</h3>
-             <div></div>
               <div className="member-image"></div>
                 <p>Making the "Boom" in the Rocket possible</p>
           </div>
           <div className="team-member">
             <h3>Yekutiel Yunger - Avionics Lead</h3>
-              <div></div>
               <div className="member-image"></div>
                 <p>Making sure we don't encounter a "Houston, we have a problem"</p>
           </div>
           <div className="team-member">
             <h3>Sammy Simon - Recovery Lead</h3>
-              <div></div>
               <div className="member-image"></div>
                 <p>Landing the Rocket in One Piece</p>
           </div>
           <div className="team-member">
             <h3>Benjamin Dahari - Financial Lead</h3>
-              <div></div>
               <div className="member-image"></div>
                 <p>Keeping the Money Flowing</p>
           </div>
           <div className="team-member">
-            <h3>Eli Scharf - Media Lead</h3>
-              <div></div>
+            <h3>Eli Scharf - Media & Outreach Lead</h3>
               <div className="member-image"></div>
                 <p>Showing the World</p>
             </div>
@@ -191,7 +186,7 @@ export default function Home() {
       </section>
 
       <section id="contact" className="contact">
-        <h2>Get in Touch!</h2>
+        <h2>Get in Touch</h2>
         <div className="contact-content">
           <form className="contact-form" onSubmit={handleSubmit}>
             <input type="text" name="name" placeholder="Your Name" required />
@@ -214,15 +209,8 @@ export default function Home() {
               <i className="fas fa-envelope"></i>
               <p>rocketry@bastoronto.org</p>
             </div>
-            <div className="info-item">
-              <i className="fas fa-map-marker-alt"></i>
-              <p>High School Campus, Space City</p>
-            </div>
             <div className="social-links">
               <a href="#"><i className="fab fa-instagram"></i></a>
-              <a href="#"><i className="fab fa-tiktok"></i></a>
-              <a href="#"><i className="fab fa-youtube"></i></a>
-              <a href="#"><i className="fab fa-discord"></i></a>
             </div>
           </div>
         </div>
