@@ -155,7 +155,7 @@ export default function Home() {
           <a href="#team">Team</a>
           <a href="#projects">Projects</a>
           <a href="#contact">Contact</a>
-          <a href="/donations">Donate</a>
+          <a href="/sponsors">Sponsors</a>
         </div>
         <div ref={hamburgerRef} className={`hamburger ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu}>
           <span></span>
@@ -176,7 +176,7 @@ export default function Home() {
         <h2>About Us</h2>
         <div className="about-content">
           <div className="about-text">
-            <p>We're a team of passionate high school students who love building rockets! At BAS Rocketry, we combine our creativity and engineering skills to design, build, and launch amazing rockets. Whether you're a rocket science expert or just starting out, there's a place for you on our team!</p>
+            <p>At BAS Rocketry, we are a team of passionate high school students who love innovating and building amazing projects! At BAS Rocketry, we are combining our creativity and engineering skills to design, build, and launch a few amazing rockets in the coming months and years!</p>
           </div>
           <div className="about-stats">
             <div className="stat">
@@ -331,7 +331,7 @@ export default function Home() {
               <a href="#team">Team</a>
               <a href="#projects">Projects</a>
               <a href="#contact">Contact</a>
-              <a href="/donations">Donate</a>
+              <a href="/sponsors">Sponsors</a>
             </div>
           </div>
         </div>

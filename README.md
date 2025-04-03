@@ -1,76 +1,82 @@
 # BAS Rocketry Website
 
-A modern, responsive website for the BAS Rocketry team built with Next.js.
-
-## Features
-
-- Modern and responsive design
-- Mobile-friendly navigation
-- Smooth scrolling
-- Interactive animations
-- Contact form
-- Social media integration
-
-## Tech Stack
-
-- Next.js 14
-- React 18
-- TypeScript
-- CSS Modules
-- Font Awesome Icons
-
-## Getting Started
-
-1. Install dependencies:
-```bash
-npm install
-# or
-yarn install
-```
-
-2. Run the development server:
-```bash
-npm run dev
-# or
-yarn dev
-```
-
-3. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The main website for BAS Rocketry showcasing our projects, team, and sponsors.
 
 ## Project Structure
 
-```
-bas-rocketry/
+```typescript
+BAS_rocketry/
 ├── app/
-│   ├── layout.tsx
-│   ├── page.tsx
-│   └── globals.css
+│   ├── page.tsx              # Main page component
+│   ├── sponsors/
+│   │   └── page.tsx         # Sponsors page component
+│   ├── globals.css          # Global styles
+│   └── layout.tsx           # Root layout component
 ├── public/
-├── package.json
-├── next.config.js
-└── tsconfig.json
+│   ├── logo.png            # Main website logo
+│   ├── pattern.png         # Background pattern
+│   ├── projects/           # Images for the upcomming projects
+│   │   ├── alpha.png      # Initial Rocket project image
+│   │   ├── beta.png       # Project Fluid image
+│   │   └── gamma.png      # Project End Game image
+│   └── sponsors/          # Logos for the sponsors page
+│       ├── bas.png        # BAS logo
+│       └── alpha.png      # Placeholder sponsor logo
+└── package.json           # Project dependencies
 ```
+
+## Image Requirements
+
+### Project Images (`/public/projects/`)
+
+- Format: PNG
+- Recommended size: 800x400px
+- Aspect ratio: 2:1
+- Background: Transparent or dark theme compatible
+
+### Sponsor Logos (`/public/sponsors/`)
+
+- Format: PNG
+- Size: 180x180px
+- Aspect ratio: 1:1
+- Background: Transparent
+- Clear visibility on light background
+
+### Website Logo (`/public/logo.png`)
+
+- Format: PNG
+- Size: 60x60px
+- Aspect ratio: 1:1
+- Background: Transparent
 
 ## Development
 
-- The main page component is in `app/page.tsx`
-- Global styles are in `app/globals.css`
-- The layout component is in `app/layout.tsx`
-
-## Building for Production
-
-To create a production build:
+1. Install dependencies:
 
 ```bash
-npm run build
-# or
-yarn build
+npm install
 ```
 
-To start the production server:
+2. Run the development server for local testing:
 
 ```bash
-npm run start
-# or
-yarn start
-``` 
+npm run dev
+```
+
+## Dependencies
+
+- Next.js 13+
+- React
+- Font Awesome
+- TypeScript
+
+
+## Notes
+
+- All images should be optimized for web use
+
+- **Sponsor logos should be placed in the `/public/sponsors/` directory**
+
+- **Project images should be placed in the `/public/projects/` directory**
+
+- The website uses a dark theme with green accents for visual appeal
