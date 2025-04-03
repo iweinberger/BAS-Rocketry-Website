@@ -58,7 +58,7 @@ export default function Home() {
       <section id="home" className="hero">
         <div className="hero-content">
           <h1>Welcome to BAS Rocketry</h1>
-          <p>TEST TEST🚀</p>
+          <p>It's not rocket science... Right?</p>
           <a href="#about" className="cta-button">Learn More</a>
         </div>
       </section>
@@ -72,13 +72,13 @@ export default function Home() {
           <div className="about-stats">
             <div className="stat">
               <i className="fas fa-rocket"></i>
-              <h3>10+</h3>
-              <p>Epic Launches</p>
+              <h3>0+</h3>
+              <p>Launches</p>
             </div>
             <div className="stat">
               <i className="fas fa-users"></i>
-              <h3>20+</h3>
-              <p>Awesome Team Members</p>
+              <h3>40+</h3>
+              <p>Team Members</p>
             </div>
             <div className="stat">
               <i className="fas fa-trophy"></i>
@@ -95,7 +95,7 @@ export default function Home() {
           <div className="team-member">
             <div className="member-image"></div>
             <h3>Ilan Weinberger - Team Captain</h3>
-            <p>Leading the Mission</p>
+            <p>Leading the Launch</p>
           </div>
           <div className="team-member">
             <div className="member-image"></div>
@@ -105,7 +105,7 @@ export default function Home() {
           <div className="team-member">
             <div className="member-image"></div>
             <h3>Yekutiel Yunger - Avionics Lead</h3>
-            <p>Making sure we don't encounter a "Huston, we have a problem"</p>
+            <p>Making sure we don't encounter a "Houston, we have a problem"</p>
           </div>
           <div className="team-member">
             <div className="member-image"></div>
@@ -153,7 +153,7 @@ export default function Home() {
           <div className="contact-info">
             <div className="info-item">
               <i className="fas fa-envelope"></i>
-              <p>basrocketry@gmail.com</p>
+              <p>rocketry@bastoronto.org</p>
             </div>
             <div className="info-item">
               <i className="fas fa-map-marker-alt"></i>
@@ -173,7 +173,7 @@ export default function Home() {
         <div className="footer-content">
           <div className="footer-section">
             <h3>BAS Rocketry</h3>
-            <p>Building the future, one launch at a time! 🚀</p>
+            <p>It's not rocket science... Right</p>
           </div>
           <div className="footer-section">
             <h3>Quick Links</h3>
@@ -182,10 +182,11 @@ export default function Home() {
             <a href="#team">Team</a>
             <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
+            <a href="/donations">Donate</a>
           </div>
         </div>
         <div className="footer-bottom">
-          <p>&copy; 2024 BAS Rocketry. All rights reserved.</p>
+          <p>&copy; 2025 BAS Rocketry. All rights reserved. Maybe...</p>
         </div>
       </footer>
     </main>
