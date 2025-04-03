@@ -233,7 +233,7 @@ export default function Home() {
               <p>Team Members</p>
             </div>
             <div className="stat">
-              <i className="fas fa-money-bills"></i>
+              <i className="fas fa-sack-dollar"></i>
               <h3>1</h3>
               <p>Sponsors</p>
             </div>
