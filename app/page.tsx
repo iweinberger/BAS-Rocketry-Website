@@ -143,7 +143,7 @@ export default function Home() {
           <div className="team-member">
             <h3>Avionics Lead</h3>
               <div className="member-image"></div>
-                <p>Yekutial Yunger</p>
+                <p>Yekutiel Yunger</p>
           </div>
           <div className="team-member">
             <h3>Recovery Lead</h3>
