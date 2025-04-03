@@ -186,7 +186,7 @@ export default function Home() {
       </section>
 
       <section id="contact" className="contact">
-        <h2>Get in Touch!</h2>
+        <h2>Get in Touch</h2>
         <div className="contact-content">
           <form className="contact-form" onSubmit={handleSubmit}>
             <input type="text" name="name" placeholder="Your Name" required />
@@ -209,15 +209,8 @@ export default function Home() {
               <i className="fas fa-envelope"></i>
               <p>rocketry@bastoronto.org</p>
             </div>
-            <div className="info-item">
-              <i className="fas fa-map-marker-alt"></i>
-              <p>High School Campus, Space City</p>
-            </div>
             <div className="social-links">
               <a href="#"><i className="fab fa-instagram"></i></a>
-              <a href="#"><i className="fab fa-tiktok"></i></a>
-              <a href="#"><i className="fab fa-youtube"></i></a>
-              <a href="#"><i className="fab fa-discord"></i></a>
             </div>
           </div>
         </div>
