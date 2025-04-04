@@ -64,10 +64,6 @@ export default function Home() {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const forward_to_sponsors = () => {
-    document.location.href = "/sponsors"
-  };
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setFormStatus('loading');
@@ -236,7 +232,7 @@ export default function Home() {
               <h3>40</h3>
               <p>Team Members</p>
             </div>
-            <div className="stat" onlick={forward_to_sponsor}>
+            <div className="stat" onlick="document.location.href = '/sponsors'">
               <i className="fas fa-sack-dollar"></i>
               <h3>1</h3>
               <p>Sponsors</p>
