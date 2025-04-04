@@ -369,7 +369,7 @@ export default function Home() {
         <div className="footer-content">
           <div className="footer-section">
             <h3>BAS ROCKETRY</h3>
-            <p>It's not rocket science... Right?</p>
+            <p>Don't over think it - we already did</p>
           </div>
           <div className="footer-section">
             <h3>QUICK LINKS</h3>
