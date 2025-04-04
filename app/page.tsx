@@ -232,7 +232,7 @@ export default function Home() {
               <h3>40</h3>
               <p>Team Members</p>
             </div>
-            <div className="stat" onclick={window.location.href = "/sponsors"}>
+            <div className="stat" href="/sponsors">
               <i className="fas fa-sack-dollar"></i>
               <h3>1</h3>
               <p>Sponsors</p>
