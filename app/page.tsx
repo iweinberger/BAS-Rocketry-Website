@@ -236,7 +236,7 @@ export default function Home() {
               <h3>40</h3>
               <p>Team Members</p>
             </div>
-            <div className="stat" onclick={() => forward_to_sponsors()}>
+            <div className="stat">
               <i className="fas fa-sack-dollar"></i>
               <h3>1</h3>
               <p>Sponsors</p>
