@@ -215,7 +215,7 @@ export default function Home() {
       <section id="home" className="hero">
         <div className="hero-content">
           <h1>Welcome to BAS Rocketry</h1>
-          <p>It's not rocket science... Right?</p>
+          <p>Don't over think it - we already did.</p>
           <a href="#about" className="cta-button">Learn More</a>
         </div>
       </section>
