@@ -227,7 +227,7 @@ export default function Home() {
             <p>At BAS Rocketry, we are a team of passionate high school students who love innovating and building amazing projects! At BAS Rocketry, we are combining our creativity and engineering skills to design, build, and launch a few amazing rockets in the coming months and years!</p>
           </div>
           <div className="about-stats">
-            <div className="stat">
+            <div className="stat" onClick={() => { window.location.href = '#team'; }}>
               <i className="fas fa-users"></i>
               <h3>40</h3>
               <p>Team Members</p>
