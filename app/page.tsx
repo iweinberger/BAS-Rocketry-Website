@@ -240,6 +240,19 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <script>
+        const achievements = [
+          "First successful engine test - 2024",
+          "Won regional rocketry competition - 2025",
+          "Developed our first liquid engine - 2026",
+          "Launched to 10,000 feet - 2027"
+        ];
+        let index = 0;
+        setInterval(() => {
+          index = (index + 1) % achievements.length;
+          document.getElementById("achievement-text").innerText = achievements[index];
+        }, 3000);
+      </script>
 
       <section id="team" className="team">
         <h2>Meet Our Team</h2>
