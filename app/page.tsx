@@ -195,7 +195,7 @@ export default function Home() {
               priority
             />
           </div>
-          <div className="logo">BAS Rocketry</div>
+          <div className="logo"> Rocketry</div>
         </div>
         <div ref={menuRef} className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
           <a href="#home">Home</a>
