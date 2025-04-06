@@ -30,7 +30,7 @@ body {
     top: 0;
     width: 100%;
     background: var(--gradient);
-    padding: 1rem 5%;
+    padding: .8rem 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
