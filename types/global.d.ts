@@ -1,5 +1,5 @@
-interface MyWindow extends Window {
-    _mfq?: any[];
-}
-
-declare var window: MyWindow; 
+declare global {
+  interface Window {
+    _mfq: any[];
+  }
+} 

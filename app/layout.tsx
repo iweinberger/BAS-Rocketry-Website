@@ -2,9 +2,9 @@
 
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import { useEffect } from 'react'
 import './globals.css'
 import { Analytics } from '@vercel/analytics/react'
+import MouseflowScript from './components/MouseflowScript'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,18 +18,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  useEffect(() => {
-    window._mfq = window._mfq || [];
-    
-    (function() {
-      var mf = document.createElement("script");
-      mf.type = "text/javascript";
-      mf.defer = true;
-      mf.src = "//cdn.mouseflow.com/projects/ee5128fc-9845-4a1e-8f16-3960fa1e22dd.js";
-      document.getElementsByTagName("head")[0].appendChild(mf);
-    })();
-  }, []);
-
   return (
     <html lang="en">
       <head>
@@ -37,6 +25,7 @@ export default function RootLayout({
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
       </head>
       <body className={inter.className}>
+        <MouseflowScript />
         {children}
         <Analytics />
       </body>
