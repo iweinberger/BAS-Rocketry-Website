@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import Script from 'next/script'
 import './globals.css'
 import { Analytics } from '@vercel/analytics/react'
 
@@ -20,6 +21,17 @@ export default function RootLayout({
       <head>
         <meta name="future-engineer" content="I see you're a future engineer too! Email us at rocketry@bastoronto.org to talk or work with us!" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+        <Script id="mouseflow" strategy="afterInteractive">
+          {`
+            window._mfq = window._mfq || [];
+            (function() {
+              var mf = document.createElement("script");
+              mf.type = "text/javascript"; mf.defer = true;
+              mf.src = "//cdn.mouseflow.com/projects/ee5128fc-9845-4a1e-8f16-3960fa1e22dd.js";
+              document.getElementsByTagName("head")[0].appendChild(mf);
+            })();
+          `}
+        </Script>
       </head>
       <body className={inter.className}>
         {children}
