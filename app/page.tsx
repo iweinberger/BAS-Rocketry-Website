@@ -239,15 +239,6 @@ export default function Home() {
             </div>
           </div>
         </div>
-          <div className="achievements">
-    <h3>Our Achievements</h3>
-    <ul>
-      <li>First successful engine test - 2024</li>
-      <li>Won regional rocketry competition - 2025</li>
-      <li>Developed our first liquid engine - 2026</li>
-      <li>Launched to 10,000 feet - 2027</li>
-    </ul>
-  </div>
       </section>
       <section id="team" className="team">
         <h2>Meet Our Team</h2>
