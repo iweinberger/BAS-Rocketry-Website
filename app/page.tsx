@@ -198,10 +198,10 @@ export default function Home() {
           <div className="logo">BAS Rocketry</div>
         </div>
         <div ref={menuRef} className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
-          <a href="#home">Home</a>
-          <a href="#about">About</a>
-          <a href="#team">Team</a>
-          <a href="#projects">Projects</a>
+          <a href="/home">Home</a>
+          <a href="/about">About</a>
+          <a href="/team">Team</a>
+          <a href="/projects">Projects</a>
           <a href="#contact">Contact</a>
           <a href="/sponsors">Sponsors</a>
         </div>
