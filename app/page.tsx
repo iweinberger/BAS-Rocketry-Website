@@ -189,8 +189,8 @@ export default function Home() {
             <Image
               src="/logo.png"
               alt="BAS Rocketry Logo"
-              width={60}
-              height={60}
+              width={80}
+              height={80}
               className="logo-img"
               priority
             />
