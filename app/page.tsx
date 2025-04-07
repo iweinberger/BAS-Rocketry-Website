@@ -155,33 +155,81 @@ export default function Home() {
         <div className="team-grid">
           <div className="team-member">
             <h3>Team Captain</h3>
-              <div className="member-image"></div>
-                <p>Ilan Weinberger</p>
+            <div className="member-image ilan">
+              <Image
+                src="/team/placeholder.png"
+                alt="Ilan Weinberger"
+                width={200}
+                height={200}
+                className="member-img"
+              />
+            </div>
+            <p>Ilan Weinberger</p>
           </div>
           <div className="team-member">
             <h3>Propulsion Lead</h3>
-              <div className="member-image"></div>
-                <p>Noam Wolfe</p>
+            <div className="member-image noam">
+              <Image
+                src="/team/placeholder.png"
+                alt="Noam Wolfe"
+                width={200}
+                height={200}
+                className="member-img"
+              />
+            </div>
+            <p>Noam Wolfe</p>
           </div>
           <div className="team-member">
             <h3>Avionics Lead</h3>
-              <div className="member-image"></div>
-                <p>Yekutiel Yunger</p>
+            <div className="member-image yekutiel">
+              <Image
+                src="/team/placeholder.png"
+                alt="Yekutiel Yunger"
+                width={200}
+                height={200}
+                className="member-img"
+              />
+            </div>
+            <p>Yekutiel Yunger</p>
           </div>
           <div className="team-member">
             <h3>Recovery Lead</h3>
-              <div className="member-image"></div>
-                <p>Sammy Simon</p>
+            <div className="member-image sammy">
+              <Image
+                src="/team/placeholder.png"
+                alt="Sammy Simon"
+                width={200}
+                height={200}
+                className="member-img"
+              />
+            </div>
+            <p>Sammy Simon</p>
           </div>
           <div className="team-member">
             <h3>Financial Lead</h3>
-              <div className="member-image"></div>
-                <p>Benjamin Dahari</p>
+            <div className="member-image benjamin">
+              <Image
+                src="/team/placeholder.png"
+                alt="Benjamin Dahari"
+                width={200}
+                height={200}
+                className="member-img"
+              />
+            </div>
+            <p>Benjamin Dahari</p>
           </div>
           <div className="team-member">
             <h3>Chief Safety Officer</h3>
-              <div className="member-image"></div>
-                <p>Raphie Sayegh</p>
+            <div className="member-image raphie">
+              <Image
+                src="/Raphie.png"
+                alt="Raphie Sayegh"
+                width={200}
+                height={200}
+                className="member-img"
+              />
+            </div>
+            <p>Raphie Sayegh</p>
           </div>          
         </div>
       </section>
