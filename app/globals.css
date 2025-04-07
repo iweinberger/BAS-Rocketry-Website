@@ -255,7 +255,7 @@ body {
     width: 150px;
     height: 150px;
     background: var(--gradient);
-    border-radius: 50%;
+    border-radius: 10%;
     margin: 0 auto 1.5rem;
     position: relative;
     overflow: hidden;
