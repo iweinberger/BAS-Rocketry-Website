@@ -272,13 +272,7 @@ export default function Home() {
             <h3>Chief Safety Officer</h3>
               <div className="member-image"></div>
                 <p>Raphie Sayegh</p>
-          </div>
-          <div className="team-member">
-            <h3>Media & Outreach Lead</h3>
-              <div className="member-image"></div>
-                <p>Eli Scharf</p>
-            </div>
-          
+          </div>          
         </div>
       </section>
 
