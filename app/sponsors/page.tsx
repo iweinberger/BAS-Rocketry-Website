@@ -1,6 +1,5 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 
 const sponsors = [
@@ -32,61 +31,8 @@ const sponsors = [
 ];
 
 export default function Sponsors() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const menuRef = useRef<HTMLDivElement>(null);
-  const hamburgerRef = useRef<HTMLDivElement>(null);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        menuRef.current &&
-        hamburgerRef.current &&
-        !menuRef.current.contains(event.target as Node) &&
-        !hamburgerRef.current.contains(event.target as Node)
-      ) {
-        setIsMenuOpen(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
-
   return (
     <main>
-      <nav className="navbar">
-        <div className="logo-container">
-          <div className="logo-image">
-            <Image
-              src="/logo.png"
-              alt="BAS Rocketry Logo"
-              width={60}
-              height={60}
-              className="logo-img"
-              priority
-            />
-          </div>
-          <div className="logo">BAS Rocketry</div>
-        </div>
-        <div ref={menuRef} className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
-          <a href="/#home">Home</a>
-          <a href="/#about">About</a>
-          <a href="/#team">Team</a>
-          <a href="/#projects">Projects</a>
-          <a href="/#contact">Contact</a>
-          <a href="/sponsors">Sponsors</a>
-        </div>
-        <div ref={hamburgerRef} className={`hamburger ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu}>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </nav>
-
       <section className="sponsors-hero">
         <h1>Our Sponsors</h1>
         <p>Thank you to all our amazing sponsors who make our projects possible!</p>

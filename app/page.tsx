@@ -5,19 +5,16 @@
 
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 
 export default function Home() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [formStatus, setFormStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [formMessage, setFormMessage] = useState('');
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showHiddenMessage, setShowHiddenMessage] = useState(false);
   const [typedText, setTypedText] = useState('');
-  const menuRef = useRef<HTMLDivElement>(null);
-  const hamburgerRef = useRef<HTMLDivElement>(null);
 
   const projects = [
     {
@@ -59,10 +56,6 @@ export default function Home() {
       ]
     }
   ];
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -110,62 +103,6 @@ export default function Home() {
     setSelectedProject(null);
   };
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const navbar = document.querySelector('.navbar');
-      if (window.scrollY > 50) {
-        navbar?.classList.add('scrolled');
-      } else {
-        navbar?.classList.remove('scrolled');
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        menuRef.current &&
-        hamburgerRef.current &&
-        !menuRef.current.contains(event.target as Node) &&
-        !hamburgerRef.current.contains(event.target as Node)
-      ) {
-        setIsMenuOpen(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
-
-  useEffect(() => {
-    const handleKeyPress = (e: KeyboardEvent) => {
-      setTypedText(prev => {
-        const newText = prev + e.key.toLowerCase();
-        if (newText.includes('bas-rocketry')) {
-          setShowHiddenMessage(true);
-          return '';
-        }
-        return newText.slice(-20);
-      });
-    };
-
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        setShowHiddenMessage(false);
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyPress);
-    window.addEventListener('keydown', handleEscape);
-    return () => {
-      window.removeEventListener('keydown', handleKeyPress);
-      window.removeEventListener('keydown', handleEscape);
-    };
-  }, []);
-
   const closeHiddenMessage = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
       setShowHiddenMessage(false);
@@ -183,34 +120,6 @@ export default function Home() {
           </div>
         </div>
       )}
-      <nav className="navbar">
-        <div className="logo-container">
-          <div className="logo-image">
-            <Image
-              src="/logo.png"
-              alt="BAS Rocketry Logo"
-              width={80}
-              height={80}
-              className="logo-img"
-              priority
-            />
-          </div>
-          <div className="logo">Rocketry</div>
-        </div>
-        <div ref={menuRef} className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
-          <a href="#home">Home</a>
-          <a href="/about">About</a>
-          <a href="/team">Team</a>
-          <a href="/projects">Projects</a>
-          <a href="#contact">Contact</a>
-          <a href="/sponsors">Sponsors</a>
-        </div>
-        <div ref={hamburgerRef} className={`hamburger ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu}>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </nav>
 
       <section id="home" className="hero">
         <div className="hero-content">
@@ -240,6 +149,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+
       <section id="team" className="team">
         <h2>Meet Our Team</h2>
         <div className="team-grid">

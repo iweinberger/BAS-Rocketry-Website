@@ -6,6 +6,21 @@ const nextConfig = {
   },
   env: {
     NODE_PUBLIC_MAILGUN_SMTP_PASSWORD: process.env.NODE_PUBLIC_MAILGUN_SMTP_PASSWORD,
+    PORT: process.env.NODE_ENV === 'development' ? '3001' : '3000'
+  },
+  experimental: {
+    appDir: true,
+  },
+  // Handle 404s through not-found.tsx instead of redirects
+  async rewrites() {
+    return {
+      fallback: [
+        {
+          source: '/:path*',
+          destination: '/not-found'
+        }
+      ]
+    }
   }
 }
 
