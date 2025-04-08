@@ -60,7 +60,7 @@ export default function NavBar() {
       </div>
       <div ref={menuRef} className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
         <Link href="/">Home</Link>
-        <Link href="/about">About</Link>
+        <Link href="/#about">About</Link>
         <Link href="/team">Team</Link>
         <Link href="/projects">Projects</Link>
         <Link href="#contact">Contact</Link>
