@@ -110,6 +110,10 @@ export default function Home() {
   };
 
   return (
+    <Head>
+      <link rel="icon" href="/logo.png" type="image/png" />
+      <title>BAS Rocketry</title>
+    </Head>
     <main>
       {showHiddenMessage && (
         <div className="hidden-message" onClick={closeHiddenMessage}>
