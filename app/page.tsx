@@ -209,7 +209,7 @@ export default function Home() {
             <h3>Financial Lead</h3>
             <div className="member-image benjamin">
               <Image
-                src="/team/placeholder.png"
+                src="/Ben.png"
                 alt="Benjamin Dahari"
                 width={200}
                 height={200}
