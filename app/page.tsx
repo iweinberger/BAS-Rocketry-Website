@@ -331,10 +331,10 @@ export default function Home() {
               <h3>QUICK LINKS</h3>
               <div className="footer-links">
                 <a href="#home">Home</a>
-                <a href="/about">About</a>
+                <a href="#about">About</a>
                 <a href="/team">Team</a>
                 <a href="/projects">Projects</a>
-                <a href="/contact">Contact</a>
+                <a href="#contact">Contact</a>
                 <a href="/sponsors">Sponsors</a>
               </div>
             </div>
