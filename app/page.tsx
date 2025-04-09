@@ -281,7 +281,7 @@ export default function Home() {
             <div className="social-links">
               <a href="https://www.instagram.com/bas_rocketry/"><i className="fab fa-instagram"></i></a>
               <a href="https://www.linkedin.com/company/bas-rocketry"><i className="fab fa-linkedin"></i></a>
-              <a href="https://www.youtube.com/bas-rocketry"><i className="fab fa-youtube"></i></a>
+              <a href="https://www.youtube.com/channel/UCHMS5iHjs30y3Pb7FNBcG4A"><i className="fab fa-youtube"></i></a>
             </div>
           </div>
         </div>
