@@ -203,7 +203,7 @@ export default function Home() {
             <div className="logo">BAS Rocketry</div>
           </div>
           <div ref={menuRef} className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
-            <a href="#home">Home</a>
+            <a href="/">Home</a>
             <a href="/#about">About</a>
             <a href="/team">Team</a>
             <a href="/projects">Projects</a>
@@ -314,7 +314,7 @@ export default function Home() {
             <div className="footer-section">
               <h3>QUICK LINKS</h3>
               <div className="footer-links">
-                <a href="#home">Home</a>
+                <a href="/">Home</a>
                 <a href="/#about">About</a>
                 <a href="/team">Team</a>
                 <a href="/projects">Projects</a>
