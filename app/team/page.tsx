@@ -173,159 +173,165 @@ export default function Home() {
   };
 
   return (
-    <main>
-      {showHiddenMessage && (
-        <div className="hidden-message" onClick={closeHiddenMessage}>
-          <div className="hidden-message-content">
-            <button className="close-hidden-message" onClick={() => setShowHiddenMessage(false)}>&times;</button>
-            <h3>Welcome to the club!</h3>
-            <p>Email us at <a href="mailto:rocketry@bastoronto.org">rocketry@bastoronto.org</a>, we would love to hear and work with you!</p>
+    <>
+      <head>
+        <link rel="icon" href="/logo.png" type="image/png" />
+        <title>BAS Rocketry - Our Team</title>
+      </head>
+      <main>
+        {showHiddenMessage && (
+          <div className="hidden-message" onClick={closeHiddenMessage}>
+            <div className="hidden-message-content">
+              <button className="close-hidden-message" onClick={() => setShowHiddenMessage(false)}>&times;</button>
+              <h3>Welcome to the club!</h3>
+              <p>Email us at <a href="mailto:rocketry@bastoronto.org">rocketry@bastoronto.org</a>, we would love to hear and work with you!</p>
+            </div>
           </div>
-        </div>
-      )}
-      <nav className="navbar">
-        <div className="logo-container">
-          <div className="logo-image">
-            <Image
-              src="/logo.png"
-              alt="BAS Rocketry Logo"
-              width={60}
-              height={60}
-              className="logo-img"
-              priority
-            />
-          </div>
-          <div className="logo">Rocketry</div>
-        </div>
-        <div ref={menuRef} className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
-          <a href="/">Home</a>
-          <a href="/#about">About</a>
-          <a href="/team">Team</a>
-          <a href="/projects">Projects</a>
-          <a href="#contact">Contact</a>
-          <a href="/sponsors">Sponsors</a>
-        </div>
-        <div ref={hamburgerRef} className={`hamburger ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu}>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </nav>
-
-      
-      <section className="sponsors-hero">
-        <h1>Meet Our Team</h1>
-      </section>
-
-      <section id="team" className="team">
-        <div className="team-grid">
-          <div className="team-member">
-            <h3>Executive Director</h3>
-              <div className="member-image"></div>
-                <p>Ilan Weinberger</p>
-          </div>
-          <div className="team-member">
-            <h3>Propulsion Lead</h3>
-              <div className="member-image"></div>
-                <p>Noam Wolfe</p>
-          </div>
-          <div className="team-member">
-            <h3>Avionics Lead</h3>
-              <div className="member-image"></div>
-                <p>Yekutiel Yunger</p>
-          </div>
-          <div className="team-member">
-            <h3>Recovery Lead</h3>
-              <div className="member-image"></div>
-                <p>Sammy Simon</p>
-          </div>
-          <div className="team-member">
-            <h3>Chief Financial Officer</h3>
-            <div className="member-image benjamin">
+        )}
+        <nav className="navbar">
+          <div className="logo-container">
+            <div className="logo-image">
               <Image
-                src="/Ben.png"
-                alt="Benjamin Dahari"
-                width={200}
-                height={200}
-                className="member-img"
+                src="/logo.png"
+                alt="BAS Rocketry Logo"
+                width={60}
+                height={60}
+                className="logo-img"
+                priority
               />
             </div>
-            <p>Benjamin Dahari</p>
+            <div className="logo">Rocketry</div>
           </div>
-          <div className="team-member">
-            <h3>Chief Safety Officer</h3>
-            <div className="member-image benjamin">
-              <Image
-                src="/Raphie.png"
-                alt="Raphie Sayegh"
-                width={200}
-                height={200}
-                className="member-img"
-              />
-            </div>
-            <p>Raphie Sayegh</p>
-          </div>  
-          <div className="team-member">
-            <h3>Media & Outreach Manager</h3>
-              <div className="member-image"></div>
-                <p>Eli Scharf</p>
-            </div>
-          
-        </div>
-      </section>
+          <div ref={menuRef} className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
+            <a href="/">Home</a>
+            <a href="/#about">About</a>
+            <a href="/team">Team</a>
+            <a href="/projects">Projects</a>
+            <a href="#contact">Contact</a>
+            <a href="/sponsors">Sponsors</a>
+          </div>
+          <div ref={hamburgerRef} className={`hamburger ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu}>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </nav>
 
-      <section id="contact" className="contact">
-        <h2>Get in Touch</h2>
-        <div className="contact-content">
-          <form className="contact-form" onSubmit={handleSubmit}>
-            <input type="text" name="name" placeholder="Your Name" required />
-            <input type="email" name="email" placeholder="Your Email" required />
-            <textarea name="message" placeholder="Your Message" required></textarea>
-            <button 
-              type="submit" 
-              className={`submit-button ${formStatus === 'loading' ? 'loading' : ''}`}
-            >
-              {formStatus === 'loading' ? 'Sending...' : 'Send Message'}
-            </button>
-            {formMessage && (
-              <div className={`form-message ${formStatus}`}>
-                {formMessage}
+        
+        <section className="sponsors-hero">
+          <h1>Meet Our Team</h1>
+        </section>
+
+        <section id="team" className="team">
+          <div className="team-grid">
+            <div className="team-member">
+              <h3>Executive Director</h3>
+                <div className="member-image"></div>
+                  <p>Ilan Weinberger</p>
+            </div>
+            <div className="team-member">
+              <h3>Propulsion Lead</h3>
+                <div className="member-image"></div>
+                  <p>Noam Wolfe</p>
+            </div>
+            <div className="team-member">
+              <h3>Avionics Lead</h3>
+                <div className="member-image"></div>
+                  <p>Yekutiel Yunger</p>
+            </div>
+            <div className="team-member">
+              <h3>Recovery Lead</h3>
+                <div className="member-image"></div>
+                  <p>Sammy Simon</p>
+            </div>
+            <div className="team-member">
+              <h3>Chief Financial Officer</h3>
+              <div className="member-image benjamin">
+                <Image
+                  src="/Ben.png"
+                  alt="Benjamin Dahari"
+                  width={200}
+                  height={200}
+                  className="member-img"
+                />
               </div>
-            )}
-          </form>
-          <div className="contact-info">
-            <div className="info-item">
-              <i className="fas fa-envelope"></i>
-              <p>rocketry@bastoronto.org</p>
+              <p>Benjamin Dahari</p>
             </div>
-            <div className="social-links">
-              <a href="https://www.instagram.com/bas_rocketry/"><i className="fab fa-instagram"></i></a>
-              <a href="https://www.linkedin.com/company/bas-rocketry"><i className="fab fa-linkedin"></i></a>
-              <a href="https://www.youtube.com/bas-rocketry"><i className="fab fa-youtube"></i></a>
-            </div>
+            <div className="team-member">
+              <h3>Chief Safety Officer</h3>
+              <div className="member-image benjamin">
+                <Image
+                  src="/Raphie.png"
+                  alt="Raphie Sayegh"
+                  width={200}
+                  height={200}
+                  className="member-img"
+                />
+              </div>
+              <p>Raphie Sayegh</p>
+            </div>  
+            <div className="team-member">
+              <h3>Media & Outreach Manager</h3>
+                <div className="member-image"></div>
+                  <p>Eli Scharf</p>
+              </div>
+            
           </div>
-        </div>
-      </section>
+        </section>
 
-      <footer>
-        <div className="footer-content">
-          <div className="footer-section">
-            <h3>BAS ROCKETRY</h3>
-            <p>Don't over think it - we already did</p>
-          </div>
-          <div className="footer-section">
-            <h3>QUICK LINKS</h3>
-            <div className="footer-links">
-              <a href="/">Home</a>
-              <a href="/#about">About</a>
-              <a href="/team">Team</a>
-              <a href="/projects">Projects</a>
-              <a href="/contact">Contact</a>
-              <a href="/sponsors">Sponsors</a>
+        <section id="contact" className="contact">
+          <h2>Get in Touch</h2>
+          <div className="contact-content">
+            <form className="contact-form" onSubmit={handleSubmit}>
+              <input type="text" name="name" placeholder="Your Name" required />
+              <input type="email" name="email" placeholder="Your Email" required />
+              <textarea name="message" placeholder="Your Message" required></textarea>
+              <button 
+                type="submit" 
+                className={`submit-button ${formStatus === 'loading' ? 'loading' : ''}`}
+              >
+                {formStatus === 'loading' ? 'Sending...' : 'Send Message'}
+              </button>
+              {formMessage && (
+                <div className={`form-message ${formStatus}`}>
+                  {formMessage}
+                </div>
+              )}
+            </form>
+            <div className="contact-info">
+              <div className="info-item">
+                <i className="fas fa-envelope"></i>
+                <p>rocketry@bastoronto.org</p>
+              </div>
+              <div className="social-links">
+                <a href="https://www.instagram.com/bas_rocketry/"><i className="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/company/bas-rocketry"><i className="fab fa-linkedin"></i></a>
+                <a href="https://www.youtube.com/bas-rocketry"><i className="fab fa-youtube"></i></a>
+              </div>
             </div>
           </div>
-        </div>
-      </footer>
-    </main>
+        </section>
+
+        <footer>
+          <div className="footer-content">
+            <div className="footer-section">
+              <h3>BAS ROCKETRY</h3>
+              <p>Don't over think it - we already did</p>
+            </div>
+            <div className="footer-section">
+              <h3>QUICK LINKS</h3>
+              <div className="footer-links">
+                <a href="/">Home</a>
+                <a href="/#about">About</a>
+                <a href="/team">Team</a>
+                <a href="/projects">Projects</a>
+                <a href="/contact">Contact</a>
+                <a href="/sponsors">Sponsors</a>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </main>
+    </>
   );
 } 

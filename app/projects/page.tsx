@@ -173,152 +173,158 @@ export default function Home() {
   };
 
   return (
-    <main>
-      {showHiddenMessage && (
-        <div className="hidden-message" onClick={closeHiddenMessage}>
-          <div className="hidden-message-content">
-            <button className="close-hidden-message" onClick={() => setShowHiddenMessage(false)}>&times;</button>
-            <h3>Welcome to the club!</h3>
-            <p>Email us at <a href="mailto:rocketry@bastoronto.org">rocketry@bastoronto.org</a>, we would love to hear and work with you!</p>
-          </div>
-        </div>
-      )}
-      <nav className="navbar">
-        <div className="logo-container">
-          <div className="logo-image">
-            <Image
-              src="/logo.png"
-              alt="BAS Rocketry Logo"
-              width={60}
-              height={60}
-              className="logo-img"
-              priority
-            />
-          </div>
-          <div className="logo">BAS Rocketry</div>
-        </div>
-        <div ref={menuRef} className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
-          <a href="#home">Home</a>
-          <a href="/#about">About</a>
-          <a href="/team">Team</a>
-          <a href="/projects">Projects</a>
-          <a href="#contact">Contact</a>
-          <a href="/sponsors">Sponsors</a>
-        </div>
-        <div ref={hamburgerRef} className={`hamburger ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu}>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </nav>
-
-      
-      <section className="sponsors-hero">
-        <h1>Our Rocketry Plans</h1>
-      </section>
-
-      <section id="projects" className="projects">
-        <div className="project-grid">
-          {projects.map((project, index) => (
-            <div key={index} className="project-card" onClick={() => openProjectModal(index)}>
-              <div className="project-image">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  width={400}
-                  height={200}
-                  className="project-img"
-                />
-              </div>
-              <p>{project.description}</p>
-              <div className="project-title">{project.title}</div>
-              <div className="project-eta">ETA: {project.eta}</div>
-              <div className="progress-bar">
-                <div className="progress" style={{ width: `${project.progress}%` }}></div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {isModalOpen && selectedProject !== null && (
-          <div className="project-modal" onClick={closeProjectModal}>
-            <div className="modal-content" onClick={e => e.stopPropagation()}>
-              <button className="close-modal" onClick={closeProjectModal}>&times;</button>
-              <h2>{projects[selectedProject].title}</h2>
-              <p>{projects[selectedProject].description}</p>
-              <div className="modal-progress">
-                <h3>Development Progress</h3>
-                <div className="progress-bar">
-                  <div className="progress" style={{ width: `${projects[selectedProject].progress}%` }}></div>
-                </div>
-                <span>{projects[selectedProject].progress}% Complete</span>
-              </div>
-              <div className="key-points">
-                <h3>Key Points</h3>
-                <ul>
-                  {projects[selectedProject].keyPoints.map((point, idx) => (
-                    <li key={idx}>{point}</li>
-                  ))}
-                </ul>
-              </div>
-              <div className="eta">Estimated Completion: {projects[selectedProject].eta}</div>
+    <>
+      <head>
+        <link rel="icon" href="/logo.png" type="image/png" />
+        <title>BAS Rocketry - Our Projects</title>
+      </head>
+      <main>
+        {showHiddenMessage && (
+          <div className="hidden-message" onClick={closeHiddenMessage}>
+            <div className="hidden-message-content">
+              <button className="close-hidden-message" onClick={() => setShowHiddenMessage(false)}>&times;</button>
+              <h3>Welcome to the club!</h3>
+              <p>Email us at <a href="mailto:rocketry@bastoronto.org">rocketry@bastoronto.org</a>, we would love to hear and work with you!</p>
             </div>
           </div>
         )}
-      </section>
+        <nav className="navbar">
+          <div className="logo-container">
+            <div className="logo-image">
+              <Image
+                src="/logo.png"
+                alt="BAS Rocketry Logo"
+                width={60}
+                height={60}
+                className="logo-img"
+                priority
+              />
+            </div>
+            <div className="logo">BAS Rocketry</div>
+          </div>
+          <div ref={menuRef} className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
+            <a href="#home">Home</a>
+            <a href="/#about">About</a>
+            <a href="/team">Team</a>
+            <a href="/projects">Projects</a>
+            <a href="#contact">Contact</a>
+            <a href="/sponsors">Sponsors</a>
+          </div>
+          <div ref={hamburgerRef} className={`hamburger ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu}>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </nav>
 
-      <section id="contact" className="contact">
-        <h2>Get in Touch</h2>
-        <div className="contact-content">
-          <form className="contact-form" onSubmit={handleSubmit}>
-            <input type="text" name="name" placeholder="Your Name" required />
-            <input type="email" name="email" placeholder="Your Email" required />
-            <textarea name="message" placeholder="Your Message" required></textarea>
-            <button 
-              type="submit" 
-              className={`submit-button ${formStatus === 'loading' ? 'loading' : ''}`}
-            >
-              {formStatus === 'loading' ? 'Sending...' : 'Send Message'}
-            </button>
-            {formMessage && (
-              <div className={`form-message ${formStatus}`}>
-                {formMessage}
+        
+        <section className="sponsors-hero">
+          <h1>Our Rocketry Plans</h1>
+        </section>
+
+        <section id="projects" className="projects">
+          <div className="project-grid">
+            {projects.map((project, index) => (
+              <div key={index} className="project-card" onClick={() => openProjectModal(index)}>
+                <div className="project-image">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    width={400}
+                    height={200}
+                    className="project-img"
+                  />
+                </div>
+                <p>{project.description}</p>
+                <div className="project-title">{project.title}</div>
+                <div className="project-eta">ETA: {project.eta}</div>
+                <div className="progress-bar">
+                  <div className="progress" style={{ width: `${project.progress}%` }}></div>
+                </div>
               </div>
-            )}
-          </form>
-          <div className="contact-info">
-            <div className="info-item">
-              <i className="fas fa-envelope"></i>
-              <p>rocketry@bastoronto.org</p>
-            </div>
-            <div className="social-links">
-              <a href="https://www.instagram.com/bas_rocketry/"><i className="fab fa-instagram"></i></a>
-              <a href="https://www.linkedin.com/company/bas-rocketry"><i className="fab fa-linkedin"></i></a>
-              <a href="https://www.youtube.com/bas-rocketry"><i className="fab fa-youtube"></i></a>
-            </div>
+            ))}
           </div>
-        </div>
-      </section>
 
-      <footer>
-        <div className="footer-content">
-          <div className="footer-section">
-            <h3>BAS ROCKETRY</h3>
-            <p>Don't over think it - we already did</p>
-          </div>
-          <div className="footer-section">
-            <h3>QUICK LINKS</h3>
-            <div className="footer-links">
-              <a href="#home">Home</a>
-              <a href="/#about">About</a>
-              <a href="/team">Team</a>
-              <a href="/projects">Projects</a>
-              <a href="/contact">Contact</a>
-              <a href="/sponsors">Sponsors</a>
+          {isModalOpen && selectedProject !== null && (
+            <div className="project-modal" onClick={closeProjectModal}>
+              <div className="modal-content" onClick={e => e.stopPropagation()}>
+                <button className="close-modal" onClick={closeProjectModal}>&times;</button>
+                <h2>{projects[selectedProject].title}</h2>
+                <p>{projects[selectedProject].description}</p>
+                <div className="modal-progress">
+                  <h3>Development Progress</h3>
+                  <div className="progress-bar">
+                    <div className="progress" style={{ width: `${projects[selectedProject].progress}%` }}></div>
+                  </div>
+                  <span>{projects[selectedProject].progress}% Complete</span>
+                </div>
+                <div className="key-points">
+                  <h3>Key Points</h3>
+                  <ul>
+                    {projects[selectedProject].keyPoints.map((point, idx) => (
+                      <li key={idx}>{point}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="eta">Estimated Completion: {projects[selectedProject].eta}</div>
+              </div>
+            </div>
+          )}
+        </section>
+
+        <section id="contact" className="contact">
+          <h2>Get in Touch</h2>
+          <div className="contact-content">
+            <form className="contact-form" onSubmit={handleSubmit}>
+              <input type="text" name="name" placeholder="Your Name" required />
+              <input type="email" name="email" placeholder="Your Email" required />
+              <textarea name="message" placeholder="Your Message" required></textarea>
+              <button 
+                type="submit" 
+                className={`submit-button ${formStatus === 'loading' ? 'loading' : ''}`}
+              >
+                {formStatus === 'loading' ? 'Sending...' : 'Send Message'}
+              </button>
+              {formMessage && (
+                <div className={`form-message ${formStatus}`}>
+                  {formMessage}
+                </div>
+              )}
+            </form>
+            <div className="contact-info">
+              <div className="info-item">
+                <i className="fas fa-envelope"></i>
+                <p>rocketry@bastoronto.org</p>
+              </div>
+              <div className="social-links">
+                <a href="https://www.instagram.com/bas_rocketry/"><i className="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/company/bas-rocketry"><i className="fab fa-linkedin"></i></a>
+                <a href="https://www.youtube.com/bas-rocketry"><i className="fab fa-youtube"></i></a>
+              </div>
             </div>
           </div>
-        </div>
-      </footer>
-    </main>
+        </section>
+
+        <footer>
+          <div className="footer-content">
+            <div className="footer-section">
+              <h3>BAS ROCKETRY</h3>
+              <p>Don't over think it - we already did</p>
+            </div>
+            <div className="footer-section">
+              <h3>QUICK LINKS</h3>
+              <div className="footer-links">
+                <a href="#home">Home</a>
+                <a href="/#about">About</a>
+                <a href="/team">Team</a>
+                <a href="/projects">Projects</a>
+                <a href="/contact">Contact</a>
+                <a href="/sponsors">Sponsors</a>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </main>
+    </>
   );
 } 
