@@ -227,7 +227,7 @@ export default function Home() {
         </div>
         <div ref={menuRef} className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
           <a href="/">Home</a>
-          <a href="/about">About</a>
+          <a href="/#about">About</a>
           <a href="/team">Team</a>
           <a href="/projects">Projects</a>
           <a href="#contact">Contact</a>
@@ -320,7 +320,7 @@ export default function Home() {
             <h3>QUICK LINKS</h3>
             <div className="footer-links">
               <a href="/">Home</a>
-              <a href="/about">About</a>
+              <a href="/#about">About</a>
               <a href="/team">Team</a>
               <a href="/projects">Projects</a>
               <a href="/contact">Contact</a>
