@@ -255,35 +255,37 @@ export default function Home() {
         </section>
   
         <section id="contact" className="contact">
-          <h2>Get in Touch</h2>
-          <div className="contact-content">
-            <form className="contact-form" onSubmit={handleSubmit}>
-              <input type="text" name="name" placeholder="Your Name" required />
-              <input type="email" name="email" placeholder="Your Email" required />
-              <textarea name="message" placeholder="Your Message" required></textarea>
-              <button 
-                type="submit" 
-                className={`submit-button ${formStatus === 'loading' ? 'loading' : ''}`}
-              >
-                {formStatus === 'loading' ? 'Sending...' : 'Send Message'}
-              </button>
-              {formMessage && (
-                <div className={`form-message ${formStatus}`}>
-                  {formMessage}
-                </div>
-              )}
-            </form>
-            <div className="contact-info">
-              <div className="info-item">
-                <i className="fas fa-envelope"></i>
-                <p>rocketry@bastoronto.org</p>
+        <h2>Get in Touch</h2>
+        <div className="contact-content">
+          <form className="contact-form" onSubmit={handleSubmit}>
+            <input type="text" name="name" placeholder="Your Name" required />
+            <input type="email" name="email" placeholder="Your Email" required />
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <button 
+              type="submit" 
+              className={`submit-button ${formStatus === 'loading' ? 'loading' : ''}`}
+            >
+              {formStatus === 'loading' ? 'Sending...' : 'Send Message'}
+            </button>
+            {formMessage && (
+              <div className={`form-message ${formStatus}`}>
+                {formMessage}
               </div>
-              <div className="social-links">
-                <a href="#"><i className="fab fa-instagram"></i></a>
-              </div>
+            )}
+          </form>
+          <div className="contact-info">
+            <div className="info-item">
+              <i className="fas fa-envelope"></i>
+              <p>rocketry@bastoronto.org</p>
+            </div>
+            <div className="social-links">
+              <a href="https://www.instagram.com/bas_rocketry/"><i className="fab fa-instagram"></i></a>
+              <a href="https://www.linkedin.com/company/bas-rocketry"><i className="fab fa-linkedin"></i></a>
+              <a href="https://www.youtube.com/bas-rocketry"><i className="fab fa-youtube"></i></a>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
   
         <footer>
           <div className="footer-content">

@@ -212,78 +212,12 @@ export default function Home() {
         </div>
       </nav>
 
-      <section id="home" className="hero">
-        <div className="hero-content">
-          <h1>Welcome to BAS Rocketry</h1>
-          <p>Don't over think it - we already did.</p>
-          <a href="#about" className="cta-button">Learn More</a>
-        </div>
-      </section>
-
-      <section id="about" className="about">
-        <h2>About Us</h2>
-        <div className="about-content">
-          <div className="about-text">
-            <p>At BAS Rocketry, we are a team of passionate high school students who love innovating and building amazing projects! At BAS Rocketry, we are combining our creativity and engineering skills to design, build, and launch a few amazing rockets in the coming months and years!</p>
-          </div>
-          <div className="about-stats">
-            <div className="stat" onClick={() => { window.location.href = '#team'; }}>
-              <i className="fas fa-users"></i>
-              <h3>40</h3>
-              <p>Team Members</p>
-            </div>
-            <div className="stat" onClick={() => { window.location.href = '/sponsors'; }}>
-              <i className="fas fa-sack-dollar"></i>
-              <h3>1</h3>
-              <p>Sponsors</p>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section id="team" className="team">
-        <h2>Meet Our Team</h2>
-        <div className="team-grid">
-          <div className="team-member">
-            <h3>Team Captain</h3>
-              <div className="member-image"></div>
-                <p>Ilan Weinberger</p>
-          </div>
-          <div className="team-member">
-            <h3>Propulsion Lead</h3>
-              <div className="member-image"></div>
-                <p>Noam Wolfe</p>
-          </div>
-          <div className="team-member">
-            <h3>Avionics Lead</h3>
-              <div className="member-image"></div>
-                <p>Yekutiel Yunger</p>
-          </div>
-          <div className="team-member">
-            <h3>Recovery Lead</h3>
-              <div className="member-image"></div>
-                <p>Sammy Simon</p>
-          </div>
-          <div className="team-member">
-            <h3>Financial Lead</h3>
-              <div className="member-image"></div>
-                <p>Benjamin Dahari</p>
-          </div>
-          <div className="team-member">
-            <h3>Safety Lead</h3>
-              <div className="member-image"></div>
-                <p>Raphie Sayegh</p>
-          </div>
-          <div className="team-member">
-            <h3>Media & Outreach Lead</h3>
-              <div className="member-image"></div>
-                <p>Eli Scharf</p>
-            </div>
-          
-        </div>
+      
+      <section className="sponsors-hero">
+        <h1>Our Rocketry Plans</h1>
       </section>
 
       <section id="projects" className="projects">
-        <h2>Our Rocketry Plans</h2>
         <div className="project-grid">
           {projects.map((project, index) => (
             <div key={index} className="project-card" onClick={() => openProjectModal(index)}>
@@ -358,7 +292,9 @@ export default function Home() {
               <p>rocketry@bastoronto.org</p>
             </div>
             <div className="social-links">
-              <a href="#"><i className="fab fa-instagram"></i></a>
+              <a href="https://www.instagram.com/bas_rocketry/"><i className="fab fa-instagram"></i></a>
+              <a href="https://www.linkedin.com/company/bas-rocketry"><i className="fab fa-linkedin"></i></a>
+              <a href="https://www.youtube.com/bas-rocketry"><i className="fab fa-youtube"></i></a>
             </div>
           </div>
         </div>

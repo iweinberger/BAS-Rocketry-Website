@@ -212,10 +212,9 @@ export default function Home() {
         </div>
       </nav>
 
-      <section id="home" className="team-hero">
-        <div className="hero-content">
-          <h1>Meet Our Team</h1>
-        </div>
+      
+      <section className="sponsors-hero">
+        <h1>Meet Our Team</h1>
       </section>
 
       <section id="team" className="team">

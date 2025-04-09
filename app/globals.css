@@ -635,6 +635,8 @@ body {
     display: flex;
     align-items: center;
     gap: 1rem;
+
+    padding-left: 1%;
 }
 
 .info-item i {
