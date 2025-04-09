@@ -159,7 +159,7 @@ export default function Home() {
           <h2>Meet Our Team</h2>
           <div className="team-grid">
             <div className="team-member">
-              <h3>Team Captain</h3>
+              <h3>Executive Director</h3>
               <div className="member-image ilan">
                 <Image
                   src="/team/placeholder.png"
@@ -185,33 +185,7 @@ export default function Home() {
               <p>Noam Wolfe</p>
             </div>
             <div className="team-member">
-              <h3>Avionics Lead</h3>
-              <div className="member-image yekutiel">
-                <Image
-                  src="/team/placeholder.png"
-                  alt="Yekutiel Yunger"
-                  width={200}
-                  height={200}
-                  className="member-img"
-                />
-              </div>
-              <p>Yekutiel Yunger</p>
-            </div>
-            <div className="team-member">
-              <h3>Recovery Lead</h3>
-              <div className="member-image sammy">
-                <Image
-                  src="/team/placeholder.png"
-                  alt="Sammy Simon"
-                  width={200}
-                  height={200}
-                  className="member-img"
-                />
-              </div>
-              <p>Sammy Simon</p>
-            </div>
-            <div className="team-member">
-              <h3>Financial Lead</h3>
+              <h3>Chief Financial Officer</h3>
               <div className="member-image benjamin">
                 <Image
                   src="/Ben.png"
@@ -222,20 +196,10 @@ export default function Home() {
                 />
               </div>
               <p>Benjamin Dahari</p>
-            </div>
-            <div className="team-member">
-              <h3>Chief Safety Officer</h3>
-              <div className="member-image raphie">
-                <Image
-                  src="/Raphie.png"
-                  alt="Raphie Sayegh"
-                  width={200}
-                  height={200}
-                  className="member-img"
-                />
-              </div>
-              <p>Raphie Sayegh</p>
-            </div>          
+            </div>         
+          </div>
+          <div className="more-team" onClick={() => { window.location.href = '/team'; }}>
+            <h1>See More<i className="fas fa-arrow-right"></i></h1>
           </div>
         </section>
   
@@ -330,7 +294,7 @@ export default function Home() {
             <div className="footer-section">
               <h3>QUICK LINKS</h3>
               <div className="footer-links">
-                <a href="#home">Home</a>
+                <a href="/">Home</a>
                 <a href="#about">About</a>
                 <a href="/team">Team</a>
                 <a href="/projects">Projects</a>

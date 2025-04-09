@@ -195,10 +195,10 @@ export default function Home() {
               priority
             />
           </div>
-          <div className="logo">BAS Rocketry</div>
+          <div className="logo">Rocketry</div>
         </div>
         <div ref={menuRef} className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
-          <a href="#home">Home</a>
+          <a href="/">Home</a>
           <a href="/about">About</a>
           <a href="/team">Team</a>
           <a href="/projects">Projects</a>
@@ -212,39 +212,16 @@ export default function Home() {
         </div>
       </nav>
 
-      <section id="home" className="hero">
+      <section id="home" className="team-hero">
         <div className="hero-content">
-          <h1>Welcome to BAS Rocketry</h1>
-          <p>Don't over think it - we already did.</p>
-          <a href="#about" className="cta-button">Learn More</a>
+          <h1>Meet Our Team</h1>
         </div>
       </section>
 
-      <section id="about" className="about">
-        <h2>About Us</h2>
-        <div className="about-content">
-          <div className="about-text">
-            <p>At BAS Rocketry, we are a team of passionate high school students who love innovating and building amazing projects! At BAS Rocketry, we are combining our creativity and engineering skills to design, build, and launch a few amazing rockets in the coming months and years!</p>
-          </div>
-          <div className="about-stats">
-            <div className="stat" onClick={() => { window.location.href = '#team'; }}>
-              <i className="fas fa-users"></i>
-              <h3>40</h3>
-              <p>Team Members</p>
-            </div>
-            <div className="stat" onClick={() => { window.location.href = '/sponsors'; }}>
-              <i className="fas fa-sack-dollar"></i>
-              <h3>1</h3>
-              <p>Sponsors</p>
-            </div>
-          </div>
-        </div>
-      </section>
       <section id="team" className="team">
-        <h2>Meet Our Team</h2>
         <div className="team-grid">
           <div className="team-member">
-            <h3>Team Captain</h3>
+            <h3>Executive Director</h3>
               <div className="member-image"></div>
                 <p>Ilan Weinberger</p>
           </div>
@@ -264,73 +241,38 @@ export default function Home() {
                 <p>Sammy Simon</p>
           </div>
           <div className="team-member">
-            <h3>Financial Lead</h3>
-              <div className="member-image"></div>
-                <p>Benjamin Dahari</p>
+            <h3>Chief Financial Officer</h3>
+            <div className="member-image benjamin">
+              <Image
+                src="/Ben.png"
+                alt="Benjamin Dahari"
+                width={200}
+                height={200}
+                className="member-img"
+              />
+            </div>
+            <p>Benjamin Dahari</p>
           </div>
           <div className="team-member">
-            <h3>Safety Lead</h3>
-              <div className="member-image"></div>
-                <p>Raphie Sayegh</p>
-          </div>
+            <h3>Chief Safety Officer</h3>
+            <div className="member-image benjamin">
+              <Image
+                src="/Raphie.png"
+                alt="Raphie Sayegh"
+                width={200}
+                height={200}
+                className="member-img"
+              />
+            </div>
+            <p>Raphie Sayegh</p>
+          </div>  
           <div className="team-member">
-            <h3>Media & Outreach Lead</h3>
+            <h3>Media & Outreach Manager</h3>
               <div className="member-image"></div>
                 <p>Eli Scharf</p>
             </div>
           
         </div>
-      </section>
-
-      <section id="projects" className="projects">
-        <h2>Our Rocketry Plans</h2>
-        <div className="project-grid">
-          {projects.map((project, index) => (
-            <div key={index} className="project-card" onClick={() => openProjectModal(index)}>
-              <div className="project-image">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  width={400}
-                  height={200}
-                  className="project-img"
-                />
-              </div>
-              <p>{project.description}</p>
-              <div className="project-title">{project.title}</div>
-              <div className="project-eta">ETA: {project.eta}</div>
-              <div className="progress-bar">
-                <div className="progress" style={{ width: `${project.progress}%` }}></div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {isModalOpen && selectedProject !== null && (
-          <div className="project-modal" onClick={closeProjectModal}>
-            <div className="modal-content" onClick={e => e.stopPropagation()}>
-              <button className="close-modal" onClick={closeProjectModal}>&times;</button>
-              <h2>{projects[selectedProject].title}</h2>
-              <p>{projects[selectedProject].description}</p>
-              <div className="modal-progress">
-                <h3>Development Progress</h3>
-                <div className="progress-bar">
-                  <div className="progress" style={{ width: `${projects[selectedProject].progress}%` }}></div>
-                </div>
-                <span>{projects[selectedProject].progress}% Complete</span>
-              </div>
-              <div className="key-points">
-                <h3>Key Points</h3>
-                <ul>
-                  {projects[selectedProject].keyPoints.map((point, idx) => (
-                    <li key={idx}>{point}</li>
-                  ))}
-                </ul>
-              </div>
-              <div className="eta">Estimated Completion: {projects[selectedProject].eta}</div>
-            </div>
-          </div>
-        )}
       </section>
 
       <section id="contact" className="contact">
@@ -358,7 +300,9 @@ export default function Home() {
               <p>rocketry@bastoronto.org</p>
             </div>
             <div className="social-links">
-              <a href="#"><i className="fab fa-instagram"></i></a>
+              <a href="https://www.instagram.com/bas_rocketry/"><i className="fab fa-instagram"></i></a>
+              <a href="https://www.linkedin.com/company/bas-rocketry"><i className="fab fa-linkedin"></i></a>
+              <a href="https://www.youtube.com/bas-rocketry"><i className="fab fa-youtube"></i></a>
             </div>
           </div>
         </div>
@@ -373,7 +317,7 @@ export default function Home() {
           <div className="footer-section">
             <h3>QUICK LINKS</h3>
             <div className="footer-links">
-              <a href="#home">Home</a>
+              <a href="/">Home</a>
               <a href="/about">About</a>
               <a href="/team">Team</a>
               <a href="/projects">Projects</a>

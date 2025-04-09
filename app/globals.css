@@ -126,6 +126,18 @@ body {
     color: var(--secondary-color);
 }
 
+.team-hero {
+    height: 40vh;
+    background: linear-gradient(to bottom right, var(--primary-color), #202060);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--secondary-color);
+}
+
 .hero-content h1 {
     font-size: 3.5rem;
     margin-bottom: 1rem;
@@ -241,6 +253,44 @@ body {
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
+}
+
+.more-team {
+    text-align: center;
+    background-color: var(--primary-color);
+    color: var(--light-gray);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, color 0.3s ease;
+    margin-top: 2rem; /* Shift button down */
+    position: relative;
+    cursor: pointer;
+}
+
+.more-team h1 {
+    font-size: 1.5rem; /* Adjust font size for h1 */
+    margin: 0; /* Remove default margin */
+    color: inherit; /* Inherit color from parent */
+    display: inline; /* Ensure text stays inline */
+}
+
+.more-team i {
+    font-size: 1.2rem;
+    margin-left: 5px;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    display: inline-block; /* Keep icon inline with text */
+}
+
+.more-team:hover {
+    transform: translateY(-5px);
+    color: var(--secondary-color);
+}
+
+.more-team:hover i {
+    opacity: 1;
+    transform: translateX(5px); /* Smooth arrow transition */
 }
 
 .team-member:hover {
@@ -602,7 +652,7 @@ body {
     font-size: 1.5rem;
     transition: all 0.3s ease;
     padding: 0.5rem;
-    border-radius: 50%;
+    border-radius: 45%;
     background-color: var(--light-gray);
 }
 
