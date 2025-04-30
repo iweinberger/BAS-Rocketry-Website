@@ -273,7 +273,7 @@ export default function Home() {
             <div className="team-member">
               <h3>Media & Outreach Manager</h3>
                 <div className="member-image"></div>
-                  <p>Eli Scharf</p>
+                  <p>Ori Barda</p>
               </div>
             
           </div>
