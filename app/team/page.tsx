@@ -272,7 +272,15 @@ export default function Home() {
             </div>  
             <div className="team-member">
               <h3>Media & Outreach Manager</h3>
-                <div className="member-image"></div>
+                <div className="member-image">
+                  <Image
+                    src="/Ori.png"
+                    alt="Ori Barda"
+                    width={200}
+                    height={200}
+                    className="member-img"
+                  />
+                </div>
                   <p>Ori Barda</p>
               </div>
             
