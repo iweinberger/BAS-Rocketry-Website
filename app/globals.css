@@ -312,10 +312,6 @@ body {
     transition: transform 0.3s ease;
 }
 
-.member-image:hover {
-    transform: scale(1.05);
-}
-
 .member-img {
     width: 100%;
     height: 100%;
