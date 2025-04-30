@@ -230,21 +230,6 @@ export default function Home() {
                   <p>Ilan Weinberger</p>
             </div>
             <div className="team-member">
-              <h3>Propulsion Lead</h3>
-                <div className="member-image"></div>
-                  <p>Noam Wolfe</p>
-            </div>
-            <div className="team-member">
-              <h3>Avionics Lead</h3>
-                <div className="member-image"></div>
-                  <p>Yekutiel Yunger</p>
-            </div>
-            <div className="team-member">
-              <h3>Recovery Lead</h3>
-                <div className="member-image"></div>
-                  <p>Sammy Simon</p>
-            </div>
-            <div className="team-member">
               <h3>Chief Financial Officer</h3>
               <div className="member-image benjamin">
                 <Image
@@ -256,20 +241,17 @@ export default function Home() {
                 />
               </div>
               <p>Benjamin Dahari</p>
+            </div> 
+            <div className="team-member">
+              <h3>Propulsion Lead</h3>
+                <div className="member-image"></div>
+                  <p>Noam Wolfe</p>
             </div>
             <div className="team-member">
-              <h3>Chief Safety Officer</h3>
-              <div className="member-image benjamin">
-                <Image
-                  src="/Raphie.png"
-                  alt="Raphie Sayegh"
-                  width={200}
-                  height={200}
-                  className="member-img"
-                />
-              </div>
-              <p>Raphie Sayegh</p>
-            </div>  
+              <h3>Avionics Lead</h3>
+                <div className="member-image"></div>
+                  <p>Yekutiel Yunger</p>
+            </div>
             <div className="team-member">
               <h3>Media & Outreach Manager</h3>
                 <div className="member-image">
@@ -283,6 +265,24 @@ export default function Home() {
                 </div>
                   <p>Ori Barda</p>
               </div>
+            <div className="team-member">
+              <h3>Recovery Lead</h3>
+                <div className="member-image"></div>
+                  <p>Sammy Simon</p>
+            </div>
+            <div className="team-member">
+              <h3>Chief Safety Officer</h3>
+              <div className="member-image benjamin">
+                <Image
+                  src="/Raphie.png"
+                  alt="Raphie Sayegh"
+                  width={200}
+                  height={200}
+                  className="member-img"
+                />
+              </div>
+              <p>Raphie Sayegh</p>
+            </div> 
             
           </div>
         </section>
