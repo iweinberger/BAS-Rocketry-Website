@@ -44,7 +44,7 @@ body {
 
 .donate-button {
     background-color: #24247b;
-    width: 200%;
+    width: fit-content;
     border-radius: 30px;
     padding-top: 1%;
     padding-bottom: 1%;
