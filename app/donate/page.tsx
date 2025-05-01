@@ -1,176 +1,7 @@
-/**
- * I see you're a future engineer too! 
- * Email us at rocketry@bastoronto.org to talk or work with us!
- */
-
-'use client';
-
 import { useState, useEffect, useRef } from 'react';
-import Image from 'next/image';
 
 export default function Home() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [formStatus, setFormStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const [formMessage, setFormMessage] = useState('');
-  const [selectedProject, setSelectedProject] = useState<number | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [showHiddenMessage, setShowHiddenMessage] = useState(false);
-  const [typedText, setTypedText] = useState('');
-  const menuRef = useRef<HTMLDivElement>(null);
-  const hamburgerRef = useRef<HTMLDivElement>(null);
-
-  const projects = [
-    {
-      title: "Initial Rocket",
-      description: "Our first ever solid engine rocket with TVC",
-      eta: "Q3 2025",
-      progress: 15,
-      image: "/projects/alpha.png",
-      keyPoints: [
-        "Advanced telemetry system with real-time data transmission",
-        "Target altitude: ~7,000 feet",
-        "Working thrust vector control system",
-        "Basic recovery system"
-      ]
-    },
-    {
-      title: "Project Fluid",
-      description: "Making our first ever liquid engine rocket",
-      eta: "Q2 2026",
-      progress: 1,
-      image: "/projects/beta.png",
-      keyPoints: [
-        "Custom liquid propellant motor design",
-        "Basic Liquid Propellant Thrust Vector Control",
-        "Advanced recovery system"
-      ]
-    },
-    {
-      title: "Project End Game",
-      description: "Launching a custom propulsion system in our rocket",
-      eta: "Q3 2026",
-      progress: 1,
-      image: "/projects/gamma.png",
-      keyPoints: [
-        "Custom liquid propellant motor design",
-        "Thrust vector control system",
-        "Fully designed avionics package",
-        "Custom auto-landing system"
-      ]
-    }
-  ];
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setFormStatus('loading');
-    setFormMessage('');
-
-    const formData = new FormData(e.currentTarget);
-    const data = {
-      name: formData.get('name'),
-      email: formData.get('email'),
-      message: formData.get('message'),
-    };
-
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
-
-      const result = await response.json();
-
-      if (result.success) {
-        setFormStatus('success');
-        setFormMessage('Message sent successfully! We\'ll get back to you soon.');
-        e.currentTarget.reset();
-      } else {
-        throw new Error(result.error || 'Failed to send message');
-      }
-    } catch (error) {
-      setFormStatus('success');
-      setFormMessage('Message sent successfully! We\'ll get back to you soon.');
-    }
-  };
-
-  const openProjectModal = (index: number) => {
-    setSelectedProject(index);
-    setIsModalOpen(true);
-  };
-
-  const closeProjectModal = () => {
-    setIsModalOpen(false);
-    setSelectedProject(null);
-  };
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const navbar = document.querySelector('.navbar');
-      if (window.scrollY > 50) {
-        navbar?.classList.add('scrolled');
-      } else {
-        navbar?.classList.remove('scrolled');
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        menuRef.current &&
-        hamburgerRef.current &&
-        !menuRef.current.contains(event.target as Node) &&
-        !hamburgerRef.current.contains(event.target as Node)
-      ) {
-        setIsMenuOpen(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
-
-  useEffect(() => {
-    const handleKeyPress = (e: KeyboardEvent) => {
-      setTypedText(prev => {
-        const newText = prev + e.key.toLowerCase();
-        if (newText.includes('bas-rocketry')) {
-          setShowHiddenMessage(true);
-          return '';
-        }
-        return newText.slice(-20);
-      });
-    };
-
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        setShowHiddenMessage(false);
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyPress);
-    window.addEventListener('keydown', handleEscape);
-    return () => {
-      window.removeEventListener('keydown', handleKeyPress);
-      window.removeEventListener('keydown', handleEscape);
-    };
-  }, []);
-
-  const closeHiddenMessage = (e: React.MouseEvent) => {
-    if (e.target === e.currentTarget) {
-      setShowHiddenMessage(false);
-    }
-  };
+  // ... (rest of your state and hooks)
 
   return (
     <>
@@ -180,6 +11,32 @@ export default function Home() {
       </head>
       <main>
 
+        {/* ✅ Jotform Embed */}
+        <section>
+          <iframe
+            id="JotFormIFrame-251188477753267"
+            title="Donation Form"
+            onLoad={() => window?.parent?.scrollTo(0, 0)}
+            allow="geolocation; microphone; camera; fullscreen"
+            src="https://form.jotform.com/251188477753267"
+            frameBorder="0"
+            scrolling="no"
+            style={{
+              minWidth: '100%',
+              maxWidth: '100%',
+              height: '539px',
+              border: 'none'
+            }}
+          />
+          <script src="https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js"></script>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.jotformEmbedHandler("iframe[id='JotFormIFrame-251188477753267']", "https://form.jotform.com/");
+              `
+            }}
+          />
+        </section>
 
         <footer>
           <div className="footer-content">
@@ -203,4 +60,4 @@ export default function Home() {
       </main>
     </>
   );
-} 
+}
