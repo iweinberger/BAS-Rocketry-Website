@@ -44,12 +44,21 @@ body {
 
 .donate-button {
     background-color: #24247b;
-    width: fit-content;
+    color: white;
+    padding: 0.5rem 1.5rem;
     border-radius: 30px;
-    padding-top: 1%;
-    padding-bottom: 1%;
-    padding-left: 3%;
-    padding-right: 3%;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.donate-button:hover {
+    background-color: #1a1a5f;
+    transform: translateY(-2px);
 }
 
 .logo-container {
