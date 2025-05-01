@@ -56,7 +56,7 @@ body {
 
 .donate-button:hover {
     background-color: #1a1a5f;
-    text-decoration: none;
+    text-decoration: none !important;
     transform: translateY(-2px);
 }
 
