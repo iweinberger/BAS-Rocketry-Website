@@ -23,6 +23,26 @@ export default function DonatePage() {
         <div className="w-full max-w-2xl">
           <JotformEmbed />
         </div>
+
+        <footer>
+          <div className="footer-content">
+            <div className="footer-section">
+              <h3>BAS ROCKETRY</h3>
+              <p>Don't over think it - we already did</p>
+            </div>
+            <div className="footer-section">
+              <h3>QUICK LINKS</h3>
+              <div className="footer-links">
+                <a href="/">Home</a>
+                <a href="/#about">About</a>
+                <a href="/team">Team</a>
+                <a href="/projects">Projects</a>
+                <a href="/contact">Contact</a>
+                <a href="/sponsors">Sponsors</a>
+              </div>
+            </div>
+          </div>
+        </footer>
       </main>
     </>
   );
