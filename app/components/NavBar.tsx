@@ -59,7 +59,7 @@ export default function NavBar() {
         <div className="logo">Rocketry</div>
       </div>
       <div ref={menuRef} className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
-        <Link class='donate-button' href="/sponsorship-tiers">Donate Now</Link>
+        <Link className='donate-button' href="/sponsorship-tiers">Donate Now</Link>
         <Link href="/">Home</Link>
         <Link href="/#about">About</Link>
         <Link href="/team">Team</Link>
