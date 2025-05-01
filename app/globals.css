@@ -44,17 +44,15 @@ body {
 
 .donate-button {
     background-color: #24247b;
-    color: white;
-    padding: 0.5rem 1.5rem;
+    padding: 0.5em 1.2em;
     border-radius: 30px;
+    color: white;
+    text-decoration: none; /* removes underline if it's a link */
     font-size: 1rem;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
     display: inline-block;
-    text-transform: uppercase;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    line-height: 1;
 }
+
 
 .donate-button:hover {
     background-color: #1a1a5f;
