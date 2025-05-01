@@ -45,6 +45,7 @@ body {
 .donate-button {
     background-color: #24247b;
     border-radius: 30px;
+    padding: 5%;
 }
 
 .logo-container {
