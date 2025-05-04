@@ -3,8 +3,17 @@ import './globals.css'
 import { Analytics } from '@vercel/analytics/react'
 import MouseflowScript from './components/MouseflowScript'
 import NavBar from './components/NavBar'
+import { Metadata } from 'next'
 
 const inter = Inter({ subsets: ['latin'] })
+
+export const metadata: Metadata = {
+  title: 'BAS Rocketry',
+  description: 'Welcome to BAS Rocketry - Don\'t over think it, we already did.',
+  icons: {
+    icon: '/logo.png',
+  },
+}
 
 export default function RootLayout({
   children,
@@ -13,10 +22,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <meta name="future-engineer" content="I see you're a future engineer too! Email us at rocketry@bastoronto.org to talk or work with us!" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-      </head>
       <body className={inter.className}>
         <NavBar />
         <MouseflowScript />

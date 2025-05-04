@@ -85,6 +85,13 @@ body {
     text-transform: uppercase;
     letter-spacing: 1px;
     white-space: nowrap;
+    color: white;
+    text-decoration: none;
+}
+
+.logo:hover {
+    color: white;
+    text-decoration: none;
 }
 
 .nav-links {
@@ -1258,3 +1265,11 @@ footer {
 .hover\:bg-opacity-90:hover {
     opacity: 0.9;
 } 
+
+.formFooter {
+    display: block;
+}
+
+.formFooter-wrapper {
+    display: block;
+}
