@@ -12,7 +12,7 @@
        id="JotFormIFrame-251188477753267"
        title="Donation Form"
        allow="geolocation; microphone; camera"
-       src="https://form.jotform.com/251188477753267"
+       src="https://www.jotform.com/251188477753267"
        frameBorder="0"
        scrolling="no"
        style={{
