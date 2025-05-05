@@ -67,6 +67,13 @@ body {
     text-transform: uppercase;
     letter-spacing: 1px;
     white-space: nowrap;
+    color: white;
+    text-decoration: none;
+}
+
+.logo:hover {
+    color: white;
+    text-decoration: none;
 }
 
 .nav-links {

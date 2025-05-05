@@ -7,6 +7,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
+import NavBar from '../components/NavBar'
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -201,140 +202,59 @@ export default function Home() {
   ];
 
   return (
-    <>
-      <head>
-        <link rel="icon" href="/logo.png" type="image/png" />
-        <title>BAS Rocketry - Sponsors</title>
-      </head>
-      <main>
-        {showHiddenMessage && (
-          <div className="hidden-message" onClick={closeHiddenMessage}>
-            <div className="hidden-message-content">
-              <button className="close-hidden-message" onClick={() => setShowHiddenMessage(false)}>&times;</button>
-              <h3>Welcome to the club!</h3>
-              <p>Email us at <a href="mailto:rocketry@bastoronto.org">rocketry@bastoronto.org</a>, we would love to hear and work with you!</p>
-            </div>
+    <main>
+      {showHiddenMessage && (
+        <div className="hidden-message" onClick={closeHiddenMessage}>
+          <div className="hidden-message-content">
+            <button className="close-hidden-message" onClick={() => setShowHiddenMessage(false)}>&times;</button>
+            <h3>Welcome to the club!</h3>
+            <p>Email us at <a href="mailto:rocketry@bastoronto.org">rocketry@bastoronto.org</a>, we would love to hear and work with you!</p>
           </div>
-        )}
-        <nav className="navbar">
-          <div className="logo-container">
-            <div className="logo-image">
+        </div>
+      )}
+      <NavBar />
+      <section className="sponsors-hero">
+        <h1>Our Sponsors</h1>
+      </section>
+
+      <section className="sponsors">
+        <div className="sponsors-grid">
+          <div className="sponsor-card">
+            <div className="sponsor-image">
               <Image
-                src="/logo.png"
-                alt="BAS Rocketry Logo"
-                width={60}
-                height={60}
-                className="logo-img"
-                priority
+                src="/sponsors/placeholder.png"
+                alt="Sponsor Logo"
+                width={200}
+                height={200}
+                className="sponsor-img"
               />
             </div>
-            <div className="logo">Rocketry</div>
+            <h3>Become a Sponsor</h3>
+            <p>Join us in our mission to push the boundaries of rocketry and space exploration.</p>
+            <a href="/contact" className="cta-button">Contact Us</a>
           </div>
-          <div ref={menuRef} className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
-            <a href="/">Home</a>
-            <a href="/#about">About</a>
-            <a href="/team">Team</a>
-            <a href="/projects">Projects</a>
-            <a href="#contact">Contact</a>
-            <a href="/sponsors">Sponsors</a>
+        </div>
+      </section>
+
+      <footer>
+        <div className="footer-content">
+          <div className="footer-section">
+            <h3>BAS ROCKETRY</h3>
+            <p>Don't over think it - we already did</p>
           </div>
-          <div ref={hamburgerRef} className={`hamburger ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu}>
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-        </nav>
-
-        
-        
-        <section className="sponsors-hero">
-          <h1>Our Sponsors</h1>
-          <p>Thank you to all our amazing sponsors who make our projects possible!</p>
-        </section>
-
-        <section className="sponsors-grid">
-                <div className="sponsors-row">
-                  {sponsors.map((sponsor, index) => (
-                    <div key={index} className="sponsor-card">
-                      <div className="sponsor-logo">
-                        <div className="sponsor-logo-placeholder">
-                          {sponsor.name.charAt(0)}
-                        </div>
-                        <Image
-                          src={sponsor.logo}
-                          alt={`${sponsor.name} logo`}
-                          width={180}
-                          height={180}
-                          className="sponsor-img"
-                          onError={(e) => {
-                            const target = e.target as HTMLImageElement;
-                            target.style.display = 'none';
-                            target.parentElement?.querySelector('.sponsor-logo-placeholder')?.classList.add('visible');
-                          }}
-                          priority={index === 0}
-                        />
-                      </div>
-                      <h2>{sponsor.name}</h2>
-                      <p>{sponsor.description}</p>
-                    </div>
-                  ))}
-                </div>
-                <a href="#contact" className="contact-button">Contact Us</a>
-              </section>
-
-        <section id="contact" className="contact">
-          <h2>Get in Touch</h2>
-          <div className="contact-content">
-            <form className="contact-form" onSubmit={handleSubmit}>
-              <input type="text" name="name" placeholder="Your Name" required />
-              <input type="email" name="email" placeholder="Your Email" required />
-              <textarea name="message" placeholder="Your Message" required></textarea>
-              <button 
-                type="submit" 
-                className={`submit-button ${formStatus === 'loading' ? 'loading' : ''}`}
-              >
-                {formStatus === 'loading' ? 'Sending...' : 'Send Message'}
-              </button>
-              {formMessage && (
-                <div className={`form-message ${formStatus}`}>
-                  {formMessage}
-                </div>
-              )}
-            </form>
-            <div className="contact-info">
-              <div className="info-item">
-                <i className="fas fa-envelope"></i>
-                <p>rocketry@bastoronto.org</p>
-              </div>
-              <div className="social-links">
-                <a href="https://www.instagram.com/bas_rocketry/"><i className="fab fa-instagram"></i></a>
-                <a href="https://www.linkedin.com/company/bas-rocketry"><i className="fab fa-linkedin"></i></a>
-                <a href="https://www.youtube.com/channel/UCHMS5iHjs30y3Pb7FNBcG4A"><i className="fab fa-youtube"></i></a>
-              </div>
+          <div className="footer-section">
+            <h3>QUICK LINKS</h3>
+            <div className="footer-links">
+              <a href="/">Home</a>
+              <a href="/#about">About</a>
+              <a href="/team">Team</a>
+              <a href="/projects">Projects</a>
+              <a href="/contact">Contact</a>
+              <a href="/sponsors">Sponsors</a>
             </div>
           </div>
-        </section>
-
-        <footer>
-          <div className="footer-content">
-            <div className="footer-section">
-              <h3>BAS ROCKETRY</h3>
-              <p>Don't over think it - we already did</p>
-            </div>
-            <div className="footer-section">
-              <h3>QUICK LINKS</h3>
-              <div className="footer-links">
-                <a href="/">Home</a>
-                <a href="/#about">About</a>
-                <a href="/team">Team</a>
-                <a href="/projects">Projects</a>
-                <a href="/contact">Contact</a>
-                <a href="/sponsors">Sponsors</a>
-              </div>
-            </div>
-          </div>
-        </footer>
-      </main>
-    </>
+        </div>
+      </footer>
+    </main>
   );
 } 
