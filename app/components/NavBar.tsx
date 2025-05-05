@@ -60,6 +60,7 @@ export default function NavBar() {
         </Link>
         <Link href="/" className="logo">Rocketry</Link>
       </div>
+      <Link className='donate-button' href="/donate">Donate Now</Link>
       <div ref={menuRef} className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
         <Link href="/">Home</Link>
         <Link href="/#about">About</Link>
@@ -68,7 +69,6 @@ export default function NavBar() {
         <Link href="#contact">Contact</Link>
         <Link href="/sponsors">Sponsors</Link>
       </div>
-      <Link className='donate-button' href="/donate">Donate Now</Link>
       <div ref={hamburgerRef} className={`hamburger ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu}>
         <span></span>
         <span></span>
