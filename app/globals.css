@@ -42,23 +42,6 @@ body {
     transition: all 0.3s ease;
 }
 
-.donate-button {
-    background-color: #24247b;
-    padding: 0.5em 1.2em;
-    border-radius: 30px;
-    color: white;
-    text-decoration: none;
-    font-size: 1rem;
-    display: inline-block;
-    line-height: 1;
-}
-
-.donate-button:hover {
-    background-color: #1a1a5f;
-    text-decoration: none;
-    transform: translateY(-2px);
-}
-
 .logo-container {
     display: flex;
     align-items: center;
@@ -1257,3 +1240,28 @@ footer {
 .hover\:bg-opacity-90:hover {
     opacity: 0.9;
 } 
+
+.formFooter {
+    display: block;
+}
+
+.formFooter-wrapper {
+    display: block;
+}
+
+.donate-button {
+    background-color: #24247b;
+    padding: 0.5em 1.2em;
+    border-radius: 30px;
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    display: inline-block;
+    line-height: 1;
+}
+
+.donate-button:hover {
+    background-color: #1a1a5f;
+    text-decoration: none;
+    transform: translateY(-2px);
+}
