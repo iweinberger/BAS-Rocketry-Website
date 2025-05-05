@@ -19,7 +19,6 @@
          width: '1px',
          minWidth: '100%',
          height: '1500px',
-         height: '1200px',
          border: 'none',
        }}
      />
