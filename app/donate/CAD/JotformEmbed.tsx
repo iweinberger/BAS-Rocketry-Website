@@ -4,20 +4,16 @@
  
   import { useSearchParams } from 'next/navigation'
 
-  export default function MyComponent() {
-    const searchParams = useSearchParams()
-
-    const myValue = searchParams.get('finalDonationValue') // gets the value of ?myKey=...
-    alert(myValue)
-    return <div>{myValue}</div>
-  }
-
-
  export default function JotformEmbed() {
    useEffect(() => {
      // Optional: Log or trigger something once iframe loads
    }, []);
  
+   const searchParams = useSearchParams()
+
+   const myValue = searchParams.get('finalDonationValue') // gets the value of ?myKey=...
+   alert(myValue)
+
    return (
      <iframe
        id="JotFormIFrame-251237733687263"
