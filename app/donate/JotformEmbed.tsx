@@ -13,7 +13,6 @@
        title="Donation Form"
        allow="geolocation; microphone; camera"
        src="https://form.jotform.com/251188477753267"
-       src="https://bas-rocketry.pages.dev/forms"
        frameBorder="0"
        scrolling="no"
        style={{
