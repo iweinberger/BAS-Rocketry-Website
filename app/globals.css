@@ -47,16 +47,15 @@ body {
     padding: 0.5em 1.2em;
     border-radius: 30px;
     color: white;
-    text-decoration: none; /* removes underline if it's a link */
+    text-decoration: none;
     font-size: 1rem;
     display: inline-block;
     line-height: 1;
 }
 
-
 .donate-button:hover {
     background-color: #1a1a5f;
-    text-decoration: none !important;
+    text-decoration: none;
     transform: translateY(-2px);
 }
 
