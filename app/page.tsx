@@ -110,18 +110,140 @@ export default function Home() {
   };
 
   return (
-    <>
-      <head>
-        <link rel="icon" href="/logo.png" type="image/png" />
-        <title>BAS Rocketry</title>
-      </head>
-      <main>
-        {showHiddenMessage && (
-          <div className="hidden-message" onClick={closeHiddenMessage}>
-            <div className="hidden-message-content">
-              <button className="close-hidden-message" onClick={() => setShowHiddenMessage(false)}>&times;</button>
-              <h3>Welcome to the club!</h3>
-              <p>Email us at <a href="mailto:rocketry@bastoronto.org">rocketry@bastoronto.org</a>, we would love to hear and work with you!</p>
+    <main>
+      {showHiddenMessage && (
+        <div className="hidden-message" onClick={closeHiddenMessage}>
+          <div className="hidden-message-content">
+            <button className="close-hidden-message" onClick={() => setShowHiddenMessage(false)}>&times;</button>
+            <h3>Welcome to the club!</h3>
+            <p>Email us at <a href="mailto:rocketry@bastoronto.org">rocketry@bastoronto.org</a>, we would love to hear and work with you!</p>
+          </div>
+        </div>
+      )}
+
+      <section id="home" className="hero">
+        <div className="hero-content">
+          <h1>Welcome to BAS Rocketry</h1>
+          <p>Don't over think it - we already did.</p>
+          <a href="#about" className="cta-button">Learn More</a>
+        </div>
+      </section>
+
+      <section id="about" className="about">
+        <h2>About Us</h2>
+        <div className="about-content">
+          <div className="about-text">
+            <p>BAS Rocketry is a team of motivated and passionate highschool students who love creation and innovation in aerospace technology. With our diverse team of creative and smart studdents we plan to develop and luanch many rockets succesfully in the coming months and years.</p>
+          </div>
+          <div className="about-stats">
+            <div className="stat" onClick={() => { window.location.href = '#team'; }}>
+              <i className="fas fa-users"></i>
+              <h3>40</h3>
+              <p>Team Members</p>
+            </div>
+            <div className="stat" onClick={() => { window.location.href = '/sponsors'; }}>
+              <i className="fas fa-sack-dollar"></i>
+              <h3>1</h3>
+              <p>Sponsors</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="team" className="team">
+        <h2>Meet Our Team</h2>
+        <div className="team-grid">
+          <div className="team-member">
+            <h3>Executive Director</h3>
+            <div className="member-image ilan">
+              <Image
+                src="/team/placeholder.png"
+                alt="Ilan Weinberger"
+                width={200}
+                height={200}
+                className="member-img"
+              />
+            </div>
+            <p>Ilan Weinberger</p>
+          </div>
+          <div className="team-member">
+            <h3>Propulsion Lead</h3>
+            <div className="member-image noam">
+              <Image
+                src="/team/placeholder.png"
+                alt="Noam Wolfe"
+                width={200}
+                height={200}
+                className="member-img"
+              />
+            </div>
+            <p>Noam Wolfe</p>
+          </div>
+          <div className="team-member">
+            <h3>Chief Financial Officer</h3>
+            <div className="member-image benjamin">
+              <Image
+                src="/Ben.png"
+                alt="Benjamin Dahari"
+                width={200}
+                height={200}
+                className="member-img"
+              />
+            </div>
+            <p>Benjamin Dahari</p>
+          </div>         
+        </div>
+        <div className="more-team" onClick={() => { window.location.href = '/team'; }}>
+          <h1>See More<i className="fas fa-arrow-right"></i></h1>
+        </div>
+      </section>
+
+      <section id="projects" className="projects">
+        <h2>Our Rocketry Plans</h2>
+        <div className="project-grid">
+          {projects.map((project, index) => (
+            <div key={index} className="project-card" onClick={() => openProjectModal(index)}>
+              <div className="project-image">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  width={400}
+                  height={200}
+                  className="project-img"
+                />
+              </div>
+              <p>{project.description}</p>
+              <div className="project-title">{project.title}</div>
+              <div className="project-eta">ETA: {project.eta}</div>
+              <div className="progress-bar">
+                <div className="progress" style={{ width: `${project.progress}%` }}></div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {isModalOpen && selectedProject !== null && (
+          <div className="project-modal" onClick={closeProjectModal}>
+            <div className="modal-content" onClick={e => e.stopPropagation()}>
+              <button className="close-modal" onClick={closeProjectModal}>&times;</button>
+              <h2>{projects[selectedProject].title}</h2>
+              <p>{projects[selectedProject].description}</p>
+              <div className="modal-progress">
+                <h3>Development Progress</h3>
+                <div className="progress-bar">
+                  <div className="progress" style={{ width: `${projects[selectedProject].progress}%` }}></div>
+                </div>
+                <span>{projects[selectedProject].progress}% Complete</span>
+              </div>
+              <div className="key-points">
+                <h3>Key Points</h3>
+                <ul>
+                  {projects[selectedProject].keyPoints.map((point, idx) => (
+                    <li key={idx}>{point}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="eta">Estimated Completion: {projects[selectedProject].eta}</div>
             </div>
           </div>
         )}
