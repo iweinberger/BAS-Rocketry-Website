@@ -158,7 +158,7 @@ export default function Home() {
             <h3>Executive Director</h3>
             <div className="member-image ilan">
               <Image
-                src="/team/Ilan.png"
+                src="/Ilan.png"
                 alt="Ilan Weinberger"
                 width={200}
                 height={200}
