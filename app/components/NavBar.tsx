@@ -58,7 +58,7 @@ export default function NavBar() {
             />
           </div>
         </Link>
-        <Link href="/" className="logo">BAS Rocketry</Link>
+        <Link href="/" className="logo">Rocketry</Link>
       </div>
       <div ref={menuRef} className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
         <Link className='donate-button' href="/donate">Donate Now</Link>
