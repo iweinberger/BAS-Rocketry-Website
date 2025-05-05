@@ -1266,7 +1266,7 @@ footer {
     font-weight: bold;
     display: inline-block;
     line-height: 1;
-    margin-left: auto; /* Push the button to the right */
+    margin-left: 2rem; /* Add consistent spacing */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
     text-transform: uppercase;
