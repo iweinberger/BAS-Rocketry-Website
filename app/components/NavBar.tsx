@@ -46,6 +46,7 @@ export default function NavBar() {
   return (
     <nav className="navbar">
       <div className="logo-container">
+<<<<<<< HEAD
         <div className="logo-image">
           <Image
             src="/logo.png"
@@ -57,6 +58,21 @@ export default function NavBar() {
           />
         </div>
         <div className="logo">Rocketry</div>
+=======
+        <Link href="/">
+          <div className="logo-image">
+            <Image
+              src="/logo.png"
+              alt="BAS Rocketry Logo"
+              width={60}
+              height={60}
+              className="logo-img"
+              priority
+            />
+          </div>
+        </Link>
+        <Link href="/" className="logo">Rocketry</Link>
+>>>>>>> d915a04 (Update title)
       </div>
       <div ref={menuRef} className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
         <Link className='donate-button' href="/sponsorship-tiers">Donate Now</Link>
