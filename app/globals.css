@@ -1259,14 +1259,14 @@ footer {
 .donate-button {
     background: linear-gradient(135deg, #24247b, #1a1a5f);
     padding: 0.6em 1.5em;
-    border-radius: 30px;
+    border-radius: 20px;
     color: white;
     text-decoration: none;
     font-size: 1rem;
     font-weight: bold;
     display: inline-block;
     line-height: 1;
-    margin-left: 2rem; /* Add consistent spacing */
+    margin-left: 30rem; /* Add consistent spacing */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
     text-transform: uppercase;
