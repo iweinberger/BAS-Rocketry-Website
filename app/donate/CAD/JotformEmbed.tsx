@@ -6,7 +6,7 @@ export default function JotformEmbed() {
   const searchParams = useSearchParams()
   const finalDonationValue = searchParams.get('finalDonationValue')
   alert(finalDonationValue)
-  const jotformUrl = `https://www.jotform.com/251237733687263?finalDonationValue=${encodeURIComponent(finalDonationValue || '')}`
+  const jotformUrl = `https://www.jotform.com/251237733687263?typeA=${encodeURIComponent(finalDonationValue || '')}`
 
   return (
     <iframe
