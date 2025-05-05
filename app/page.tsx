@@ -133,7 +133,7 @@ export default function Home() {
         <h2>About Us</h2>
         <div className="about-content">
           <div className="about-text">
-            <p>BAS Rocketry is a team of motivated and passionate highschool students who love creation and innovation in aerospace technology. With our diverse team of creative and smart students we plan to develop and luanch many rockets succesfully in the coming months and years.</p>
+            <p>BAS Rocketry is a team of ambitious high school students united by a passion for aerospace engineering and innovation. Our diverse and talented members are committed to pushing the boundaries of student-led rocketry, with plans to design, build, and successfully launch multiple rockets in the near future.</p>
           </div>
           <div className="about-stats">
             <div className="stat" onClick={() => { window.location.href = '#team'; }}>
