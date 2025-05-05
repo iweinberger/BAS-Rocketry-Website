@@ -1,27 +1,27 @@
-'use client';
- 
- import { useEffect } from 'react';
- 
- export default function JotformEmbed() {
-   useEffect(() => {
-     // Optional: Log or trigger something once iframe loads
-   }, []);
- 
-   return (
-     <iframe
-       id="JotFormIFrame-251188477753267"
-       title="Donation Form"
-       allow="geolocation; microphone; camera"
-       src="https://www.jotform.com/251188477753267"
-       frameBorder="0"
-       scrolling="no"
-       style={{
-         width: '1px',
-         minWidth: '100%',
-         height: '1500px',
-         border: 'none',
-       }}
-     />
-   );
- }
+'use client'
 
+import { useSearchParams } from 'next/navigation'
+
+export default function JotformEmbed() {
+  const searchParams = useSearchParams()
+  const finalDonationValue = searchParams.get('finalDonationValue')
+
+  const jotformUrl = `https://www.jotform.com/251244561409252?typeA=${encodeURIComponent(finalDonationValue || '')}`
+
+  return (
+    <iframe
+      id="JotFormIFrame-251244561409252"
+      title="Donation Form"
+      allow="geolocation; microphone; camera"
+      src={jotformUrl}
+      frameBorder="0"
+      scrolling="no"
+      style={{
+        width: '1px',
+        minWidth: '100%',
+        height: '1500px',
+        border: 'none',
+      }}
+    />
+  )
+}
