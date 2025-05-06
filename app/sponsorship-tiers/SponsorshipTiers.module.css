@@ -5,7 +5,7 @@
 
 .organizationTiers {
   display: flex;
-  justify-content: center;
+  justify-content: center; /* Center the tiers horizontally */
   align-items: flex-end; /* Align tiers to the bottom for a consistent look */
   gap: 2rem;
   margin-bottom: 3rem;
@@ -20,21 +20,22 @@
 }
 
 #silver {
-  border: 3px solid silver !important; /* Ensure the silver border is applied */
-  background: #f9f9f9 !important; /* Ensure the background color is applied */
+  border: 3px solid silver; /* Add silver border */
+  background: #f9f9f9;
   font-size: 1rem;
   flex: 1; /* Smallest size */
 }
 
 #gold {
-  border: 3px solid gold !important; /* Ensure the gold border is applied */
-  background: #fffbea !important; /* Ensure the background color is applied */
+  border: 3px solid gold; /* Add gold border */
+  background: #fffbea;
   font-size: 1.2rem;
   flex: 1.2; /* Larger than silver */
 }
 
 #platinum {
-  background-image: linear-gradient(to right, #e6e6e6, #a9a9a9, #808080) !important; /* Metallic-like background */
+  background: linear-gradient(135deg, #e5e4e2, #c0c0c0); /* Metallic-like background */
+  color: #000;
   font-weight: bold;
   font-size: 1.5rem;
   flex: 1.5; /* Largest size */
@@ -45,16 +46,18 @@
 .individualTiers {
   display: flex;
   flex-direction: column;
+  align-items: center; /* Center the individual tiers horizontally */
   gap: 1.5rem;
   margin-bottom: 3rem;
 }
 
 #individual,
 #individualPlus {
-  background: #f9f9f9 !important;
+  background: #f9f9f9;
   padding: 1rem;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  width: 80%; /* Make individual tiers narrower */
 }
 
 .donateButtonContainer {
@@ -62,10 +65,10 @@
 }
 
 .donateButton {
-  background: linear-gradient(135deg, #24247b, #1a1a5f) !important;
+  background: linear-gradient(135deg, #24247b, #1a1a5f);
   padding: 0.8rem 2rem;
   border-radius: 30px;
-  color: white !important;
+  color: white;
   text-decoration: none;
   font-size: 1.2rem;
   font-weight: bold;
@@ -77,8 +80,8 @@
 }
 
 .donateButton:hover {
-  background: linear-gradient(135deg, #1a1a5f, #121240) !important;
+  background: linear-gradient(135deg, #1a1a5f, #121240);
   transform: translateY(-3px);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-  color: #f0f0f0 !important;
+  color: #f0f0f0;
 }
