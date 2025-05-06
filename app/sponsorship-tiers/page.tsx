@@ -100,8 +100,8 @@ export default function SponsorshipTiers() {
             {individualFeatures.map((feature, i) => (
                 <tr key={feature}>
                   <td className={styles.featureName}>{feature}</td>
-                  <td>{individualPlus[i] === true ? 'Yes' : individualPlus[i]}</td>
-                  <td>{individual[i] === true ? 'Yes' : individual[i]}</td>
+                  <td>{individualPlus[i]}</td>
+                  <td>{individual[i]}</td>
                 </tr>
               ))}
             </tbody>
