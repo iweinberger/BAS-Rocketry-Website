@@ -1,12 +1,12 @@
 .sponsorshipTiers {
-  padding: 2rem;
+  padding: 6rem 2rem; /* Add extra padding at the top to avoid navbar overlap */
   text-align: center;
 }
 
 .organizationTiers {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: flex-end; /* Align tiers to the bottom for a consistent look */
   gap: 2rem;
   margin-bottom: 3rem;
 }
@@ -20,20 +20,27 @@
 }
 
 #silver {
-  border: 3px solid silver;
+  border: 3px solid silver; /* Add silver border */
   background: #f9f9f9;
+  font-size: 1rem;
+  flex: 1; /* Smallest size */
 }
 
 #gold {
-  border: 3px solid gold;
+  border: 3px solid gold; /* Add gold border */
   background: #fffbea;
+  font-size: 1.2rem;
+  flex: 1.2; /* Larger than silver */
 }
 
 #platinum {
-  background: linear-gradient(135deg, #e5e4e2, #c0c0c0);
+  background: linear-gradient(135deg, #e5e4e2, #c0c0c0); /* Metallic-like background */
   color: #000;
   font-weight: bold;
-  flex: 1.5;
+  font-size: 1.5rem;
+  flex: 1.5; /* Largest size */
+  border-radius: 15px; /* Slightly larger border radius for emphasis */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); /* Stronger shadow for prominence */
 }
 
 .individualTiers {
