@@ -12,20 +12,20 @@ export default function SponsorshipTiers() {
           <p>  • Your logo on our website in the Silver section.</p>
         </div>
         <div className={styles.tier} id="platinum">
+          <br></br>
           <h2>Platinum</h2>
           <p>  • Your logo on our website in the Platinum section.</p>
           <p>  • Your logo on our rockets (in big).</p>
           <p>  • Your logo on our merch (in big).</p>
           <p>  • Promotional video / shoutout on our Instagram & LinkedIn</p>
+          <br></br>
         </div>
         <div className={styles.tier} id="gold">
           <h2>Gold</h2>
-          <br></br>
           <p>  • Your logo on our website in the Gold section.</p>
           <p>  • Your logo on our rockets.</p>
           <p>  • Your logo on our merch.</p>
           <p>  • Shoutout on our Instagram & LinkedIn</p>
-          <br></br>
         </div>
       </section>
 
