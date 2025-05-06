@@ -522,7 +522,7 @@
 }
 
 #goldCol .podiumHeader {
-  background: #ffe066;
+  background: #FFD700;
   color: #b8860b;
   border-bottom: 4px solid #b8860b;
   height: 110px;
@@ -538,9 +538,9 @@
 }
 
 #bronzeCol .podiumHeader {
-  background: #f7c59f;
-  color: #a97142;
-  border-bottom: 4px solid #a97142;
+  background: #CD7F32;
+  color: #CD7F32;
+  border-bottom: 4px solid #CD7F32;
   height: 70px;
   z-index: 1;
   display: flex;
@@ -569,12 +569,16 @@
   background: linear-gradient(to right, #6a0dad, #4B0082) !important;
   color: #fff !important;
   border-bottom: 4px solid #4B0082 !important;
+  border-radius: 16px 16px 0 0;
+  border: none !important;
 }
 
 .individualHeader {
   background: linear-gradient(to right, #24247b, #1a1a5f) !important;
   color: #fff !important;
   border-bottom: 4px solid #24247b !important;
+  border-radius: 16px 16px 0 0;
+  border: none !important;
 }
 
 .individualPlusHeader .tierPrice,
