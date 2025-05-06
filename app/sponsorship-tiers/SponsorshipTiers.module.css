@@ -82,3 +82,519 @@
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
   color: #f0f0f0 !important;
 }
+
+.sponsorshipTiersPage {
+  padding: 0;
+  text-align: center;
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  background-color: #f9f9f9;
+}
+
+/* Corporate Section */
+.corporateSection {
+  padding: 6rem 2rem 3rem;
+  background-color: white;
+}
+
+.corporateSection h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  color: #24247b;
+  position: relative;
+  display: inline-block;
+}
+
+.corporateSection h2::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: #24247b;
+  margin: 15px auto 0;
+}
+
+.corporateTiers {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Individual Section */
+.individualSection {
+  padding: 4rem 2rem;
+  background-color: #f9f9f9;
+}
+
+.individualSection h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  color: #24247b;
+  position: relative;
+  display: inline-block;
+}
+
+.individualSection h2::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: #24247b;
+  margin: 15px auto 0;
+}
+
+.individualTiers {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Tier Cards */
+.tierCard {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex: 1;
+  max-width: 350px;
+  border: 2px solid transparent;
+}
+
+.tierCard:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.tierHeader {
+  padding: 1.5rem;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tierHeader h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.tierBadge {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: white;
+}
+
+.tierContent {
+  padding: 1.5rem;
+  text-align: left;
+}
+
+.tierContent ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tierContent li {
+  margin-bottom: 1rem;
+  position: relative;
+  padding-left: 1.5rem;
+  line-height: 1.4;
+}
+
+.tierContent li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #24247b;
+}
+
+.tierContent p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Corporate Tier Colors */
+#platinum {
+  border-color: #e5e4e2;
+}
+
+#platinum .tierHeader {
+  background: linear-gradient(145deg, #e6e6e6, #a9a9a9, #c0c0c0);
+}
+
+#platinum .tierHeader h3 {
+  color: #333;
+}
+
+#platinum .tierBadge {
+  background: #333;
+}
+
+#gold {
+  border-color: #ffd700;
+}
+
+#gold .tierHeader {
+  background: linear-gradient(to right, #fffbea, #fff7cf);
+}
+
+#gold .tierHeader h3 {
+  color: #b8860b;
+}
+
+#gold .tierBadge {
+  background: #b8860b;
+}
+
+#silver {
+  border-color: #c0c0c0;
+}
+
+#silver .tierHeader {
+  background: linear-gradient(to right, #f8f8f8, #e5e5e5);
+}
+
+#silver .tierHeader h3 {
+  color: #666;
+}
+
+#silver .tierBadge {
+  background: #666;
+}
+
+/* Individual Tier Colors */
+#individualPlus {
+  border-color: #4B0082;
+}
+
+#individualPlus .tierHeader {
+  background: linear-gradient(to right, #6a0dad, #4B0082);
+}
+
+#individualPlus .tierHeader h3 {
+  color: white;
+}
+
+#individual {
+  border-color: #24247b;
+}
+
+#individual .tierHeader {
+  background: linear-gradient(to right, #24247b, #1a1a5f);
+}
+
+#individual .tierHeader h3 {
+  color: white;
+}
+
+/* Donate Button */
+.donateButtonContainer {
+  text-align: center;
+  padding: 3rem 2rem;
+  background-color: white;
+}
+
+.donateButton {
+  background: linear-gradient(135deg, #24247b, #1a1a5f);
+  padding: 1rem 3rem;
+  border-radius: 30px;
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  display: inline-block;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.donateButton:hover {
+  background: linear-gradient(135deg, #1a1a5f, #121240);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .corporateTiers,
+  .individualTiers {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .tierCard {
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .corporateSection h2,
+  .individualSection h2 {
+    font-size: 2rem;
+  }
+}
+
+.tiersTableWrapper {
+  overflow-x: auto;
+  margin: 0 auto;
+  max-width: 900px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  padding: 2rem 1rem;
+}
+
+.tiersTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1.1rem;
+  background: white;
+}
+
+.tiersTable th,
+.tiersTable td {
+  border: 1px solid #e0e0e0;
+  padding: 1rem 0.5rem;
+  text-align: center;
+}
+
+.tiersTable th {
+  font-size: 1.2rem;
+  font-weight: 700;
+  background: #f5f5f5;
+  border-bottom: 3px solid #e0e0e0;
+}
+
+.featureHeader {
+  background: transparent !important;
+  border: none !important;
+}
+
+.featureName {
+  font-weight: 600;
+  text-align: left;
+  background: #fcfcfc;
+  color: #24247b;
+}
+
+.goldHeader {
+  background: #ffe066 !important;
+  color: #b8860b !important;
+  border-bottom: 4px solid #b8860b !important;
+}
+
+.silverHeader {
+  background: #e0e0e0 !important;
+  color: #666 !important;
+  border-bottom: 4px solid #888 !important;
+}
+
+.bronzeHeader {
+  background: #f7c59f !important;
+  color: #a97142 !important;
+  border-bottom: 4px solid #a97142 !important;
+}
+
+.tierPrice {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-top: 0.3rem;
+}
+
+.tiersTable td {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.tiersTable td {
+  background: #fff;
+}
+
+.tiersTable td:not(:first-child) {
+  min-width: 100px;
+}
+
+.tiersTable tr:nth-child(even) td {
+  background: #fafafa;
+}
+
+.tiersTable td {
+  color: #24247b;
+}
+
+.tiersTable td:empty {
+  background: #f5f5f5;
+}
+
+/* Yes/No styling */
+.tiersTable td {
+  font-size: 1.1rem;
+}
+
+.tiersTable td {
+  color: #24247b;
+}
+
+.tiersTable td:contains('Yes') {
+  color: #388e3c;
+  font-weight: 700;
+}
+
+.tiersTable td:contains('-') {
+  color: #bbb;
+}
+
+@media (max-width: 900px) {
+  .tiersTableWrapper {
+    padding: 1rem 0.2rem;
+  }
+  .tiersTable th, .tiersTable td {
+    padding: 0.7rem 0.2rem;
+    font-size: 1rem;
+  }
+  .individualTiers {
+    flex-direction: column;
+    align-items: center;
+  }
+  .tierCard {
+    width: 100%;
+    max-width: 400px;
+  }
+  .corporateSection h2,
+  .individualSection h2 {
+    font-size: 2rem;
+  }
+}
+
+.podiumTable {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: stretch;
+  align-items: end;
+  margin-bottom: -2.5rem;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.podiumCol {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+}
+
+.podiumHeader {
+  width: 100%;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 700;
+  border-radius: 16px 16px 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  padding: 1.2rem 0 0.7rem 0;
+  margin: 0;
+}
+
+#goldCol .podiumHeader {
+  background: #ffe066;
+  color: #b8860b;
+  border-bottom: 4px solid #b8860b;
+  height: 110px;
+  z-index: 3;
+}
+
+#silverCol .podiumHeader {
+  background: #e0e0e0;
+  color: #666;
+  border-bottom: 4px solid #888;
+  height: 90px;
+  z-index: 2;
+}
+
+#bronzeCol .podiumHeader {
+  background: #f7c59f;
+  color: #a97142;
+  border-bottom: 4px solid #a97142;
+  height: 70px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.podiumHeader .tierPrice {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-top: 0.2rem;
+}
+
+/* Hide table headers for podium columns */
+.tiersTable thead th.goldHeader,
+.tiersTable thead th.silverHeader,
+.tiersTable thead th.bronzeHeader {
+  padding: 0;
+  background: none !important;
+  border: none !important;
+  height: 0;
+}
+
+/* Individual Table Headers */
+.individualPlusHeader {
+  background: linear-gradient(to right, #6a0dad, #4B0082) !important;
+  color: #fff !important;
+  border-bottom: 4px solid #4B0082 !important;
+}
+
+.individualHeader {
+  background: linear-gradient(to right, #24247b, #1a1a5f) !important;
+  color: #fff !important;
+  border-bottom: 4px solid #24247b !important;
+}
+
+.individualPlusHeader .tierPrice,
+.individualHeader .tierPrice {
+  color: #fff;
+}
+
+@media (max-width: 900px) {
+  .podiumTable {
+    grid-template-columns: 1fr;
+    margin-bottom: -1.2rem;
+  }
+  .podiumCol {
+    width: 100%;
+  }
+  #goldCol .podiumHeader,
+  #silverCol .podiumHeader,
+  #bronzeCol .podiumHeader {
+    height: 60px;
+    font-size: 1.1rem;
+    padding: 0.7rem 0 0.4rem 0;
+  }
+}
