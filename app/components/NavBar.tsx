@@ -68,7 +68,7 @@ export default function NavBar() {
         <Link href="/#contact">Contact</Link>
         <Link href="/sponsors">Sponsors</Link>
       </div>
-      <Link className='donate-button' href="/donate">Donate Now</Link>
+      <Link className='donate-button' href="/sponsorship-tiers">Donate Now</Link>
       <div ref={hamburgerRef} className={`hamburger ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu}>
         <span></span>
         <span></span>

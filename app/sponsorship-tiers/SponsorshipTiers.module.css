@@ -1,0 +1,78 @@
+.sponsorshipTiers {
+  padding: 2rem;
+  text-align: center;
+}
+
+.organizationTiers {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.tier {
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  flex: 1;
+}
+
+#silver {
+  border: 3px solid silver;
+  background: #f9f9f9;
+}
+
+#gold {
+  border: 3px solid gold;
+  background: #fffbea;
+}
+
+#platinum {
+  background: linear-gradient(135deg, #e5e4e2, #c0c0c0);
+  color: #000;
+  font-weight: bold;
+  flex: 1.5;
+}
+
+.individualTiers {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+#individual,
+#individualPlus {
+  background: #f9f9f9;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.donateButtonContainer {
+  text-align: center;
+}
+
+.donateButton {
+  background: linear-gradient(135deg, #24247b, #1a1a5f);
+  padding: 0.8rem 2rem;
+  border-radius: 30px;
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  display: inline-block;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.donateButton:hover {
+  background: linear-gradient(135deg, #1a1a5f, #121240);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  color: #f0f0f0;
+}
