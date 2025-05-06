@@ -65,7 +65,7 @@ export default function NavBar() {
         <Link href="/#about">About</Link>
         <Link href="/team">Team</Link>
         <Link href="/projects">Projects</Link>
-        <Link href="#contact">Contact</Link>
+        <Link href="/#contact">Contact</Link>
         <Link href="/sponsors">Sponsors</Link>
       </div>
       <Link className='donate-button' href="/donate">Donate Now</Link>
