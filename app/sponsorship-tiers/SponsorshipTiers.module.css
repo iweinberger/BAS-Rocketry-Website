@@ -35,7 +35,6 @@
 
 #platinum {
   background-image: linear-gradient(to right, #e6e6e6, #a9a9a9, #808080) !important; /* Metallic-like background */
-  color: #000 !important;
   font-weight: bold;
   font-size: 1.5rem;
   flex: 1.5; /* Largest size */
