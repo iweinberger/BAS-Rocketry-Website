@@ -5,8 +5,8 @@
 
 .organizationTiers {
   display: flex;
-  justify-content: center;
-  align-items: flex-end; /* Align tiers to the bottom for a consistent look */
+  justify-content: center; /* Center the tiers horizontally */
+  align-items: center; /* Center the tiers vertically */
   gap: 2rem;
   margin-bottom: 3rem;
 }
@@ -20,21 +20,21 @@
 }
 
 #silver {
-  border: 3px solid silver !important; /* Ensure the silver border is applied */
-  background: #f9f9f9 !important; /* Ensure the background color is applied */
+  border: 3px solid silver; /* Add silver border */
+  background: #f9f9f9;
   font-size: 1rem;
   flex: 1; /* Smallest size */
 }
 
 #gold {
-  border: 3px solid gold !important; /* Ensure the gold border is applied */
-  background: #fffbea !important; /* Ensure the background color is applied */
+  border: 3px solid gold; /* Add gold border */
+  background: #fffbea;
   font-size: 1.2rem;
   flex: 1.2; /* Larger than silver */
 }
 
 #platinum {
-  background-image: linear-gradient(to right, #e6e6e6, #a9a9a9, #808080) !important; /* Metallic-like background */
+  background-image: linear-gradient(to right, #e6e6e6, #a9a9a9, #808080); /* Metallic-like background */
   font-weight: bold;
   font-size: 1.5rem;
   flex: 1.5; /* Largest size */
