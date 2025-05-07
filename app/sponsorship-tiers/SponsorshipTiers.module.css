@@ -44,25 +44,52 @@
 
 .individualTiers {
   display: flex;
-  flex-direction: column; /* Stack tiers vertically */
-  justify-content: center; /* Center vertically */
-  align-items: center; /* Center horizontally */
-  gap: 1.5rem; /* Add spacing between tiers */
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
   margin-top: 2rem;
-  width: 100%; /* Ensure full width */
-  max-width: 1100px; /* Match the width of the corporate section */
+  width: 100%;
+  max-width: 1100px;
   margin-left: auto;
   margin-right: auto;
+  position: relative;
+  height: 400px;
 }
 
 .individualTiers .tierCard {
-  width: 100%; /* Make the tiers span the full width of the corporate section */
-  max-width: 1800px; /* Limit the maximum width */
-  padding: 0.8rem; /* Adjust padding for shorter height */
+  width: 100%;
+  max-width: 500px;
+  padding: 1.5rem;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   text-align: center;
   transition: all 0.3s ease;
+  position: absolute;
+}
+
+.individualTiers .tierCard:first-child {
+  top: 15px;
+  transform: scale(1.2);
+  z-index: 2;
+}
+
+.individualTiers .tierCard:last-child {
+  top: 200px;
+  transform: scale(0.9);
+  z-index: 1;
+}
+
+.individualTiers .tierCard:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.individualTiers .tierCard:first-child:hover {
+  transform: translateY(-10px) scale(1.25);
+}
+
+.individualTiers .tierCard:last-child:hover {
+  transform: translateY(-10px) scale(0.95);
 }
 
 #individual,
@@ -423,14 +450,14 @@
 }
 
 .selectedPlatinum {
-  background: linear-gradient(135deg, #e5e4e2, #c0c0c0); /* Metallic gradient */
+  background: linear-gradient(135deg, #f9f4f2, #f2dcdcd3, #e8d4ded6, #f6f0eb, #e4ced4); /* Quartz gradient */
   border-color: #808080;
   color: #808080;
   flex: 1.5; /* Largest */
 }
 
 .selectedQuartz {
-  background: linear-gradient(135deg, #f9f4f2, #f2dcdcd3, #e8d4ded6, #f6f0eb, #e4ced4); /* Quartz gradient */
+  background: linear-gradient(135deg, #e5e4e2, #c0c0c0); /* Metallic gradient */
   border-color: #af8d93;
   color: #af8d93;
   flex: 1; /* Smallest */
@@ -498,7 +525,7 @@
 .tiersTableWrapper {
   overflow-x: auto;
   margin: 0 auto;
-  max-width: 900px;
+  max-width: 1200px;
   background: white;
   border-radius: 16px;
   box-shadow: 0 4px 24px rgba(0,0,0,0.08);
@@ -632,12 +659,12 @@
   grid-template-columns: 1fr 1fr 1fr;
   justify-items: stretch;
   align-items: end;
-  margin-bottom: -2.5rem;
+  margin-bottom: -2rem;
   position: relative;
   z-index: 2;
   width: 100%;
   max-width: 900px;
-  margin-left: auto;
+  margin-left: 268px;
   margin-right: auto;
 }
 
@@ -812,4 +839,22 @@
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   opacity: 0.8;
   font-size: 0.9rem;
+}
+
+.sponsorshipGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.corporateSection,
+.individualSection {
+  padding: 1rem;
+}
+
+@media (max-width: 768px) {
+  .sponsorshipGrid {
+    grid-template-columns: 1fr;
+  }
 }

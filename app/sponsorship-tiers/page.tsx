@@ -31,7 +31,7 @@ const individualPlus = [true, true, true, "Frequent Photos + Videos"];
 const individual = ["-", "-", "-", "Monthly Email Updates"];
 
 export default function SponsorshipTiers() {
-  const [selectedTier, setSelectedTier] = useState<string | null>('platinum'); // Set 'platinum' as the default
+  const [selectedTier, setSelectedTier] = useState<string | null>('platinum');
 
   const handleTierClick = (tier: string) => {
     setSelectedTier(tier);
@@ -41,55 +41,55 @@ export default function SponsorshipTiers() {
     <main className={styles.sponsorshipTiersPage}>
       <NavBar />
 
-      {/* Tier Selection Section */}
       <section className={styles.tierSelection}>
-      <h1 className={styles.corpotateTitle}>Corporate Sponsorships</h1>
-      <br></br>
-        <div className={styles.corporateTiers}>
-          <div
-            className={`${styles.tierCard} ${selectedTier === 'gold' ? styles.selectedGold : ''} ${styles.goldCard}`}
-            onClick={() => handleTierClick('gold')}
-          >
-            <h3>Gold</h3>
-            <p>$5000</p>
+        <div className={styles.sponsorshipGrid}>
+          <div className={styles.corporateSection}>
+            <h1 className={styles.corpotateTitle}>Corporate Sponsorships</h1>
+            <div className={styles.corporateTiers}>
+              <div
+                className={`${styles.tierCard} ${selectedTier === 'gold' ? styles.selectedGold : ''} ${styles.goldCard}`}
+                onClick={() => handleTierClick('gold')}
+              >
+                <h3>Gold</h3>
+                <p>$5000</p>
+              </div>
+              <div
+                className={`${styles.tierCard} ${selectedTier === 'platinum' ? styles.selectedPlatinum : ''} ${styles.platinumCard}`}
+                onClick={() => handleTierClick('platinum')}
+              >
+                <h3>Platinum</h3>
+                <p>$10,000+</p>
+              </div>
+              <div
+                className={`${styles.tierCard} ${selectedTier === 'quartz' ? styles.selectedQuartz : ''} ${styles.quartzCard}`}
+                onClick={() => handleTierClick('quartz')}
+              >
+                <h3>Quartz</h3>
+                <p>Less Than $3,000</p>
+              </div>
+            </div>
           </div>
-          <div
-            className={`${styles.tierCard} ${selectedTier === 'platinum' ? styles.selectedPlatinum : ''} ${styles.platinumCard}`}
-            onClick={() => handleTierClick('platinum')}
-          >
-            <h3>Platinum</h3>
-            <p>$10,000+</p>
-          </div>
-          <div
-            className={`${styles.tierCard} ${selectedTier === 'quartz' ? styles.selectedQuartz : ''} ${styles.quartzCard}`}
-            onClick={() => handleTierClick('quartz')}
-          >
-            <h3>Quartz</h3>
-            <p>Less Than $3,000</p>
+
+          <div className={styles.individualSection}>
+            <h1 className={styles.indTitle}>Individual Sponsorships</h1>
+            <div className={styles.individualTiers}>
+              <div
+                className={`${styles.tierCard} ${selectedTier === 'individualPlus' ? styles.selectedIndividualPlus : ''} ${styles.indCard}`}
+                onClick={() => handleTierClick('individualPlus')}
+              >
+                <h3>Individual+</h3>
+                <p>$200+</p>
+              </div>
+              <div
+                className={`${styles.tierCard} ${selectedTier === 'individual' ? styles.selectedIndividual : ''} ${styles.indPlusCard}`}
+                onClick={() => handleTierClick('individual')}
+              >
+                <h3>Individual</h3>
+                <p>Less Than $200</p>
+              </div>
+            </div>
           </div>
         </div>
-        <p>All terms are open to negotiation. If you would like a modification of one of these sponsorships please <a className={styles.sublink} href='/#contact'>contact us</a>.</p>
-
-        <br></br>
-
-        <div className={styles.individualTiers}>
-          <h1 className={styles.indTitle}>Individual Sponsorships</h1>
-          <div
-            className={`${styles.tierCard} ${selectedTier === 'individualPlus' ? styles.selectedIndividualPlus : ''} ${styles.indCard}`}
-            onClick={() => handleTierClick('individualPlus')}
-          >
-            <h3>Individual+</h3>
-            <p>$200+</p>
-          </div>
-          <div
-            className={`${styles.tierCard} ${selectedTier === 'individual' ? styles.selectedIndividual : ''} ${styles.indPlusCard}`}
-            onClick={() => handleTierClick('individual')}
-          >
-            <h3>Individual</h3>
-            <p>Less Than $200</p>
-          </div>
-        </div>
-        <br></br>
         <p>All terms are open to negotiation. If you would like a modification of one of these sponsorships please <a className={styles.sublink} href='/#contact'>contact us</a>.</p>
       </section>
 
