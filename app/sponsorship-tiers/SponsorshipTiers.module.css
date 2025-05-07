@@ -664,8 +664,20 @@
   z-index: 2;
   width: 100%;
   max-width: 900px;
-  margin-left: 268px;
+  margin-left: 323px;
   margin-right: auto;
+}
+
+#bronzeCol {
+  width: 200px;
+}
+
+#silverCol {
+  width: 260px;
+}
+
+#goldCol {
+  width: 385px;
 }
 
 .podiumCol {
