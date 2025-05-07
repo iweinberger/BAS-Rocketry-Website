@@ -113,7 +113,7 @@ export default function SponsorshipTiers() {
             <div className={styles.podiumCol} id={styles.bronzeCol}>
               <div className={styles.podiumHeader + ' ' + styles.bronzeHeader}>
                 <div>Quartz</div>
-                <div className={styles.tierPrice}>$1,000</div>
+                <div className={styles.tierPrice}>$3,000</div>
               </div>
             </div>
           </div>
@@ -150,11 +150,11 @@ export default function SponsorshipTiers() {
                 <th className={styles.featureHeader}></th>
                 <th className={styles.individualPlusHeader}>
                   <div>Individual+</div>
-                  <div className={styles.tierPrice}>$180</div>
+                  <div className={styles.tierPrice}>$200+</div>
                 </th>
                 <th className={styles.individualHeader}>
                   <div>Individual</div>
-                  <div className={styles.tierPrice}>$50</div>
+                  <div className={styles.tierPrice}>$0-200</div>
                 </th>
               </tr>
             </thead>
