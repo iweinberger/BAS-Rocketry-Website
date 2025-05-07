@@ -34,7 +34,7 @@
 }
 
 #platinum {
-  background-image: linear-gradient(to right, #e6e6e6, #a9a9a9, #808080); /* Metallic-like background */
+  background: linear-gradient(to right, #e6e6e6, #a9a9a9, #808080); /* Metallic-like background */
   font-weight: bold;
   font-size: 1.5rem;
   flex: 1.5; /* Largest size */
@@ -45,8 +45,51 @@
 .individualTiers {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  margin-bottom: 3rem;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  width: 100%;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  height: 400px;
+}
+
+.individualTiers .tierCard {
+  width: 100%;
+  max-width: 500px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  text-align: center;
+  transition: all 0.3s ease;
+  position: absolute;
+}
+
+.individualTiers .tierCard:first-child {
+  top: 15px;
+  transform: scale(1.2);
+  z-index: 2;
+}
+
+.individualTiers .tierCard:last-child {
+  top: 200px;
+  transform: scale(0.9);
+  z-index: 1;
+}
+
+.individualTiers .tierCard:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.individualTiers .tierCard:first-child:hover {
+  transform: translateY(-10px) scale(1.25);
+}
+
+.individualTiers .tierCard:last-child:hover {
+  transform: translateY(-10px) scale(0.95);
 }
 
 #individual,
@@ -62,7 +105,7 @@
 }
 
 .donateButton {
-  background: linear-gradient(135deg, #24247b, #1a1a5f) !important;
+  background: linear-gradient(135deg, #121242, #1a1a5f) !important;
   padding: 0.8rem 2rem;
   border-radius: 30px;
   color: white !important;
@@ -84,7 +127,7 @@
 }
 
 .sponsorshipTiersPage {
-  padding: 0;
+  padding: 4rem 2rem; /* Reduce top padding to bring content closer to the navbar */
   text-align: center;
   min-height: 100vh;
   width: 100%;
@@ -95,14 +138,13 @@
 /* Corporate Section */
 .corporateSection {
   padding: 6rem 2rem 3rem;
-  background-color: white;
 }
 
 .corporateSection h2 {
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 3rem;
-  color: #24247b;
+  color: #121242;
   position: relative;
   display: inline-block;
 }
@@ -112,16 +154,34 @@
   display: block;
   width: 80px;
   height: 4px;
-  background: #24247b;
+  background: #121242;
   margin: 15px auto 0;
 }
 
 .corporateTiers {
   display: flex;
   justify-content: center;
+  align-items: flex-end; /* Align tiers to the bottom */
   gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
+  margin-bottom: 3rem;
+}
+
+.corporateTitle {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: #121242;
+  position: relative;
+}
+
+.corporateTitle::after {
+  content: '';
+  display: block;
+  width: 80px; /* Adjust the width of the line */
+  height: 4px; /* Adjust the height of the line */
+  background: #121242; /* Blue color */
+  margin: 10px auto 0; /* Center the line and add spacing */
 }
 
 /* Individual Section */
@@ -134,7 +194,7 @@
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 3rem;
-  color: #24247b;
+  color: #121242;
   position: relative;
   display: inline-block;
 }
@@ -144,33 +204,76 @@
   display: block;
   width: 80px;
   height: 4px;
-  background: #24247b;
+  background: #121242;
   margin: 15px auto 0;
 }
 
-.individualTiers {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  max-width: 1000px;
-  margin: 0 auto;
+.indTitle {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: #121242;
+  position: relative;
+}
+
+.indTitle::after {
+  content: '';
+  display: block;
+  width: 80px; /* Adjust the width of the line */
+  height: 4px; /* Adjust the height of the line */
+  background: #121242; /* Blue color */
+  margin: 10px auto 0; /* Center the line and add spacing */
+}
+
+.corpotateTitle {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: #121242;
+}
+
+.corpotateTitle::after {
+  content: '';
+  display: block;
+  width: 80px; /* Adjust the width of the line */
+  height: 4px; /* Adjust the height of the line */
+  background: #121242; /* Blue color */
+  margin: 10px auto 0; /* Center the line and add spacing */
+}
+
+.sublink {
+  color: #121242
 }
 
 /* Tier Cards */
 .tierCard {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 3px solid transparent;
   flex: 1;
   max-width: 350px;
-  border: 2px solid transparent;
 }
 
 .tierCard:hover {
   transform: translateY(-10px);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.tierCard h3 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.tierCard p {
+  font-size: 1.4rem;
+  margin: 0;
 }
 
 .tierHeader {
@@ -224,7 +327,7 @@
   position: absolute;
   left: 0;
   top: 0;
-  color: #24247b;
+  color: #121242;
 }
 
 .tierContent p {
@@ -235,6 +338,7 @@
 /* Corporate Tier Colors */
 #platinum {
   border-color: #e5e4e2;
+  flex: 1.5; /* Largest */
 }
 
 #platinum .tierHeader {
@@ -249,8 +353,35 @@
   background: #333;
 }
 
+.platinumCard {
+  position: relative;
+  height: 350px;
+  border-color: #8080809a;
+}
+
+.goldCard {
+  position: relative;
+  height: 300px;
+  border-color: #b8860b9a;
+}
+
+.quartzCard {
+  position: relative;
+  height: 250px;
+  border-color: #af8d939a;
+}
+
+.indPlusCard {
+  border-color: #1212429a;
+}
+
+.indCard {
+  border-color: #4B00829a;
+}
+
 #gold {
-  border-color: #ffd700;
+  border-color: linear-gradient(to right, #d19e1d, #ffd86e, #e3a812);
+  flex: 1.2; /* Second largest */
 }
 
 #gold .tierHeader {
@@ -258,11 +389,15 @@
 }
 
 #gold .tierHeader h3 {
-  color: #b8860b;
+  color: #e8b024;
 }
 
 #gold .tierBadge {
   background: #b8860b;
+}
+
+#quartz {
+  flex: 1; /* Smallest */
 }
 
 #silver {
@@ -295,27 +430,61 @@
 }
 
 #individual {
-  border-color: #24247b;
+  border-color: #121242;
 }
 
 #individual .tierHeader {
-  background: linear-gradient(to right, #24247b, #1a1a5f);
+  background: linear-gradient(to right, #121242, #1a1a5f);
 }
 
 #individual .tierHeader h3 {
   color: white;
 }
 
+/* Selected States */
+.selectedGold {
+  background: linear-gradient(to right, #d19e1dab, #ffd86ec0, #e3a812c1); /* Gold gradient */
+  border-color: #b8860b;
+  color: #b8860b;
+  flex: 1.2; /* Medium size */
+}
+
+.selectedPlatinum {
+  background: linear-gradient(135deg, #f9f4f2, #f2dcdcd3, #e8d4ded6, #f6f0eb, #e4ced4); /* Quartz gradient */
+  border-color: #808080;
+  color: #808080;
+  flex: 1.5; /* Largest */
+}
+
+.selectedQuartz {
+  background: linear-gradient(135deg, #e5e4e2, #c0c0c0); /* Metallic gradient */
+  border-color: #af8d93;
+  color: #af8d93;
+  flex: 1; /* Smallest */
+}
+
+.selectedIndividualPlus {
+  background: linear-gradient(135deg, #2a0635c1, #4b0d46c1, #682974c1, #4b0d46c1, #2a0635c1);
+  border-color: #300053;
+  color: #300053;
+}
+
+.selectedIndividual {
+  background: linear-gradient(135deg, #031e3ac1, #06345ac1, #154c79c1, #06345ac1, #031e3ac1);
+  border-color: #1a1a5f;
+  color: #1a1a5f;
+}
+
 /* Donate Button */
 .donateButtonContainer {
   text-align: center;
   padding: 3rem 2rem;
-  background-color: white;
+  margin-top: 3rem;
 }
 
 .donateButton {
   background: linear-gradient(135deg, #24247b, #1a1a5f);
-  padding: 1rem 3rem;
+  padding: 0.8rem 2rem;
   border-radius: 30px;
   color: white;
   text-decoration: none;
@@ -356,7 +525,7 @@
 .tiersTableWrapper {
   overflow-x: auto;
   margin: 0 auto;
-  max-width: 900px;
+  max-width: 1200px;
   background: white;
   border-radius: 16px;
   box-shadow: 0 4px 24px rgba(0,0,0,0.08);
@@ -393,25 +562,25 @@
   font-weight: 600;
   text-align: left;
   background: #fcfcfc;
-  color: #24247b;
+  color: #121243;
 }
 
 .goldHeader {
-  background: #ffe066 !important;
-  color: #b8860b !important;
-  border-bottom: 4px solid #b8860b !important;
+  background: linear-gradient( to bottom, #d5d7e5, #eee, #d5d7e5) !important;
+  color: #666666 !important;
+  border-bottom: 4px solid #666666 !important;
 }
 
 .silverHeader {
-  background: #e0e0e0 !important;
-  color: #666 !important;
-  border-bottom: 4px solid #888 !important;
+  background: linear-gradient( to bottom, #c39738, #deb761, #c39738) !important;
+  color: #987323 !important;
+  border-bottom: 4px solid #987323 !important;
 }
 
 .bronzeHeader {
-  background: #f7c59f !important;
-  color: #a97142 !important;
-  border-bottom: 4px solid #a97142 !important;
+  background: linear-gradient(135deg, #f9f4f2, #f2dcdc, #e8d4de, #f6f0eb, #e4ced4) !important;
+  color: #af8d93 !important;
+  border-bottom: 4px solid #af8d93 !important;
 }
 
 .tierPrice {
@@ -438,7 +607,7 @@
 }
 
 .tiersTable td {
-  color: #24247b;
+  color: #121242;
 }
 
 .tiersTable td:empty {
@@ -451,7 +620,7 @@
 }
 
 .tiersTable td {
-  color: #24247b;
+  color: #121242;
 }
 
 .tiersTable td:contains('Yes') {
@@ -490,13 +659,25 @@
   grid-template-columns: 1fr 1fr 1fr;
   justify-items: stretch;
   align-items: end;
-  margin-bottom: -2.5rem;
+  margin-bottom: -2rem;
   position: relative;
   z-index: 2;
   width: 100%;
   max-width: 900px;
-  margin-left: auto;
+  margin-left: 323px;
   margin-right: auto;
+}
+
+#bronzeCol {
+  width: 200px;
+}
+
+#silverCol {
+  width: 260px;
+}
+
+#goldCol {
+  width: 385px;
 }
 
 .podiumCol {
@@ -574,11 +755,9 @@
 }
 
 .individualHeader {
-  background: linear-gradient(to right, #24247b, #1a1a5f) !important;
+  background: linear-gradient(to right, #121242, #1a1a5f) !important;
   color: #fff !important;
-  border-bottom: 4px solid #24247b !important;
-  border-radius: 16px 16px 0 0;
-  border: none !important;
+  border-bottom: 4px solid #121242 !important;
 }
 
 .individualPlusHeader .tierPrice,
@@ -600,5 +779,94 @@
     height: 60px;
     font-size: 1.1rem;
     padding: 0.7rem 0 0.4rem 0;
+  }
+}
+
+/* Tier Selection Section */
+.tierSelection {
+  padding: 2rem 2rem; /* Reduce padding to minimize space above the corporate title */
+  text-align: center;
+}
+
+/* Begin Footer Code */
+.foot {
+  width: 100%;
+  background-color: #121242;
+  color: white;
+  padding: 2rem;
+  text-align: center;
+}
+
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  margin-bottom: 2rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footer-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.footer-section h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+}
+
+.footer-section p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  row-gap: 1rem;
+}
+
+.footer-section a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+  opacity: 0.9;
+  font-size: 1.1rem;
+}
+
+.footer-section a:hover {
+  opacity: 1;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  opacity: 0.8;
+  font-size: 0.9rem;
+}
+
+.sponsorshipGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.corporateSection,
+.individualSection {
+  padding: 1rem;
+}
+
+@media (max-width: 768px) {
+  .sponsorshipGrid {
+    grid-template-columns: 1fr;
   }
 }

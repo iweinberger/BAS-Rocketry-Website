@@ -227,14 +227,14 @@ export default function Home() {
                 height={200}
                 className="member-img"
               />
-            </div>
+            </div> 
             <p>Noam Wolfe</p>
           </div>
           <div className="team-member">
             <h3>Avionics Lead</h3>
             <div className="member-image">
               <Image
-                src="/team/placeholder.png"
+                src="/logo.png"
                 alt="Yekutiel Yunger"
                 width={200}
                 height={200}
