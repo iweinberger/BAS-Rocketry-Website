@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation'
 
 export default function DonationData() {
   const searchParams = useSearchParams()
-  const [iframeUrl, setIframeUrl] = useState('')
+  const [iframeUrl, setIframeUrl] = useState<string>('')
 
   useEffect(() => {
     const handleDonation = async () => {
@@ -48,7 +48,6 @@ export default function DonationData() {
         })
 
         if (response.ok) {
-          const data = await response.text()
           setIframeUrl(response.url)
         } else {
           console.error('Failed to process donation')
