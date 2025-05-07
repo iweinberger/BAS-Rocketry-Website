@@ -1,9 +1,9 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 
-export default function DonationData() {
+function DonationForm() {
   const searchParams = useSearchParams()
   const [iframeUrl, setIframeUrl] = useState<string>('')
 
@@ -74,5 +74,31 @@ export default function DonationData() {
         />
       )}
     </div>
+  )
+}
+
+export default function DonationData() {
+  return (
+    <Suspense fallback={
+      <div style={{ 
+        width: '100%', 
+        height: '100vh', 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center',
+        backgroundColor: '#f5f5f5'
+      }}>
+        <div style={{ 
+          padding: '2rem',
+          backgroundColor: 'white',
+          borderRadius: '8px',
+          boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+        }}>
+          Loading donation form...
+        </div>
+      </div>
+    }>
+      <DonationForm />
+    </Suspense>
   )
 } 
