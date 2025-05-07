@@ -51,21 +51,21 @@ export default function SponsorshipTiers() {
             onClick={() => handleTierClick('gold')}
           >
             <h3>Gold</h3>
-            <p>$1000 — $5000</p>
+            <p>$5000</p>
           </div>
           <div
             className={`${styles.tierCard} ${selectedTier === 'platinum' ? styles.selectedPlatinum : ''} ${styles.platinumCard}`}
             onClick={() => handleTierClick('platinum')}
           >
             <h3>Platinum</h3>
-            <p>$5000+</p>
+            <p>$10,000+</p>
           </div>
           <div
             className={`${styles.tierCard} ${selectedTier === 'quartz' ? styles.selectedQuartz : ''} ${styles.quartzCard}`}
             onClick={() => handleTierClick('quartz')}
           >
             <h3>Quartz</h3>
-            <p>Less Than $1000</p>
+            <p>Less Than $3,000</p>
           </div>
         </div>
         <p>All terms are open to negotiation. If you would like a modification of one of these sponsorships please <a className={styles.sublink} href='/#contact'>contact us</a>.</p>
@@ -113,7 +113,7 @@ export default function SponsorshipTiers() {
             <div className={styles.podiumCol} id={styles.bronzeCol}>
               <div className={styles.podiumHeader + ' ' + styles.bronzeHeader}>
                 <div>Quartz</div>
-                <div className={styles.tierPrice}>$3,000</div>
+                <div className={styles.tierPrice}>$1,000</div>
               </div>
             </div>
           </div>
