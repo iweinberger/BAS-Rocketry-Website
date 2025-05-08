@@ -8,6 +8,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import NavBar from '../components/NavBar'
+import Head from 'next/head';
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -175,6 +176,11 @@ export default function Home() {
 
   return (
     <main>
+      <Head>
+        <meta name="robots" content="noindex, noimageindex, nofollow" />
+        <meta name="googlebot" content="noindex, noimageindex, nofollow" />
+        <meta name="googlebot-image" content="noindex, noimageindex, nofollow" />
+      </Head>
       {showHiddenMessage && (
         <div className="hidden-message" onClick={closeHiddenMessage}>
           <div className="hidden-message-content">
@@ -260,7 +266,7 @@ export default function Home() {
             <h3>Recovery Lead</h3>
             <div className="member-image">
               <Image
-                src="/team/placeholder.png"
+                src="https://sammy-photo.pages.dev/IMG_3988.png"
                 alt="Sammy Simon"
                 width={200}
                 height={200}

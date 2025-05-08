@@ -1,0 +1,64 @@
+User-agent: *
+Allow: /
+Disallow: /team/
+Disallow: /team/*
+Disallow: /team/*.png
+
+User-agent: Googlebot
+Disallow: /team/*.jpg$
+Disallow: /team/*.jpeg$
+Disallow: /team/*.png$
+Disallow: /team/*.gif$
+Disallow: /team/*.webp$
+Disallow: /team/*
+Disallow: /team/
+
+User-agent: Googlebot-Image
+Disallow: /team/*.jpg$
+Disallow: /team/*.jpeg$
+Disallow: /team/*.png$
+Disallow: /team/*.gif$
+Disallow: /team/*.webp$
+Disallow: /team/*
+Disallow: /team/
+
+
+User-agent: Bingbot
+Disallow: /team/*.png
+Disallow: /team/*.jpg
+Disallow: /team/*.jpeg
+Disallow: /team/*.gif
+Disallow: /team/*
+Disallow: /team/
+
+User-agent: Slurp
+Disallow: /team/*.png
+Disallow: /team/*.jpg
+Disallow: /team/*.jpeg
+Disallow: /team/*.gif
+Disallow: /team/*
+Disallow: /team/
+
+User-agent: DuckDuckBot
+Disallow: /team/*.png
+Disallow: /team/*.jpg
+Disallow: /team/*.jpeg
+Disallow: /team/*.gif
+Disallow: /team/*
+Disallow: /team/
+
+User-agent: Baiduspider
+Disallow: /team/*.png
+Disallow: /team/*.jpg
+Disallow: /team/*.jpeg
+Disallow: /team/*.gif
+Disallow: /team/*
+Disallow: /team/
+
+User-agent: YandexBot
+Disallow: /team/*.png
+Disallow: /team/*.jpg
+Disallow: /team/*.jpeg
+Disallow: /team/*.gif 
+Disallow: /team/*
+Disallow: /team/
