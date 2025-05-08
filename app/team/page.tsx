@@ -211,7 +211,7 @@ export default function Home() {
             <p>Ilan Weinberger</p>
           </div>
           <div className="team-member">
-            <h3>Chief Financial Officer</h3>
+            <h3 style={{ whiteSpace: 'nowrap' }}>Chief Financial Officer</h3>
             <div className="member-image benjamin">
               <Image
                 src="https://ben-photo.pages.dev/IMG_3988.png"
@@ -221,7 +221,7 @@ export default function Home() {
                 className="member-img"
               />
             </div>
-            <p>Benjamin Dahari</p>
+            <p >Benjamin Dahari</p>
           </div>
           <div className="team-member">
             <h3>Propulsion Lead</h3>
