@@ -24,7 +24,7 @@ export default function Home() {
       description: "Our first ever solid engine rocket with TVC",
       eta: "Q3 2025",
       progress: 15,
-      image: "/projects/alpha.png",
+      image: "/logo.png",
       keyPoints: [
         "Advanced telemetry system with real-time data transmission",
         "Target altitude: ~7,000 feet",
@@ -37,7 +37,7 @@ export default function Home() {
       description: "Making our first ever liquid engine rocket",
       eta: "Q2 2026",
       progress: 1,
-      image: "/projects/beta.png",
+      image: "/logo.png",
       keyPoints: [
         "Custom liquid propellant motor design",
         "Basic Liquid Propellant Thrust Vector Control",
@@ -49,7 +49,7 @@ export default function Home() {
       description: "Launching a custom propulsion system in our rocket",
       eta: "Q3 2026",
       progress: 1,
-      image: "/projects/gamma.png",
+      image: "/logo.png",
       keyPoints: [
         "Custom liquid propellant motor design",
         "Thrust vector control system",
