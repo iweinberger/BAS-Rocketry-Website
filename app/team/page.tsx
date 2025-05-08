@@ -201,7 +201,7 @@ export default function Home() {
             <h3>Executive Director</h3>
             <div className="member-image">
               <Image
-                src="/Ilan.png"
+                src="https://ilans-website.pages.dev/IMG_3988.png"
                 alt="Ilan Weinberger"
                 width={200}
                 height={200}
@@ -214,7 +214,7 @@ export default function Home() {
             <h3>Chief Financial Officer</h3>
             <div className="member-image benjamin">
               <Image
-                src="/Ben.png"
+                src="https://ben-photo.pages.dev/IMG_3988.png"
                 alt="Benjamin Dahari"
                 width={200}
                 height={200}
@@ -253,7 +253,7 @@ export default function Home() {
             <h3>Media & Outreach Manager</h3>
             <div className="member-image">
               <Image
-                src="/Ori.png"
+                src="https://ori-photo.pages.dev/IMG_3988.png"
                 alt="Ori Barda"
                 width={200}
                 height={200}
@@ -279,7 +279,7 @@ export default function Home() {
             <h3>Chief Safety Officer</h3>
             <div className="member-image benjamin">
               <Image
-                src="/Raphie.png"
+                src="https://raphi-photos-rocketry.pages.dev/IMG_3988.png"
                 alt="Raphie Sayegh"
                 width={200}
                 height={200}
