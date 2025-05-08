@@ -3,6 +3,7 @@ Allow: /
 Disallow: /team/
 Disallow: /team/*
 Disallow: /team/*.png
+Disallow: /*.png$
 
 User-agent: Googlebot
 Disallow: /team/*.jpg$

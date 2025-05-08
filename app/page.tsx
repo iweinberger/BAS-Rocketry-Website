@@ -8,6 +8,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import Head from 'next/head';
 
 export default function Home() {
   const [formStatus, setFormStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -112,6 +113,11 @@ export default function Home() {
 
   return (
     <main>
+      <Head>
+        <meta name="robots" content="noindex, noimageindex, nofollow" />
+        <meta name="googlebot" content="noindex, noimageindex, nofollow" />
+        <meta name="googlebot-image" content="noindex, noimageindex, nofollow" />
+      </Head>
       {showHiddenMessage && (
         <div className="hidden-message" onClick={closeHiddenMessage}>
           <div className="hidden-message-content">
@@ -158,7 +164,7 @@ export default function Home() {
             <h3>Executive Director</h3>
             <div className="member-image ilan">
               <Image
-                src="/Ilan.png"
+                src="https://ilans-website.pages.dev/IMG_3988.png"
                 alt="Ilan Weinberger"
                 width={200}
                 height={200}
@@ -184,7 +190,7 @@ export default function Home() {
             <h3>Chief Financial Officer</h3>
             <div className="member-image benjamin">
               <Image
-                src="/Ben.png"
+                src="https://ben-photo.pages.dev/IMG_3988.png"
                 alt="Benjamin Dahari"
                 width={200}
                 height={200}
