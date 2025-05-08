@@ -5,7 +5,7 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Head from 'next/head';
@@ -17,6 +17,15 @@ export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showHiddenMessage, setShowHiddenMessage] = useState(false);
   const [typedText, setTypedText] = useState('');
+  const [showDevPopup, setShowDevPopup] = useState(false);
+
+  useEffect(() => {
+    const hasVisited = localStorage.getItem('hasVisited');
+    if (!hasVisited) {
+      setShowDevPopup(true);
+      localStorage.setItem('hasVisited', 'true');
+    }
+  }, []);
 
   const projects = [
     {
@@ -118,6 +127,15 @@ export default function Home() {
         <meta name="googlebot" content="noindex, noimageindex, nofollow" />
         <meta name="googlebot-image" content="noindex, noimageindex, nofollow" />
       </Head>
+      {showDevPopup && (
+        <div className="dev-popup" onClick={() => setShowDevPopup(false)}>
+          <div className="dev-popup-content" onClick={e => e.stopPropagation()}>
+            <button className="close-popup" onClick={() => setShowDevPopup(false)}>&times;</button>
+            <h3>Website Under Development</h3>
+            <p>This website is still under development. Please ignore any issues as they are being actively fixed.</p>
+          </div>
+        </div>
+      )}
       {showHiddenMessage && (
         <div className="hidden-message" onClick={closeHiddenMessage}>
           <div className="hidden-message-content">
