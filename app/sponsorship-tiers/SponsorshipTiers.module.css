@@ -108,6 +108,7 @@
   background: linear-gradient(135deg, #121242, #1a1a5f) !important;
   padding: 0.8rem 2rem;
   border-radius: 30px;
+  position: static;
   color: white !important;
   text-decoration: none;
   font-size: 1.2rem;
@@ -443,23 +444,24 @@
 
 /* Selected States */
 .selectedGold {
-  background: linear-gradient(to right, #d19e1dab, #ffd86ec0, #e3a812c1); /* Gold gradient */
-  border-color: #b8860b;
-  color: #b8860b;
+  background: linear-gradient( to bottom, #d5d7e5, #eee, #d5d7e5) !important;
+  border-color: #666666;
+  color: #666666 !important;
   flex: 1.2; /* Medium size */
 }
 
 .selectedPlatinum {
-  background: linear-gradient(135deg, #f9f4f2, #f2dcdcd3, #e8d4ded6, #f6f0eb, #e4ced4); /* Quartz gradient */
-  border-color: #808080;
-  color: #808080;
-  flex: 1.5; /* Largest */
+  background: linear-gradient(135deg, #e6f9ffc1, #b9f2ffc1);
+  border-color: #b9f2ff;
+  color: #666666;
+  flex: 1.2;
 }
 
 .selectedQuartz {
-  background: linear-gradient(135deg, #e5e4e2, #c0c0c0); /* Metallic gradient */
+  background: linear-gradient( to bottom, #c39738, #deb761, #c39738) !important;
   border-color: #af8d93;
-  color: #af8d93;
+  color: #987323 !important;
+  
   flex: 1; /* Smallest */
 }
 

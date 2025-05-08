@@ -50,21 +50,21 @@ export default function SponsorshipTiers() {
                 className={`${styles.tierCard} ${selectedTier === 'gold' ? styles.selectedGold : ''} ${styles.goldCard}`}
                 onClick={() => handleTierClick('gold')}
               >
-                <h3>Gold</h3>
+                <h3>Platimun</h3>
                 <p>$5000</p>
               </div>
               <div
                 className={`${styles.tierCard} ${selectedTier === 'platinum' ? styles.selectedPlatinum : ''} ${styles.platinumCard}`}
                 onClick={() => handleTierClick('platinum')}
               >
-                <h3>Platinum</h3>
+                <h3>Diamond</h3>
                 <p>$10,000+</p>
               </div>
               <div
                 className={`${styles.tierCard} ${selectedTier === 'quartz' ? styles.selectedQuartz : ''} ${styles.quartzCard}`}
                 onClick={() => handleTierClick('quartz')}
               >
-                <h3>Quartz</h3>
+                <h3>Gold</h3>
                 <p>Less Than $3,000</p>
               </div>
             </div>
@@ -90,7 +90,10 @@ export default function SponsorshipTiers() {
             </div>
           </div>
         </div>
-        <p>All terms are open to negotiation. If you would like a modification of one of these sponsorships please <a className={styles.sublink} href='/#contact'>contact us</a>.</p>
+        <p>Learn More <a className={styles.sublink} href='#tiersTable' onClick={(e) => {
+          e.preventDefault();
+          document.getElementById('tiersTable')?.scrollIntoView({ behavior: 'smooth' });
+        }}><i className="fas fa-arrow-down"></i></a></p>
       </section>
 
       {/* Corporate Sponsorship Section */}
@@ -100,19 +103,19 @@ export default function SponsorshipTiers() {
           <div className={styles.podiumTable}>
             <div className={styles.podiumCol} id={styles.goldCol}>
               <div className={styles.podiumHeader + ' ' + styles.goldHeader}>
-                <div>Platinum</div>
+                <div>Diamond</div>
                 <div className={styles.tierPrice}>$10,000</div>
               </div>
             </div>
             <div className={styles.podiumCol} id={styles.silverCol}>
               <div className={styles.podiumHeader + ' ' + styles.silverHeader}>
-                <div>Gold</div>
+                <div>Platinum</div>
                 <div className={styles.tierPrice}>$5,000</div>
               </div>
             </div>
             <div className={styles.podiumCol} id={styles.bronzeCol}>
               <div className={styles.podiumHeader + ' ' + styles.bronzeHeader}>
-                <div>Quartz</div>
+                <div>Gold</div>
                 <div className={styles.tierPrice}>$3,000</div>
               </div>
             </div>
@@ -170,6 +173,7 @@ export default function SponsorshipTiers() {
           </table>
         </div>
       </section>
+      <p>All terms are open to negotiation. If you would like a modification of one of these sponsorships please <a className={styles.sublink} href='/#contact'>contact us</a>.</p>
 
       {/* Donate Button */}
       <div className={styles.donateButtonContainer}>
