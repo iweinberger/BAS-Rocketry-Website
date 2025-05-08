@@ -50,7 +50,7 @@ export default function SponsorshipTiers() {
                 className={`${styles.tierCard} ${selectedTier === 'gold' ? styles.selectedGold : ''} ${styles.goldCard}`}
                 onClick={() => handleTierClick('gold')}
               >
-                <h3>Platimun</h3>
+                <h3>Platinum</h3>
                 <p>$5000</p>
               </div>
               <div
