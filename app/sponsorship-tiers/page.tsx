@@ -16,19 +16,17 @@ const features = [
   'Collaboration on Rocket Design',
 ];
 
-const gold = [true, 'Large', 'Large', "Large logo + Name + 3 pieces of merch", "All", "Yes - 1 minute", true, true];
-const silver = [true, 'Regular', "Medium", "Logo + 2 pieces of merch", "All", "Yes - 30 seconds", true, "-"];
+const gold = [true, 'Large + On Homepage', 'Large', "Large logo + Name + 3 pieces of merch", "All posts + Logo in the video", "Yes - 1 minute", true, true];
+const silver = [true, 'Regular', "Medium", "Logo + 2 pieces of merch", "All posts - Description only", "Yes - 30 seconds", true, "-"];
 const bronze = [true, 'Regular', "Small", "Name Only", "Relevant Posts Only", "-", "Name Only", "-"];
 
 const individualFeatures = [
-  '',
-  '',
   'Name on rocket',
   'Exclusive updates',
 ];
 
-const individualPlus = [true, true, true, "Frequent Photos + Videos"];
-const individual = ["-", "-", "-", "Monthly Email Updates"];
+const individualPlus = ["Launch Canada Rocket", "Frequent Photos + Videos"];
+const individual = ["One preliminary rocket", "Monthly Email Updates"];
 
 export default function SponsorshipTiers() {
   const [selectedTier, setSelectedTier] = useState<string | null>('platinum');
@@ -142,6 +140,7 @@ export default function SponsorshipTiers() {
           </table>
         </div>
       </section>
+      <p>All terms are open to negotiation. If you would like a modification of one of these sponsorships please <a className={styles.sublink} href='mailto:rocketry@yocstudents.org'>email us</a>.</p>
 
       {/* Individual Support Section */}
       <section className={styles.individualSection}>
@@ -173,7 +172,7 @@ export default function SponsorshipTiers() {
           </table>
         </div>
       </section>
-      <p>All terms are open to negotiation. If you would like a modification of one of these sponsorships please <a className={styles.sublink} href='/#contact'>contact us</a>.</p>
+      <p>All terms are open to negotiation. If you would like a modification of one of these sponsorships please <a className={styles.sublink} href='mailto:rocketry@yocstudents.org'>email us</a>.</p>
 
       {/* Donate Button */}
       <div className={styles.donateButtonContainer}>

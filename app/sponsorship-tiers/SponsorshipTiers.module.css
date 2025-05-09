@@ -187,7 +187,7 @@
 
 /* Individual Section */
 .individualSection {
-  padding: 4rem 2rem;
+  padding: 2rem 1rem;
   background-color: #f9f9f9;
 }
 
@@ -759,7 +759,9 @@
 .individualHeader {
   background: linear-gradient(to right, #121242, #1a1a5f) !important;
   color: #fff !important;
-  border-bottom: 4px solid #121242 !important;
+  border-bottom: 4px solid #4B0082 !important;
+  border-radius: 16px 16px 0 0;
+  border: none !important;
 }
 
 .individualPlusHeader .tierPrice,
