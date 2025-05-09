@@ -65,7 +65,7 @@ export default function SponsorshipTiers() {
                 onClick={() => handleTierClick('quartz')}
               >
                 <h3>Gold</h3>
-                <p>Less Than $3,000</p>
+                <p>$3,000</p>
               </div>
             </div>
           </div>
