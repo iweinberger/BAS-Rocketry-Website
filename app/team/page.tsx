@@ -196,97 +196,111 @@ export default function Home() {
       </section>
 
       <section className="team">
-        <div className="team-grid">
-          <div className="team-member">
-            <h3>Executive Director</h3>
-            <div className="member-image">
+        <div className="team-grid improved-team-grid">
+          <div className="team-member improved-team-member">
+            <div className="improved-member-image">
               <Image
                 src="https://ilans-website.pages.dev/IMG_3988.png"
                 alt="Ilan Weinberger"
-                width={200}
-                height={200}
+                width={180}
+                height={180}
                 className="member-img"
               />
             </div>
-            <p>Ilan Weinberger</p>
+            <div className="improved-member-info">
+              <h3>Ilan Weinberger</h3>
+              <span className="improved-member-role">Executive Director</span>
+            </div>
           </div>
-          <div className="team-member">
-            <h3 style={{ whiteSpace: 'nowrap' }}>Chief Financial Officer</h3>
-            <div className="member-image benjamin">
+          <div className="team-member improved-team-member">
+            <div className="improved-member-image">
               <Image
                 src="https://ben-photo.pages.dev/IMG_3988.png"
                 alt="Benjamin Dahari"
-                width={200}
-                height={200}
+                width={180}
+                height={180}
                 className="member-img"
               />
             </div>
-            <p >Benjamin Dahari</p>
+            <div className="improved-member-info">
+              <h3>Benjamin Dahari</h3>
+              <span className="improved-member-role">Chief Financial Officer</span>
+            </div>
           </div>
-          <div className="team-member">
-            <h3>Propulsion Lead</h3>
-            <div className="member-image">
+          <div className="team-member improved-team-member">
+            <div className="improved-member-image">
               <Image
                 src="https://noam-photo.pages.dev/IMG_3988.jpg"
                 alt="Noam Wolfe"
-                width={200}
-                height={200}
+                width={180}
+                height={180}
                 className="member-img"
               />
-            </div> 
-            <p>Noam Wolfe</p>
+            </div>
+            <div className="improved-member-info">
+              <h3>Noam Wolfe</h3>
+              <span className="improved-member-role">Propulsion Lead</span>
+            </div>
           </div>
-          <div className="team-member">
-            <h3>Avionics Lead</h3>
-            <div className="member-image">
+          <div className="team-member improved-team-member">
+            <div className="improved-member-image">
               <Image
                 src="https://yekuts-photo.pages.dev/IMG_3988.jpg"
                 alt="Yekutiel Yunger"
-                width={200}
-                height={200}
+                width={180}
+                height={180}
                 className="member-img"
               />
             </div>
-            <p>Yekutiel Yunger</p>
+            <div className="improved-member-info">
+              <h3>Yekutiel Yunger</h3>
+              <span className="improved-member-role">Avionics Lead</span>
+            </div>
           </div>
-          <div className="team-member">
-            <h3>Media & Outreach Manager</h3>
-            <div className="member-image">
+          <div className="team-member improved-team-member">
+            <div className="improved-member-image">
               <Image
                 src="https://ori-photo.pages.dev/IMG_3988.png"
                 alt="Ori Barda"
-                width={200}
-                height={200}
+                width={180}
+                height={180}
                 className="member-img"
               />
             </div>
-            <p>Ori Barda</p>
+            <div className="improved-member-info">
+              <h3>Ori Barda</h3>
+              <span className="improved-member-role">Media & Outreach Manager</span>
+            </div>
           </div>
-          <div className="team-member">
-            <h3>Recovery Lead</h3>
-            <div className="member-image">
+          <div className="team-member improved-team-member">
+            <div className="improved-member-image">
               <Image
                 src="https://sammy-photo.pages.dev/IMG_3988.png"
                 alt="Sammy Simon"
-                width={200}
-                height={200}
+                width={180}
+                height={180}
                 className="member-img"
               />
             </div>
-            <p>Sammy Simon</p>
+            <div className="improved-member-info">
+              <h3>Sammy Simon</h3>
+              <span className="improved-member-role">Recovery Lead</span>
+            </div>
           </div>
-          <div className="team-member">
-            <h3>Chief Safety Officer</h3>
-            <div className="member-image benjamin">
+          <div className="team-member improved-team-member">
+            <div className="improved-member-image">
               <Image
                 src="https://raphi-photos-rocketry.pages.dev/IMG_3988.png"
                 alt="Raphie Sayegh"
-                width={200}
-                height={200}
+                width={180}
+                height={180}
                 className="member-img"
               />
             </div>
-            <p>Raphie Sayegh</p>
+            <div className="improved-member-info">
+              <h3>Raphie Sayegh</h3>
+              <span className="improved-member-role">Chief Safety Officer</span>
+            </div>
           </div>
         </div>
       </section>
