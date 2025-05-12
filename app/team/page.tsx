@@ -227,7 +227,7 @@ export default function Home() {
             <h3>Propulsion Lead</h3>
             <div className="member-image">
               <Image
-                src="/team/placeholder.png"
+                src="https://noam-photo.pages.dev/IMG_3988.jpg"
                 alt="Noam Wolfe"
                 width={200}
                 height={200}
