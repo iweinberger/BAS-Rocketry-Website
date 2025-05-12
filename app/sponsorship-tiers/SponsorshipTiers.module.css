@@ -69,7 +69,7 @@
 
 .individualTiers .tierCard:first-child {
   top: 15px;
-  transform: scale(1.2);
+  transform: scale(1.05);
   z-index: 2;
 }
 
@@ -80,12 +80,12 @@
 }
 
 .individualTiers .tierCard:hover {
-  transform: translateY(-10px) scale(1.05);
+  transform: translateY(-10px) scale(1);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
 }
 
 .individualTiers .tierCard:first-child:hover {
-  transform: translateY(-10px) scale(1.25);
+  transform: translateY(-10px) scale(1.05);
 }
 
 .individualTiers .tierCard:last-child:hover {
@@ -705,24 +705,24 @@
 }
 
 #goldCol .podiumHeader {
-  background: #FFD700;
-  color: #b8860b;
+  background: #e0e0e0;
+  color: #666;
   border-bottom: 4px solid #b8860b;
   height: 110px;
   z-index: 3;
 }
 
 #silverCol .podiumHeader {
-  background: #e0e0e0;
-  color: #666;
+  background: #CD7F32;
+  color: #CD7F32;
   border-bottom: 4px solid #888;
   height: 90px;
   z-index: 2;
 }
 
 #bronzeCol .podiumHeader {
-  background: #CD7F32;
-  color: #CD7F32;
+  background: #e0e0e0;
+  color: #666;
   border-bottom: 4px solid #CD7F32;
   height: 70px;
   z-index: 1;
