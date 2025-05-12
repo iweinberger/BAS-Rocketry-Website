@@ -240,7 +240,7 @@ export default function Home() {
             <h3>Avionics Lead</h3>
             <div className="member-image">
               <Image
-                src="/logo.png"
+                src="https://yekuts-photo.pages.dev/IMG_3988.jpg"
                 alt="Yekutiel Yunger"
                 width={200}
                 height={200}
