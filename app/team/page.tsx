@@ -192,7 +192,7 @@ export default function Home() {
       )}
       <NavBar />
       <section className="sponsors-hero">
-        <h1>Meet Our Team</h1>
+        <h1>Meet Our Team Leads</h1>
       </section>
 
       <section className="team">
