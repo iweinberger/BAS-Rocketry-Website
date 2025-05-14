@@ -357,19 +357,19 @@
 .platinumCard {
   position: relative;
   height: 350px;
-  border-color: #8080809a;
+  border-color: #a3daea;
 }
 
 .goldCard {
   position: relative;
   height: 300px;
-  border-color: #b8860b9a;
+  border-color: #6666669a;
 }
 
 .quartzCard {
   position: relative;
   height: 250px;
-  border-color: #af8d939a;
+  border-color: #b8860b9a;
 }
 
 .indPlusCard {
@@ -444,22 +444,25 @@
 
 /* Selected States */
 .selectedGold {
-  background: linear-gradient( to bottom, #d5d7e5, #eee, #d5d7e5) !important;
+  background: linear-gradient(-20deg, #d5d7e5, #eee, #d5d7e5) !important;
   border-color: #666666;
   color: #666666 !important;
   flex: 1.2; /* Medium size */
 }
 
 .selectedPlatinum {
-  background: linear-gradient(135deg, #e6f9ffc1, #b9f2ffc1);
-  border-color: #b9f2ff;
-  color: #666666;
+  background-image: url("data:image/svg+xml,%3Csvg%20width%3D'400'%20height%3D'400'%20xmlns%3D'http%3A//www.w3.org/2000/svg'%3E%3Cpolygon%20points%3D'0%2C0%20100%2C50%200%2C100'%20fill%3D'%23e0f2ff'/%3E%3Cpolygon%20points%3D'100%2C50%20200%2C0%20150%2C100'%20fill%3D'%23d0e7f9'/%3E%3Cpolygon%20points%3D'0%2C100%20100%2C50%20100%2C150'%20fill%3D'%23f0f8ff'/%3E%3Cpolygon%20points%3D'100%2C150%20200%2C100%20150%2C200'%20fill%3D'%23cbe4f6'/%3E%3Cpolygon%20points%3D'200%2C0%20300%2C50%20250%2C100'%20fill%3D'%23e6f3ff'/%3E%3Cpolygon%20points%3D'250%2C100%20300%2C50%20350%2C150'%20fill%3D'%23bfdcf1'/%3E%3Cpolygon%20points%3D'100%2C150%2050%2C250%20150%2C200'%20fill%3D'%23dceefa'/%3E%3Cpolygon%20points%3D'150%2C200%20250%2C100%20250%2C200'%20fill%3D'%23e8f4fd'/%3E%3Cpolygon%20points%3D'300%2C50%20400%2C0%20400%2C100'%20fill%3D'%23d6ecfb'/%3E%3Cpolygon%20points%3D'0%2C200%20100%2C150%2050%2C250'%20fill%3D'%23e1f0fc'/%3E%3Cpolygon%20points%3D'50%2C250%20150%2C300%20100%2C350'%20fill%3D'%23d4e9f9'/%3E%3Cpolygon%20points%3D'200%2C300%20300%2C250%20250%2C350'%20fill%3D'%23c6e0f5'/%3E%3Cpolygon%20points%3D'300%2C250%20400%2C200%20400%2C300'%20fill%3D'%23ebf5fe'/%3E%3Cpolygon%20points%3D'0%2C300%20100%2C350%2050%2C400'%20fill%3D'%23f5faff'/%3E%3Cpolygon%20points%3D'150%2C300%20250%2C350%20200%2C400'%20fill%3D'%23d2e8f8'/%3E%3Cpolygon%20points%3D'250%2C350%20350%2C300%20300%2C400'%20fill%3D'%23c1ddf3'/%3E%3Cpolygon%20points%3D'350%2C300%20400%2C300%20400%2C400'%20fill%3D'%23e3f1fc'/%3E%3Cpolygon%20points%3D'100%2C350%20200%2C400%20150%2C400'%20fill%3D'%23d7eafb'/%3E%3Cpolygon%20points%3D'0%2C100%200%2C200%20100%2C150'%20fill%3D'%23ecf6ff'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 40px 40px;
+  opacity: 60%;
+  border-color: #354449;
+  color: #354449;
   flex: 1.2;
 }
 
 .selectedQuartz {
-  background: linear-gradient( to bottom, #c39738, #deb761, #c39738) !important;
-  border-color: #af8d93;
+  background: linear-gradient(-20deg, #c39738e4, #deb761e4, #c39738e4) !important;
+  border-color: #987323;
   color: #987323 !important;
   
   flex: 1; /* Smallest */
