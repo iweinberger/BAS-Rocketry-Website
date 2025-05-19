@@ -296,7 +296,7 @@ export default function Home() {
           <div className="contact-info">
             <div className="info-item">
               <i className="fas fa-envelope"></i>
-              <p>rocketry@bastoronto.org</p>
+              <p>info@basrocketry.com</p>
             </div>
             <div className="social-links">
               <a href="https://www.instagram.com/bas_rocketry/"><i className="fab fa-instagram"></i></a>
