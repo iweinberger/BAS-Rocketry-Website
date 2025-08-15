@@ -119,28 +119,16 @@ export default function Home() {
       ]
     },
     {
-      title: "Project Fluid",
-      description: "Making our first ever liquid engine rocket",
-      eta: "Q2 2026",
-      progress: 1,
+      title: "From Scratch Solid Rocket Motor",
+      description: "Making our first substantial solid rocket motor from scratch.",
+      eta: "Q4 2025",
+      progress: 5,
       image: "/logo.png",
       journalFile: "fluid.txt",
       gallery: [
         {
           src: "/projects/galleries/fluid/design.jpg",
           alt: "Engine Design",
-          width: 800,
-          height: 600
-        },
-        {
-          src: "/projects/galleries/fluid/prototype.jpg",
-          alt: "First Prototype",
-          width: 800,
-          height: 600
-        },
-        {
-          src: "/projects/galleries/fluid/testing.jpg",
-          alt: "Test Setup",
           width: 800,
           height: 600
         }

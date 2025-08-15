@@ -1,9 +1,0 @@
-2025-01-10|milestone|Project Fluid officially kicked off. Initial research phase for liquid propellant systems begun.
-2025-02-05|development|Completed feasibility study for liquid oxygen and kerosene propellant combination.
-2025-03-12|development|Initial engine chamber design sketches completed. Focus on combustion efficiency optimization.
-2025-04-20|milestone|Safety protocols established for liquid propellant handling and testing procedures.
-2025-05-15|development|First prototype injector design finalized. Testing scheduled for next month.
-2025-06-08|development|Cooling system requirements calculated. Regenerative cooling approach selected for engine design.
-2025-07-03|development|Thrust chamber manufacturing process defined. Working with local machine shop for prototyping.
-2025-08-01|testing|Initial CFD simulations completed. Combustion chamber geometry showing promising results.
-2025-08-25|event|Upcoming static fire test scheduled for September 2025.
