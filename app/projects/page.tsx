@@ -64,9 +64,8 @@ export default function Home() {
         }
       ],
       keyPoints: [
-        "Custom liquid propellant motor design",
-        "Basic Liquid Propellant Thrust Vector Control",
-        "Advanced recovery system"
+        "Design, build, and test our own solid rocket motor casing",
+        "Practice mixing and working with solid propellants"
       ]
     },
     {
