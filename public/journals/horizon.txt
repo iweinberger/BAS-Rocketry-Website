@@ -1,0 +1,14 @@
+2024-12-15|development|Initial PCB design completed. Started working on the main flight computer board layout with focus on sensor integration.
+2024-12-20|testing|Successfully tested first prototype of the barometric pressure sensor module. Altitude readings are accurate within 2 feet.
+2025-01-08|testing|Completed initial testing of the IMU integration. Gyroscope and accelerometer data collection is stable.
+2025-01-15|milestone|Major breakthrough with the telemetry system. Real-time data transmission working over 2km range.
+2025-02-03|development|Thrust vector control servo integration completed. Initial ground tests show 5-degree correction capability.
+2025-02-18|testing|Recovery system deployment mechanism tested successfully. Parachute deployment timing is now automated.
+2025-03-05|development|Battery management system optimized. Flight time extended to 45 minutes of continuous operation.
+2025-03-20|development|GPS tracking module integrated. Position accuracy improved to within 3 meters.
+2025-04-10|testing|Completed vibration testing. All components remain functional under high-stress launch conditions.
+2025-05-02|milestone|Software control algorithms finalized. Auto-pilot functionality now operational.
+2025-06-15|testing|Final integration testing phase begun. All subsystems working together seamlessly.
+2025-07-22|milestone|Pre-launch checklist completed. Ready for first test flight pending weather conditions.
+2025-08-10|event|Flight computer passed all safety certifications. Launch preparations underway.
+2025-08-20|event|Scheduled first test flight - Weather permitting launch window opens.

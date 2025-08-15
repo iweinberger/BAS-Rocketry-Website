@@ -18,6 +18,8 @@ export default function Home() {
   const [showHiddenMessage, setShowHiddenMessage] = useState(false);
   const [typedText, setTypedText] = useState('');
   const [showDevPopup, setShowDevPopup] = useState(false);
+  const [showJournal, setShowJournal] = useState(false);
+  const [journalEntries, setJournalEntries] = useState<Array<{date: string, type: string, entry: string}>>([]);
 
   useEffect(() => {
     const hasVisited = localStorage.getItem('hasVisited');
@@ -27,13 +29,21 @@ export default function Home() {
     }
   }, []);
 
+  // Cleanup body overflow on unmount
+  useEffect(() => {
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, []);
+
   const projects = [
     {
-      title: "Initial Rocket",
-      description: "Our first ever solid engine rocket with TVC",
+      title: "Horizon Flight Computer Development",
+      description: "Designing, soldering, and testing our very own avionics board from scratch.",
       eta: "Q3 2025",
-      progress: 15,
-      image: "/logo.png",
+      progress: 80,
+      image: "https://www.horizonavionics.org/horizonlogo.svg",
+      journalFile: "horizon.txt",
       keyPoints: [
         "Advanced telemetry system with real-time data transmission",
         "Target altitude: ~7,000 feet",
@@ -47,6 +57,7 @@ export default function Home() {
       eta: "Q2 2026",
       progress: 1,
       image: "/logo.png",
+      journalFile: "fluid.txt",
       keyPoints: [
         "Custom liquid propellant motor design",
         "Basic Liquid Propellant Thrust Vector Control",
@@ -59,6 +70,8 @@ export default function Home() {
       eta: "Q3 2026",
       progress: 1,
       image: "/logo.png",
+      journalFile: "endgame.txt",
+      comingSoon: true,
       keyPoints: [
         "Custom liquid propellant motor design",
         "Thrust vector control system",
@@ -107,11 +120,92 @@ export default function Home() {
   const openProjectModal = (index: number) => {
     setSelectedProject(index);
     setIsModalOpen(true);
+    setShowJournal(false);
+    setJournalEntries([]);
+    // Disable body scrolling
+    document.body.style.overflow = 'hidden';
   };
 
   const closeProjectModal = () => {
     setIsModalOpen(false);
     setSelectedProject(null);
+    setShowJournal(false);
+    setJournalEntries([]);
+    // Re-enable body scrolling
+    document.body.style.overflow = 'unset';
+  };
+
+  const loadJournalData = async (journalFile: string) => {
+    try {
+      const response = await fetch(`/journals/${journalFile}`);
+      const text = await response.text();
+      const entries = text.split('\n')
+        .filter(line => line.trim())
+        .map(line => {
+          const parts = line.split('|');
+          if (parts.length >= 3) {
+            const [date, type, ...entryParts] = parts;
+            return {
+              date: date.trim(),
+              type: type.trim(),
+              entry: entryParts.join('|').trim()
+            };
+          } else {
+            // Fallback for old format
+            const [date, ...entryParts] = parts;
+            return {
+              date: date.trim(),
+              type: 'development',
+              entry: entryParts.join('|').trim()
+            };
+          }
+        })
+        .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+      setJournalEntries(entries);
+    } catch (error) {
+      console.error('Failed to load journal data:', error);
+      setJournalEntries([]);
+    }
+  };
+
+  const toggleJournal = () => {
+    if (!showJournal && selectedProject !== null) {
+      loadJournalData(projects[selectedProject].journalFile);
+    }
+    setShowJournal(!showJournal);
+    
+    // Auto-scroll to journal section and then to bottom after content loads
+    if (!showJournal) {
+      setTimeout(() => {
+        const journalSection = document.querySelector('.journal-section');
+        if (journalSection) {
+          journalSection.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'start'
+          });
+          
+          // Scroll to bottom of journal entries after another brief delay
+          setTimeout(() => {
+            const journalEntries = document.querySelector('.journal-entries');
+            if (journalEntries) {
+              journalEntries.scrollTop = journalEntries.scrollHeight;
+            }
+          }, 300);
+        }
+      }, 100);
+    }
+  };
+
+  const getEntryTypeStyle = (type: string) => {
+    const styles = {
+      development: { color: '#64B5F6', icon: 'wrench', borderColor: '#64B5F6' }, // Light blue
+      testing: { color: '#81C784', icon: 'flask', borderColor: '#81C784' }, // Light green
+      milestone: { color: '#FFB74D', icon: 'trophy', borderColor: '#FFB74D' }, // Light orange
+      event: { color: '#BA68C8', icon: 'calendar', borderColor: '#BA68C8' }, // Light purple
+      video: { color: '#F06292', icon: 'video', borderColor: '#F06292' }, // Light pink
+      default: { color: '#90CAF9', icon: 'edit', borderColor: '#90CAF9' } // Light blue
+    };
+    return styles[type as keyof typeof styles] || styles.default;
   };
 
   const closeHiddenMessage = (e: React.MouseEvent) => {
@@ -227,22 +321,37 @@ export default function Home() {
         <h2>Our Rocketry Plans</h2>
         <div className="project-grid">
           {projects.map((project, index) => (
-            <div key={index} className="project-card" onClick={() => openProjectModal(index)}>
-              <div className="project-image">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  width={400}
-                  height={200}
-                  className="project-img"
-                />
-              </div>
-              <p>{project.description}</p>
-              <div className="project-title">{project.title}</div>
-              <div className="project-eta">ETA: {project.eta}</div>
-              <div className="progress-bar">
-                <div className="progress" style={{ width: `${project.progress}%` }}></div>
-              </div>
+            <div 
+              key={index} 
+              className={`project-card ${project.comingSoon ? 'coming-soon' : ''}`} 
+              onClick={() => !project.comingSoon && openProjectModal(index)}
+            >
+              {project.comingSoon ? (
+                <div className="coming-soon-content">
+                  <div className="coming-soon-icon">
+                    <i className="fas fa-rocket"></i>
+                  </div>
+                  <div className="coming-soon-text">Coming Soon</div>
+                </div>
+              ) : (
+                <>
+                  <div className="project-image">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      width={400}
+                      height={200}
+                      className="project-img"
+                    />
+                  </div>
+                  <p>{project.description}</p>
+                  <div className="project-title">{project.title}</div>
+                  <div className="project-eta">ETA: {project.eta}</div>
+                  <div className="progress-bar">
+                    <div className="progress" style={{ width: `${project.progress}%` }}></div>
+                  </div>
+                </>
+              )}
             </div>
           ))}
         </div>
@@ -269,6 +378,50 @@ export default function Home() {
                 </ul>
               </div>
               <div className="eta">Estimated Completion: {projects[selectedProject].eta}</div>
+              
+              <div className="journal-section">
+                <button className="journal-toggle-btn" onClick={toggleJournal}>
+                  {showJournal ? 'Hide Project Journal' : 'View Project Journal'}
+                </button>
+                
+                {showJournal && (
+                  <div className="project-journal">
+                    <h3>Development Journal</h3>
+                    <div className="journal-entries">
+                      {journalEntries.length > 0 ? (
+                        journalEntries.map((entry, idx) => {
+                          const typeStyle = getEntryTypeStyle(entry.type);
+                          return (
+                            <div 
+                              key={idx} 
+                              className="journal-entry"
+                              style={{ borderLeftColor: typeStyle.borderColor }}
+                            >
+                              <div 
+                                className="journal-date"
+                                style={{ color: typeStyle.color }}
+                              >
+                                <i className={`fas fa-${typeStyle.icon} entry-icon`} style={{ color: typeStyle.color }}></i>
+                                {entry.date}
+                                <span className="entry-type" style={{ 
+                                  color: typeStyle.color,
+                                  backgroundColor: `${typeStyle.color}20`,
+                                  borderColor: typeStyle.color
+                                }}>
+                                  {entry.type.charAt(0).toUpperCase() + entry.type.slice(1)}
+                                </span>
+                              </div>
+                              <div className="journal-content">{entry.entry}</div>
+                            </div>
+                          );
+                        })
+                      ) : (
+                        <div className="no-entries">No journal entries available.</div>
+                      )}
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         )}

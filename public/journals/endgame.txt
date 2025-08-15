@@ -1,0 +1,9 @@
+2025-02-01|milestone|Project End Game conceptual design phase initiated. Ambitious goals set for fully autonomous rocket system.
+2025-03-15|development|Requirements gathering completed. Auto-landing system will be the most challenging component.
+2025-04-22|development|Initial research into grid fin design for aerodynamic control during descent phase.
+2025-05-30|development|Preliminary studies on advanced guidance algorithms for precision landing capability.
+2025-06-18|development|Thrust vector control system specifications drafted. Multi-axis control system required.
+2025-07-10|development|Advanced avionics package design begun. Integration with custom flight computer planned.
+2025-08-05|development|Landing leg mechanism concepts under development. Retractable design preferred for aerodynamics.
+2025-09-01|event|Team recruitment drive for advanced propulsion specialists starting next month.
+2025-10-15|video|Upcoming documentary feature on autonomous landing systems in development.

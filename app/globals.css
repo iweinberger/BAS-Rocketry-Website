@@ -390,22 +390,81 @@ body {
 
 .project-card .project-image {
     height: 200px;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.1);
     border-radius: 8px;
     margin-bottom: 15px;
     position: relative;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .project-img {
     width: 100% !important;
     height: 100% !important;
-    object-fit: cover;
+    object-fit: contain;
+    object-position: center;
     transition: transform 0.3s ease;
 }
 
 .project-card:hover .project-img {
     transform: scale(1.05);
+}
+
+.project-card.coming-soon {
+    background: linear-gradient(135deg, rgba(19, 19, 66, 0.8), rgba(42, 42, 84, 0.7));
+    border: 2px none rgba(255, 255, 255, 0.2);
+    cursor: default;
+    position: relative;
+}
+
+.project-card.coming-soon:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.coming-soon-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+    padding: 3rem 1rem;
+}
+
+.coming-soon-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    color: rgba(200, 200, 200, 0.8);
+    animation: float 3s ease-in-out infinite;
+}
+
+.coming-soon-icon i {
+    transform: rotate(-45deg);
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px) rotate(-45deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(-45deg);
+    }
+}
+
+.coming-soon-text {
+    font-size: 1.8rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, rgba(200, 200, 200, 0.9), rgba(200, 200, 200, 0.6));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .project-card p {
@@ -456,10 +515,11 @@ body {
     align-items: center;
     z-index: 1000;
     padding: 20px;
+    backdrop-filter: blur(5px);
 }
 
 .modal-content {
-    background: #1a1a1a;
+    background: rgba(19, 19, 66, 1);
     border-radius: 15px;
     padding: 30px;
     max-width: 600px;
@@ -541,6 +601,147 @@ body {
     font-size: 1.1em;
     margin-top: 20px;
     text-align: center;
+}
+
+/* Journal Section */
+.journal-section {
+    margin-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 20px;
+}
+
+.journal-toggle-btn {
+    background: linear-gradient(135deg, #4CAF50, #8BC34A);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.journal-toggle-btn:hover {
+    background: linear-gradient(135deg, #45a049, #7cb342);
+    transform: translateY(-2px);
+}
+
+.project-journal {
+    margin-top: 20px;
+}
+
+.project-journal h3 {
+    color: #fff;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.journal-entries {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 10px;
+    scroll-behavior: smooth;
+}
+
+.journal-entries::-webkit-scrollbar {
+    width: 8px;
+}
+
+.journal-entries::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.journal-entries::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+}
+
+.journal-entries::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.journal-entry {
+    background: rgba(255, 255, 255, 0.05);
+    border-left: 4px solid #4CAF50;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.journal-entry:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.journal-date {
+    color: #90CAF9;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.entry-icon {
+    font-size: 0.9rem;
+    min-width: 16px;
+    text-align: center;
+}
+
+.entry-type {
+    font-size: 0.75rem;
+    padding: 3px 8px;
+    border-radius: 12px;
+    margin-left: auto;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+    border: 1px solid;
+    backdrop-filter: blur(10px);
+}
+
+.journal-content {
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+.no-entries {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.6);
+    font-style: italic;
+    padding: 40px 20px;
+}
+
+/* Responsive adjustments for journal */
+@media (max-width: 768px) {
+    .journal-date {
+        font-size: 0.8rem;
+        gap: 6px;
+    }
+    
+    .entry-type {
+        font-size: 0.7rem;
+        padding: 2px 6px;
+    }
+    
+    .entry-icon {
+        font-size: 0.8rem;
+        min-width: 14px;
+    }
+    
+    .journal-content {
+        font-size: 0.9rem;
+    }
 }
 
 /* Contact Section */
