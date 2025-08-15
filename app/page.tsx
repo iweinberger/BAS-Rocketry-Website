@@ -59,9 +59,34 @@ export default function Home() {
     const hasVisited = localStorage.getItem('hasVisited');
     if (!hasVisited) {
       setShowDevPopup(true);
+      document.body.style.overflow = 'hidden';
       localStorage.setItem('hasVisited', 'true');
     }
   }, []);
+
+  // Handle dev popup body scroll prevention
+  useEffect(() => {
+    if (showDevPopup) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      // Only restore scrolling if no other modals are open
+      if (!isModalOpen && !showHiddenMessage) {
+        document.body.style.overflow = 'unset';
+      }
+    }
+  }, [showDevPopup, isModalOpen, showHiddenMessage]);
+
+  // Handle hidden message body scroll prevention
+  useEffect(() => {
+    if (showHiddenMessage) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      // Only restore scrolling if no other modals are open
+      if (!isModalOpen && !showDevPopup) {
+        document.body.style.overflow = 'unset';
+      }
+    }
+  }, [showHiddenMessage, isModalOpen, showDevPopup]);
 
   // Cleanup body overflow on unmount
   useEffect(() => {
@@ -182,6 +207,8 @@ export default function Home() {
   const openProjectModal = (index: number) => {
     setSelectedProject(index);
     setIsModalOpen(true);
+    // Prevent background scrolling
+    document.body.style.overflow = 'hidden';
   };
 
   const closeProjectModal = () => {
@@ -190,6 +217,8 @@ export default function Home() {
     setShowGallery(false);
     setShowJournal(false);
     setJournalEntries([]);
+    // Re-enable background scrolling
+    document.body.style.overflow = 'unset';
   };
 
 
@@ -229,6 +258,22 @@ export default function Home() {
     }
   };
 
+  const closeDevPopup = () => {
+    setShowDevPopup(false);
+    // Only restore scrolling if no other modals are open
+    if (!isModalOpen && !showHiddenMessage) {
+      document.body.style.overflow = 'unset';
+    }
+  };
+
+  const closeHiddenMessageDirectly = () => {
+    setShowHiddenMessage(false);
+    // Only restore scrolling if no other modals are open
+    if (!isModalOpen && !showDevPopup) {
+      document.body.style.overflow = 'unset';
+    }
+  };
+
   return (
     <main>
       <Head>
@@ -237,9 +282,9 @@ export default function Home() {
         <meta name="googlebot-image" content="noindex, noimageindex, nofollow" />
       </Head>
       {showDevPopup && (
-        <div className="dev-popup" onClick={() => setShowDevPopup(false)}>
+        <div className="dev-popup" onClick={closeDevPopup}>
           <div className="dev-popup-content" onClick={e => e.stopPropagation()}>
-            <button className="close-popup" onClick={() => setShowDevPopup(false)}>&times;</button>
+            <button className="close-popup" onClick={closeDevPopup}>&times;</button>
             <h3>Website Under Development</h3>
             <p>This website is still under development. Please ignore any issues as they are being actively fixed.</p>
           </div>
@@ -248,7 +293,7 @@ export default function Home() {
       {showHiddenMessage && (
         <div className="hidden-message" onClick={closeHiddenMessage}>
           <div className="hidden-message-content">
-            <button className="close-hidden-message" onClick={() => setShowHiddenMessage(false)}>&times;</button>
+            <button className="close-hidden-message" onClick={closeHiddenMessageDirectly}>&times;</button>
             <h3>Welcome to the club!</h3>
             <p>Email us at <a href="mailto:rocketry@bastoronto.org">rocketry@bastoronto.org</a>, we would love to hear and work with you!</p>
           </div>
@@ -381,6 +426,22 @@ export default function Home() {
                                       e.stopPropagation();
                                       openProjectModal(index);
                                       setShowGallery(true);
+                                      setTimeout(() => {
+                                        const el = document.getElementById('modal-gallery-section');
+                                        if (el) {
+                                          el.scrollIntoView({ behavior: 'smooth', block: 'end' });
+                                          // Auto scroll to bottom of the modal content after gallery loads
+                                          setTimeout(() => {
+                                            const modalContent = document.querySelector('.modal-content');
+                                            if (modalContent) {
+                                              modalContent.scrollTo({
+                                                top: modalContent.scrollHeight,
+                                                behavior: 'smooth'
+                                              });
+                                            }
+                                          }, 300);
+                                        }
+                                      }, 200);
                                     }}
                                   >
                                     <i className="fas fa-images"></i>
@@ -434,7 +495,27 @@ export default function Home() {
                 {projects[selectedProject].gallery && (
                   <button 
                     className={`action-button gallery-button ${showGallery ? 'active' : ''}`}
-                    onClick={() => setShowGallery(!showGallery)}
+                    onClick={() => {
+                      setShowGallery(!showGallery);
+                      setTimeout(() => {
+                        if (!showGallery) {
+                          const el = document.getElementById('modal-gallery-section');
+                          if (el) {
+                            el.scrollIntoView({ behavior: 'smooth', block: 'end' });
+                            // Auto scroll to bottom of the modal content after gallery loads
+                            setTimeout(() => {
+                              const modalContent = document.querySelector('.modal-content');
+                              if (modalContent) {
+                                modalContent.scrollTo({
+                                  top: modalContent.scrollHeight,
+                                  behavior: 'smooth'
+                                });
+                              }
+                            }, 300);
+                          }
+                        }
+                      }, 100);
+                    }}
                   >
                     <i className="fas fa-images"></i>
                     {showGallery ? 'Hide Gallery' : 'View Gallery'}
@@ -449,7 +530,7 @@ export default function Home() {
                   </button>
                   
                   {showGallery && projects[selectedProject].gallery && (
-                    <div className="project-section project-gallery-section">
+                    <div className="project-section project-gallery-section" id="modal-gallery-section">
                       <h3>Project Gallery</h3>
                       <ImageGallery 
                         images={projects[selectedProject].gallery}

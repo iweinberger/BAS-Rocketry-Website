@@ -128,12 +128,22 @@
 }
 
 .sponsorshipTiersPage {
-  padding: 4rem 2rem; /* Reduce top padding to bring content closer to the navbar */
-  text-align: center;
   min-height: 100vh;
   width: 100%;
-  position: relative;
   background-color: #f9f9f9;
+  padding: 0;
+  margin: 0;
+}
+
+/* Global styles for this page */
+.sponsorshipTiersPage :global(body) {
+  background-color: #f9f9f9;
+}
+
+.sponsorshipTiersPage :global(footer) {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  background: linear-gradient(135deg, #131342 0%, #2a2a6a 100%);
 }
 
 /* Corporate Section */
@@ -791,8 +801,10 @@
 
 /* Tier Selection Section */
 .tierSelection {
-  padding: 2rem 2rem; /* Reduce padding to minimize space above the corporate title */
+  background-color: #f9f9f9;
+  padding: 5rem 2rem 2rem;
   text-align: center;
+  width: 100%;
 }
 
 /* Begin Footer Code */
@@ -855,7 +867,7 @@
 .footer-bottom {
   text-align: center;
   padding-top: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(249, 249, 249, 0.1);
   opacity: 0.8;
   font-size: 0.9rem;
 }

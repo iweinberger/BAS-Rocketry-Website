@@ -141,6 +141,8 @@ export default function Home() {
   const openProjectModal = (index: number) => {
     setSelectedProject(index);
     setIsModalOpen(true);
+    // Prevent background scrolling
+    document.body.style.overflow = 'hidden';
   };
 
   const closeProjectModal = () => {
@@ -149,6 +151,8 @@ export default function Home() {
     setShowJournal(false);
     setShowGallery(false);
     setJournalEntries([]);
+    // Re-enable background scrolling
+    document.body.style.overflow = 'unset';
   };
 
   const loadJournalData = async (journalFile: string) => {
@@ -338,6 +342,16 @@ export default function Home() {
                             const gallerySection = document.querySelector('.project-gallery-section');
                             if (gallerySection) {
                               gallerySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                              // Auto scroll to bottom of the modal content after gallery loads
+                              setTimeout(() => {
+                                const modalContent = document.querySelector('.modal-content');
+                                if (modalContent) {
+                                  modalContent.scrollTo({
+                                    top: modalContent.scrollHeight,
+                                    behavior: 'smooth'
+                                  });
+                                }
+                              }, 300);
                             }
                           }, 100);
                         }}
@@ -413,6 +427,16 @@ export default function Home() {
                           const gallerySection = document.querySelector('.project-gallery-section');
                           if (gallerySection) {
                             gallerySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            // Auto scroll to bottom of the modal content after gallery loads
+                            setTimeout(() => {
+                              const modalContent = document.querySelector('.modal-content');
+                              if (modalContent) {
+                                modalContent.scrollTo({
+                                  top: modalContent.scrollHeight,
+                                  behavior: 'smooth'
+                                });
+                              }
+                            }, 300);
                           }
                         }, 100);
                       }

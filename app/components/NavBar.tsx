@@ -134,7 +134,7 @@ export default function NavBar() {
             <div className={`dropdown-menu ${isDonateDropdownOpen ? 'active' : ''}`}>
               <Link href="/donate" className={`dropdown-item ${isActive('/donate') ? 'active' : ''}`}>Donate Now</Link>
               <Link href="/sponsorship-tiers" className={`dropdown-item ${isActive('/sponsorship-tiers') ? 'active' : ''}`}>Sponsorship Tiers</Link>
-              <Link href="/sponsors" className={`dropdown-item ${isActive('/sponsors') ? 'active' : ''}`}>Sponsorship Package</Link>
+              <Link href="/sponsorship-package" className={`dropdown-item ${isActive('/sponsorship-package') ? 'active' : ''}`}>Sponsorship Package</Link>
             </div>
           </div>
         </div>

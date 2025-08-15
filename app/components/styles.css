@@ -1,14 +1,18 @@
 .card-actions {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 10px;
   margin-top: 15px;
   border: none;
+  min-height: 40px; /* Ensure consistent height */
 }
 
 .card-actions button {
   border: none;
   margin: 0;
+  flex: 1; /* Make buttons equal width */
+  max-width: 120px; /* Limit maximum width */
 }
 
 .card-actions::before,
@@ -19,12 +23,16 @@
 .action-button {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 5px;
   padding: 8px 15px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
 }
 
 .gallery-button {
@@ -39,6 +47,7 @@
 
 .action-button:hover {
   opacity: 0.9;
+  transform: translateY(-1px);
 }
 
 .action-button.active {
@@ -47,4 +56,5 @@
 
 .action-button i {
   margin-right: 5px;
+  flex-shrink: 0;
 }
