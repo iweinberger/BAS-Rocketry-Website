@@ -115,7 +115,14 @@ html {
     display: flex;
     align-items: center;
     justify-content: center;
-    text-decoration: none; /* remove underline */
+    text-decoration: none !important; /* force remove underline */
+}
+
+.social-links a:hover,
+.social-links a:focus,
+.social-links a:active,
+.social-links a:visited {
+    text-decoration: none !important;
 }
 
 /* Ensure any contact/info anchors don't show underlines */
@@ -1118,14 +1125,14 @@ footer {
         left: 10px;
         right: 10px;
         width: calc(100% - 20px);
-        background: #3a3b5c;
+        background: #2b2b55;
         border-radius: 20px;
         padding: 16px;
         flex-direction: column;
         gap: 12px;
-        box-shadow: 0 8px 32px rgba(58, 59, 92, 0.4);
+        box-shadow: 0 10px 40px rgba(11, 12, 30, 0.65);
         backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.05);
         opacity: 0;
         visibility: hidden;
         transform: translateY(-20px);
