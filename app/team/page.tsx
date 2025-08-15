@@ -18,6 +18,7 @@ export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showHiddenMessage, setShowHiddenMessage] = useState(false);
   const [typedText, setTypedText] = useState('');
+  const [loadedImages, setLoadedImages] = useState<{[key: string]: boolean}>({});
   const menuRef = useRef<HTMLDivElement>(null);
   const hamburgerRef = useRef<HTMLDivElement>(null);
 
@@ -191,8 +192,10 @@ export default function Home() {
         </div>
       )}
       <NavBar />
-      <section className="sponsors-hero">
-        <h1>Meet Our Team Leads</h1>
+      <section className="team-hero">
+        <div className="hero-content">
+          <h1>Meet Our Team Leads</h1>
+        </div>
       </section>
 
       <section className="team">
@@ -204,7 +207,9 @@ export default function Home() {
                 alt="Ilan Weinberger"
                 width={180}
                 height={180}
-                className="member-img"
+                className={`member-img ${loadedImages['ilan'] ? 'loaded' : 'loading'}`}
+                onLoadingComplete={() => setLoadedImages(prev => ({ ...prev, ilan: true }))}
+                priority
               />
             </div>
             <div className="improved-member-info">
@@ -219,7 +224,9 @@ export default function Home() {
                 alt="Benjamin Dahari"
                 width={180}
                 height={180}
-                className="member-img"
+                className={`member-img ${loadedImages['ben'] ? 'loaded' : 'loading'}`}
+                onLoadingComplete={() => setLoadedImages(prev => ({ ...prev, ben: true }))}
+                priority
               />
             </div>
             <div className="improved-member-info">
@@ -234,7 +241,9 @@ export default function Home() {
                 alt="Noam Wolfe"
                 width={180}
                 height={180}
-                className="member-img"
+                className={`member-img ${loadedImages['noam'] ? 'loaded' : 'loading'}`}
+                onLoadingComplete={() => setLoadedImages(prev => ({ ...prev, noam: true }))}
+                priority
               />
             </div>
             <div className="improved-member-info">
@@ -249,7 +258,9 @@ export default function Home() {
                 alt="Yekutiel Yunger"
                 width={180}
                 height={180}
-                className="member-img"
+                className={`member-img ${loadedImages['yekutiel'] ? 'loaded' : 'loading'}`}
+                onLoadingComplete={() => setLoadedImages(prev => ({ ...prev, yekutiel: true }))}
+                priority
               />
             </div>
             <div className="improved-member-info">
@@ -264,7 +275,9 @@ export default function Home() {
                 alt="Ori Barda"
                 width={180}
                 height={180}
-                className="member-img"
+                className={`member-img ${loadedImages['ori'] ? 'loaded' : 'loading'}`}
+                onLoadingComplete={() => setLoadedImages(prev => ({ ...prev, ori: true }))}
+                priority
               />
             </div>
             <div className="improved-member-info">
@@ -279,7 +292,9 @@ export default function Home() {
                 alt="Sammy Simon"
                 width={180}
                 height={180}
-                className="member-img"
+                className={`member-img ${loadedImages['sammy'] ? 'loaded' : 'loading'}`}
+                onLoadingComplete={() => setLoadedImages(prev => ({ ...prev, sammy: true }))}
+                priority
               />
             </div>
             <div className="improved-member-info">
@@ -294,7 +309,9 @@ export default function Home() {
                 alt="Raphie Sayegh"
                 width={180}
                 height={180}
-                className="member-img"
+                className={`member-img ${loadedImages['raphie'] ? 'loaded' : 'loading'}`}
+                onLoadingComplete={() => setLoadedImages(prev => ({ ...prev, raphie: true }))}
+                priority
               />
             </div>
             <div className="improved-member-info">

@@ -17,16 +17,20 @@ export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showHiddenMessage, setShowHiddenMessage] = useState(false);
   const [typedText, setTypedText] = useState('');
+  const [loadedImages, setLoadedImages] = useState<{[key: string]: boolean}>({});
+  const [showJournal, setShowJournal] = useState(false);
+  const [journalEntries, setJournalEntries] = useState<Array<{date: string, type: string, entry: string}>>([]);
   const menuRef = useRef<HTMLDivElement>(null);
   const hamburgerRef = useRef<HTMLDivElement>(null);
 
   const projects = [
     {
-      title: "Initial Rocket",
-      description: "Our first ever solid engine rocket with TVC",
+      title: "Horizon Flight Computer Development",
+      description: "Designing, soldering, and testing our very own avionics board from scratch.",
       eta: "Q3 2025",
-      progress: 15,
-      image: "/projects/alpha.png",
+      progress: 80,
+      image: "https://www.horizonavionics.org/horizonlogo.svg",
+      journalFile: "horizon.txt",
       keyPoints: [
         "Advanced telemetry system with real-time data transmission",
         "Target altitude: ~7,000 feet",
@@ -39,7 +43,8 @@ export default function Home() {
       description: "Making our first ever liquid engine rocket",
       eta: "Q2 2026",
       progress: 1,
-      image: "/projects/beta.png",
+      image: "/logo.png",
+      journalFile: "fluid.txt",
       keyPoints: [
         "Custom liquid propellant motor design",
         "Basic Liquid Propellant Thrust Vector Control",
@@ -51,7 +56,9 @@ export default function Home() {
       description: "Launching a custom propulsion system in our rocket",
       eta: "Q3 2026",
       progress: 1,
-      image: "/projects/gamma.png",
+      image: "/logo.png",
+      journalFile: "endgame.txt",
+      comingSoon: true,
       keyPoints: [
         "Custom liquid propellant motor design",
         "Thrust vector control system",
@@ -109,6 +116,68 @@ export default function Home() {
   const closeProjectModal = () => {
     setIsModalOpen(false);
     setSelectedProject(null);
+    setShowJournal(false);
+    setJournalEntries([]);
+  };
+
+  const loadJournalData = async (journalFile: string) => {
+    try {
+      const response = await fetch(`/journals/${journalFile}`);
+      const text = await response.text();
+      const entries = text.split('\n')
+        .filter(line => line.trim())  // Remove empty lines
+        .map(line => {
+          const [date, type, entry] = line.split('|').map(part => part.trim());
+          return {
+            date,
+            type,
+            entry
+          };
+        })
+        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()); // Sort newest first
+      setJournalEntries(entries);
+    } catch (error) {
+      console.error('Failed to load journal data:', error);
+      setJournalEntries([]);
+    }
+  };
+
+  const toggleJournal = () => {
+    if (!showJournal && selectedProject !== null) {
+      loadJournalData(projects[selectedProject].journalFile);
+    }
+    setShowJournal(!showJournal);
+    
+    // Auto-scroll to journal section and then to bottom after content loads
+    if (!showJournal) {
+      setTimeout(() => {
+        const journalSection = document.querySelector('.journal-section');
+        if (journalSection) {
+          journalSection.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'start'
+          });
+          
+          // Scroll to bottom of journal entries after another brief delay
+          setTimeout(() => {
+            const journalEntries = document.querySelector('.journal-entries');
+            if (journalEntries) {
+              journalEntries.scrollTop = journalEntries.scrollHeight;
+            }
+          }, 300);
+        }
+      }, 100);
+    }
+  };
+
+  const getEntryTypeStyle = (type: string) => {
+    const styles = {
+      milestone: { color: '#2ecc71', borderColor: '#2ecc71', icon: 'flag' },
+      update: { color: '#3498db', borderColor: '#3498db', icon: 'info-circle' },
+      challenge: { color: '#e74c3c', borderColor: '#e74c3c', icon: 'exclamation-circle' },
+      planning: { color: '#f1c40f', borderColor: '#f1c40f', icon: 'calendar' }
+    };
+    return styles[type as keyof typeof styles] || styles.update;
   };
 
   useEffect(() => {
@@ -185,32 +254,48 @@ export default function Home() {
         </div>
       )}
       <NavBar />
-      <section className="sponsors-hero">
-        <h1>Our Rocketry Plans</h1>
+      <section className="team-hero">
+        <div className="hero-content">
+          <h1>Our Rocketry Plans</h1>
+        </div>
       </section>
 
       <section className="projects">
         <div className="project-grid">
           {projects.map((project, index) => (
-            <div key={index} className="project-card" onClick={() => openProjectModal(index)}>
-              <div className="project-image">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  width={400}
-                  height={200}
-                  className="project-img"
-                />
-              </div>
-              <h3>{project.title}</h3>
-              <p>{project.description}</p>
-              <div className="project-progress">
-                <div className="progress-bar">
-                  <div className="progress" style={{ width: `${project.progress}%` }}></div>
+            <div 
+              key={index} 
+              className={`project-card ${project.comingSoon ? 'coming-soon' : ''}`} 
+              onClick={() => !project.comingSoon && openProjectModal(index)}
+            >
+              {project.comingSoon ? (
+                <div className="coming-soon-content">
+                  <div className="coming-soon-icon">
+                    <i className="fas fa-rocket"></i>
+                  </div>
+                  <div className="coming-soon-text">Coming Soon</div>
                 </div>
-                <span>{project.progress}% Complete</span>
-              </div>
-              <div className="project-eta">ETA: {project.eta}</div>
+              ) : (
+                <>
+                  <div className="project-image">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      width={400}
+                      height={200}
+                      className={`project-img ${loadedImages[`project-${index}`] ? 'loaded' : 'loading'}`}
+                      onLoadingComplete={() => setLoadedImages(prev => ({ ...prev, [`project-${index}`]: true }))}
+                      priority
+                    />
+                  </div>
+                  <p>{project.description}</p>
+                  <div className="project-title">{project.title}</div>
+                  <div className="project-eta">ETA: {project.eta}</div>
+                  <div className="progress-bar">
+                    <div className="progress" style={{ width: `${project.progress}%` }}></div>
+                  </div>
+                </>
+              )}
             </div>
           ))}
         </div>
@@ -237,6 +322,50 @@ export default function Home() {
                 </ul>
               </div>
               <div className="eta">Estimated Completion: {projects[selectedProject].eta}</div>
+              
+              <div className="journal-section">
+                <button className="journal-toggle-btn" onClick={toggleJournal}>
+                  {showJournal ? 'Hide Project Journal' : 'View Project Journal'}
+                </button>
+                
+                {showJournal && (
+                  <div className="project-journal">
+                    <h3>Development Journal</h3>
+                    <div className="journal-entries">
+                      {journalEntries.length > 0 ? (
+                        journalEntries.map((entry, idx) => {
+                          const typeStyle = getEntryTypeStyle(entry.type);
+                          return (
+                            <div 
+                              key={idx} 
+                              className="journal-entry"
+                              style={{ borderLeftColor: typeStyle.borderColor }}
+                            >
+                              <div 
+                                className="journal-date"
+                                style={{ color: typeStyle.color }}
+                              >
+                                <i className={`fas fa-${typeStyle.icon} entry-icon`} style={{ color: typeStyle.color }}></i>
+                                {entry.date}
+                                <span className="entry-type" style={{ 
+                                  color: typeStyle.color,
+                                  backgroundColor: `${typeStyle.color}20`,
+                                  borderColor: typeStyle.color
+                                }}>
+                                  {entry.type.charAt(0).toUpperCase() + entry.type.slice(1)}
+                                </span>
+                              </div>
+                              <div className="journal-content">{entry.entry}</div>
+                            </div>
+                          );
+                        })
+                      ) : (
+                        <div className="no-entries">No journal entries available.</div>
+                      )}
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         )}

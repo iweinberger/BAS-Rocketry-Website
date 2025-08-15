@@ -3,8 +3,10 @@
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export default function NavBar() {
+  const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDonateDropdownOpen, setIsDonateDropdownOpen] = useState(false);
   const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false);
@@ -12,6 +14,13 @@ export default function NavBar() {
   const hamburgerRef = useRef<HTMLDivElement>(null);
   const donateDropdownRef = useRef<HTMLDivElement>(null);
   const aboutDropdownRef = useRef<HTMLDivElement>(null);
+
+  const isActive = (path: string) => {
+    if (path.startsWith('/#')) {
+      return pathname === '/';
+    }
+    return pathname === path;
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -98,13 +107,13 @@ export default function NavBar() {
               <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
             <div className={`dropdown-menu ${isAboutDropdownOpen ? 'active' : ''}`}>
-              <Link href="/#about" className="dropdown-item">About Us</Link>
-              <Link href="/team" className="dropdown-item">Team</Link>
-              <Link href="/#contact" className="dropdown-item">Contact</Link>
+              <Link href="/#about" className={`dropdown-item ${isActive('/#about') ? 'active' : ''}`}>About Us</Link>
+              <Link href="/team" className={`dropdown-item ${isActive('/team') ? 'active' : ''}`}>Team</Link>
+              <Link href="/#contact" className={`dropdown-item ${isActive('/#contact') ? 'active' : ''}`}>Contact</Link>
             </div>
           </div>
-          <Link href="/projects" className="nav-item">Projects</Link>
-          <Link href="/sponsors" className="nav-item">Sponsors</Link>
+          <Link href="/projects" className={`nav-item ${isActive('/projects') ? 'active' : ''}`}>Projects</Link>
+          <Link href="/sponsors" className={`nav-item ${isActive('/sponsors') ? 'active' : ''}`}>Sponsors</Link>
           <div 
             ref={donateDropdownRef}
             className="nav-item dropdown donate-button"
@@ -116,9 +125,9 @@ export default function NavBar() {
               <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
             <div className={`dropdown-menu ${isDonateDropdownOpen ? 'active' : ''}`}>
-              <Link href="/donate" className="dropdown-item">Donate Now</Link>
-              <Link href="/sponsorship-tiers" className="dropdown-item">Sponsorship Tiers</Link>
-              <Link href="/sponsors" className="dropdown-item">Sponsorship Package</Link>
+              <Link href="/donate" className={`dropdown-item ${isActive('/donate') ? 'active' : ''}`}>Donate Now</Link>
+              <Link href="/sponsorship-tiers" className={`dropdown-item ${isActive('/sponsorship-tiers') ? 'active' : ''}`}>Sponsorship Tiers</Link>
+              <Link href="/sponsors" className={`dropdown-item ${isActive('/sponsors') ? 'active' : ''}`}>Sponsorship Package</Link>
             </div>
           </div>
         </div>

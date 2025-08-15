@@ -1,46 +1,65 @@
 'use client';
 
 import Link from 'next/link';
+import NavBar from './components/NavBar';
 
 export default function NotFound() {
   return (
-    <main className="relative min-h-screen w-full overflow-hidden">
-      {/* Video Background */}
-      <div className="absolute inset-0 w-full h-full">
-        <iframe 
-          src="https://www.youtube.com/embed/bvim4rsNHkQ?autoplay=1&mute=1&controls=0&loop=1&playlist=bvim4rsNHkQ" 
-          title="How Not to Land an Orbital Rocket Booster"
-          className="w-full h-full"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        />
-      </div>
-
-      {/* Content Overlay */}
-      <div className="relative z-10 flex min-h-screen flex-col items-center justify-center p-4 text-center bg-black bg-opacity-70">
-        <div className="max-w-2xl mx-auto">
-          <h1 className="text-6xl font-bold mb-4 text-white">404</h1>
-          <h2 className="text-2xl font-semibold mb-4 text-white">Houston, we have a problem!</h2>
-          <p className="mb-8 text-lg text-white">The page you're looking for has crashed and burned (like some of these rockets).</p>
-          <div className="space-y-4">
-            <p className="text-gray-300">Choose your next mission:</p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link 
-                href="/" 
-                className="px-6 py-3 bg-white text-primary rounded-lg hover:bg-opacity-90 transition-all"
-              >
-                Return to Base
+    <main>
+      <NavBar />
+      <section className="hero error-hero">
+        <div className="error-content">
+          <div className="error-animation">
+            <div className="rocket-container">
+              <i className="fas fa-rocket"></i>
+              <div className="smoke">
+                {[...Array(5)].map((_, i) => (
+                  <span key={i} className="smoke-particle"></span>
+                ))}
+              </div>
+            </div>
+            <div className="stars">
+              {[...Array(20)].map((_, i) => (
+                <div key={i} className="star" style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  animationDelay: `${Math.random() * 3}s`
+                }}></div>
+              ))}
+            </div>
+          </div>
+          <div className="error-text">
+            <h1>Houston, We Have a Problem!</h1>
+            <div className="error-details">
+              <div className="error-code">
+                <span>ERROR</span>
+                <h2>404</h2>
+              </div>
+              <p>Mission Control reports that this page has gone off course and entered deep space.</p>
+            </div>
+            <div className="mission-status">
+              <div className="status-item">
+                <i className="fas fa-satellite"></i>
+                <span>Signal Lost</span>
+              </div>
+              <div className="status-item">
+                <i className="fas fa-broadcast-tower"></i>
+                <span>Page Not Found</span>
+              </div>
+            </div>
+            <div className="action-buttons">
+              <Link href="/" className="primary-button">
+                <i className="fas fa-arrow-left"></i>
+                Return to Launch Site
               </Link>
-              <Link 
-                href="/projects" 
-                className="px-6 py-3 border border-white text-white rounded-lg hover:bg-white hover:text-primary transition-all"
-              >
-                View Projects
+              <Link href="/projects" className="secondary-button">
+                <i className="fas fa-rocket"></i>
+                View Active Missions
               </Link>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </main>
   );
 } 

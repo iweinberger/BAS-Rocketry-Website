@@ -20,6 +20,7 @@ export default function Home() {
   const [showDevPopup, setShowDevPopup] = useState(false);
   const [showJournal, setShowJournal] = useState(false);
   const [journalEntries, setJournalEntries] = useState<Array<{date: string, type: string, entry: string}>>([]);
+  const [loadedImages, setLoadedImages] = useState<{[key: string]: boolean}>({});
 
   useEffect(() => {
     const hasVisited = localStorage.getItem('hasVisited');
@@ -140,27 +141,16 @@ export default function Home() {
       const response = await fetch(`/journals/${journalFile}`);
       const text = await response.text();
       const entries = text.split('\n')
-        .filter(line => line.trim())
+        .filter(line => line.trim())  // Remove empty lines
         .map(line => {
-          const parts = line.split('|');
-          if (parts.length >= 3) {
-            const [date, type, ...entryParts] = parts;
-            return {
-              date: date.trim(),
-              type: type.trim(),
-              entry: entryParts.join('|').trim()
-            };
-          } else {
-            // Fallback for old format
-            const [date, ...entryParts] = parts;
-            return {
-              date: date.trim(),
-              type: 'development',
-              entry: entryParts.join('|').trim()
-            };
-          }
+          const [date, type, entry] = line.split('|').map(part => part.trim());
+          return {
+            date,
+            type,
+            entry
+          };
         })
-        .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()); // Sort newest first
       setJournalEntries(entries);
     } catch (error) {
       console.error('Failed to load journal data:', error);
@@ -280,7 +270,9 @@ export default function Home() {
                 alt="Ilan Weinberger"
                 width={200}
                 height={200}
-                className="member-img"
+                className={`member-img ${loadedImages['ilan-home'] ? 'loaded' : 'loading'}`}
+                onLoadingComplete={() => setLoadedImages(prev => ({ ...prev, 'ilan-home': true }))}
+                priority
               />
             </div>
             <p>Ilan Weinberger</p>
@@ -293,7 +285,9 @@ export default function Home() {
                 alt="Noam Wolfe"
                 width={200}
                 height={200}
-                className="member-img"
+                className={`member-img ${loadedImages['noam-home'] ? 'loaded' : 'loading'}`}
+                onLoadingComplete={() => setLoadedImages(prev => ({ ...prev, 'noam-home': true }))}
+                priority
               />
             </div>
             <p>Noam Wolfe</p>
@@ -306,7 +300,9 @@ export default function Home() {
                 alt="Benjamin Dahari"
                 width={200}
                 height={200}
-                className="member-img"
+                className={`member-img ${loadedImages['ben-home'] ? 'loaded' : 'loading'}`}
+                onLoadingComplete={() => setLoadedImages(prev => ({ ...prev, 'ben-home': true }))}
+                priority
               />
             </div>
             <p>Benjamin Dahari</p>
@@ -341,7 +337,9 @@ export default function Home() {
                       alt={project.title}
                       width={400}
                       height={200}
-                      className="project-img"
+                      className={`project-img ${loadedImages[`project-${index}`] ? 'loaded' : 'loading'}`}
+                      onLoadingComplete={() => setLoadedImages(prev => ({ ...prev, [`project-${index}`]: true }))}
+                      priority
                     />
                   </div>
                   <p>{project.description}</p>
