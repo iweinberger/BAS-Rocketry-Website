@@ -124,19 +124,18 @@ export default function Home() {
       eta: "Q4 2025",
       progress: 5,
       image: "/logo.png",
-      journalFile: "fluid.txt",
+      journalFile: "solid1.txt",
       gallery: [
         {
-          src: "/projects/galleries/fluid/design.jpg",
+          src: "/projects/galleries/solid1/../alpha.png",
           alt: "Engine Design",
           width: 800,
           height: 600
         }
       ],
       keyPoints: [
-        "Custom liquid propellant motor design",
-        "Basic Liquid Propellant Thrust Vector Control",
-        "Advanced recovery system"
+        "Design, build, and test our own solid rocket motor casing",
+        "Practice mixing and working with solid propellants"
       ]
     },
     {
