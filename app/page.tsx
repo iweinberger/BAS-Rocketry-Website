@@ -9,6 +9,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Head from 'next/head';
+import ImageGallery from './components/ImageGallery';
 
 export default function Home() {
   const [formStatus, setFormStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -18,9 +19,41 @@ export default function Home() {
   const [showHiddenMessage, setShowHiddenMessage] = useState(false);
   const [typedText, setTypedText] = useState('');
   const [showDevPopup, setShowDevPopup] = useState(false);
+  const [showGallery, setShowGallery] = useState(false);
   const [showJournal, setShowJournal] = useState(false);
-  const [journalEntries, setJournalEntries] = useState<Array<{date: string, type: string, entry: string}>>([]);
   const [loadedImages, setLoadedImages] = useState<{[key: string]: boolean}>({});
+  const [journalEntries, setJournalEntries] = useState<Array<{date: string, type: string, entry: string}>>([]);
+  const loadJournalData = async (journalFile: string) => {
+    try {
+      const response = await fetch(`/journals/${journalFile}`);
+      const text = await response.text();
+      const entries = text.split('\n')
+        .filter(line => line.trim())  // Remove empty lines
+        .map(line => {
+          const [date, type, entry] = line.split('|').map(part => part.trim());
+          return {
+            date,
+            type,
+            entry
+          };
+        })
+        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()); // Sort newest first
+      setJournalEntries(entries);
+    } catch (error) {
+      console.error('Failed to load journal data:', error);
+      setJournalEntries([]);
+    }
+  };
+
+  const getEntryTypeStyle = (type: string) => {
+    const styles = {
+      milestone: { color: '#2ecc71', borderColor: '#2ecc71', icon: 'flag' },
+      update: { color: '#3498db', borderColor: '#3498db', icon: 'info-circle' },
+      challenge: { color: '#e74c3c', borderColor: '#e74c3c', icon: 'exclamation-circle' },
+      planning: { color: '#f1c40f', borderColor: '#f1c40f', icon: 'calendar' }
+    };
+    return styles[type as keyof typeof styles] || styles.update;
+  };
 
   useEffect(() => {
     const hasVisited = localStorage.getItem('hasVisited');
@@ -45,6 +78,14 @@ export default function Home() {
       progress: 80,
       image: "https://www.horizonavionics.org/horizonlogo.svg",
       journalFile: "horizon.txt",
+      gallery: [
+        {
+          src: "/projects/galleries/horizon/avionics ad.png",
+          alt: "Flight Computer Schematic Poster",
+          width: 800,
+          height: 600
+        }
+      ],
       keyPoints: [
         "Advanced telemetry system with real-time data transmission",
         "Target altitude: ~7,000 feet",
@@ -59,6 +100,26 @@ export default function Home() {
       progress: 1,
       image: "/logo.png",
       journalFile: "fluid.txt",
+      gallery: [
+        {
+          src: "/projects/galleries/fluid/design.jpg",
+          alt: "Engine Design",
+          width: 800,
+          height: 600
+        },
+        {
+          src: "/projects/galleries/fluid/prototype.jpg",
+          alt: "First Prototype",
+          width: 800,
+          height: 600
+        },
+        {
+          src: "/projects/galleries/fluid/testing.jpg",
+          alt: "Test Setup",
+          width: 800,
+          height: 600
+        }
+      ],
       keyPoints: [
         "Custom liquid propellant motor design",
         "Basic Liquid Propellant Thrust Vector Control",
@@ -121,42 +182,17 @@ export default function Home() {
   const openProjectModal = (index: number) => {
     setSelectedProject(index);
     setIsModalOpen(true);
-    setShowJournal(false);
-    setJournalEntries([]);
-    // Disable body scrolling
-    document.body.style.overflow = 'hidden';
   };
 
   const closeProjectModal = () => {
     setIsModalOpen(false);
     setSelectedProject(null);
+    setShowGallery(false);
     setShowJournal(false);
     setJournalEntries([]);
-    // Re-enable body scrolling
-    document.body.style.overflow = 'unset';
   };
 
-  const loadJournalData = async (journalFile: string) => {
-    try {
-      const response = await fetch(`/journals/${journalFile}`);
-      const text = await response.text();
-      const entries = text.split('\n')
-        .filter(line => line.trim())  // Remove empty lines
-        .map(line => {
-          const [date, type, entry] = line.split('|').map(part => part.trim());
-          return {
-            date,
-            type,
-            entry
-          };
-        })
-        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()); // Sort newest first
-      setJournalEntries(entries);
-    } catch (error) {
-      console.error('Failed to load journal data:', error);
-      setJournalEntries([]);
-    }
-  };
+
 
   const toggleJournal = () => {
     if (!showJournal && selectedProject !== null) {
@@ -186,17 +222,6 @@ export default function Home() {
     }
   };
 
-  const getEntryTypeStyle = (type: string) => {
-    const styles = {
-      development: { color: '#64B5F6', icon: 'wrench', borderColor: '#64B5F6' }, // Light blue
-      testing: { color: '#81C784', icon: 'flask', borderColor: '#81C784' }, // Light green
-      milestone: { color: '#FFB74D', icon: 'trophy', borderColor: '#FFB74D' }, // Light orange
-      event: { color: '#BA68C8', icon: 'calendar', borderColor: '#BA68C8' }, // Light purple
-      video: { color: '#F06292', icon: 'video', borderColor: '#F06292' }, // Light pink
-      default: { color: '#90CAF9', icon: 'edit', borderColor: '#90CAF9' } // Light blue
-    };
-    return styles[type as keyof typeof styles] || styles.default;
-  };
 
   const closeHiddenMessage = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
@@ -318,39 +343,68 @@ export default function Home() {
         <div className="project-grid">
           {projects.map((project, index) => (
             <div 
-              key={index} 
-              className={`project-card ${project.comingSoon ? 'coming-soon' : ''}`} 
-              onClick={() => !project.comingSoon && openProjectModal(index)}
-            >
-              {project.comingSoon ? (
-                <div className="coming-soon-content">
-                  <div className="coming-soon-icon">
-                    <i className="fas fa-rocket"></i>
-                  </div>
-                  <div className="coming-soon-text">Coming Soon</div>
-                </div>
-              ) : (
-                <>
-                  <div className="project-image">
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      width={400}
-                      height={200}
-                      className={`project-img ${loadedImages[`project-${index}`] ? 'loaded' : 'loading'}`}
-                      onLoadingComplete={() => setLoadedImages(prev => ({ ...prev, [`project-${index}`]: true }))}
-                      priority
-                    />
-                  </div>
-                  <p>{project.description}</p>
-                  <div className="project-title">{project.title}</div>
-                  <div className="project-eta">ETA: {project.eta}</div>
-                  <div className="progress-bar">
-                    <div className="progress" style={{ width: `${project.progress}%` }}></div>
-                  </div>
-                </>
-              )}
-            </div>
+                          key={index} 
+                          className={`project-card ${project.comingSoon ? 'coming-soon' : ''}`} 
+                          onClick={() => !project.comingSoon && openProjectModal(index)}
+                        >
+                          {project.comingSoon ? (
+                            <div className="coming-soon-content">
+                              <div className="coming-soon-icon">
+                                <i className="fas fa-rocket"></i>
+                              </div>
+                              <div className="coming-soon-text">Coming Soon</div>
+                            </div>
+                          ) : (
+                            <>
+                              <div className="project-image">
+                                <Image
+                                  src={project.image}
+                                  alt={project.title}
+                                  width={400}
+                                  height={200}
+                                  className={`project-img ${loadedImages[`project-${index}`] ? 'loaded' : 'loading'}`}
+                                  onLoadingComplete={() => setLoadedImages(prev => ({ ...prev, [`project-${index}`]: true }))}
+                                  priority
+                                />
+                              </div>
+                              <p>{project.description}</p>
+                              <div className="project-title">{project.title}</div>
+                              <div className="project-eta">ETA: {project.eta}</div>
+                              <div className="progress-bar">
+                                <div className="progress" style={{ width: `${project.progress}%` }}></div>
+                              </div>
+                              <div className="card-actions">
+                                {project.gallery && project.gallery.length > 0 && (
+                                  <button 
+                                    className="action-button gallery-button"
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      openProjectModal(index);
+                                      setShowGallery(true);
+                                    }}
+                                  >
+                                    <i className="fas fa-images"></i>
+                                    Gallery
+                                  </button>
+                                )}
+                                {project.journalFile && (
+                                  <button 
+                                    className="action-button journal-button"
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      openProjectModal(index);
+                                      loadJournalData(project.journalFile);
+                                      setShowJournal(true);
+                                    }}
+                                  >
+                                    <i className="fas fa-book"></i>
+                                    Journal
+                                  </button>
+                                )}
+                              </div>
+                            </>
+                          )}
+                        </div>
           ))}
         </div>
 
@@ -376,50 +430,72 @@ export default function Home() {
                 </ul>
               </div>
               <div className="eta">Estimated Completion: {projects[selectedProject].eta}</div>
-              
-              <div className="journal-section">
-                <button className="journal-toggle-btn" onClick={toggleJournal}>
-                  {showJournal ? 'Hide Project Journal' : 'View Project Journal'}
-                </button>
-                
-                {showJournal && (
-                  <div className="project-journal">
-                    <h3>Development Journal</h3>
-                    <div className="journal-entries">
-                      {journalEntries.length > 0 ? (
-                        journalEntries.map((entry, idx) => {
-                          const typeStyle = getEntryTypeStyle(entry.type);
-                          return (
-                            <div 
-                              key={idx} 
-                              className="journal-entry"
-                              style={{ borderLeftColor: typeStyle.borderColor }}
-                            >
-                              <div 
-                                className="journal-date"
-                                style={{ color: typeStyle.color }}
-                              >
-                                <i className={`fas fa-${typeStyle.icon} entry-icon`} style={{ color: typeStyle.color }}></i>
-                                {entry.date}
-                                <span className="entry-type" style={{ 
-                                  color: typeStyle.color,
-                                  backgroundColor: `${typeStyle.color}20`,
-                                  borderColor: typeStyle.color
-                                }}>
-                                  {entry.type.charAt(0).toUpperCase() + entry.type.slice(1)}
-                                </span>
-                              </div>
-                              <div className="journal-content">{entry.entry}</div>
-                            </div>
-                          );
-                        })
-                      ) : (
-                        <div className="no-entries">No journal entries available.</div>
-                      )}
-                    </div>
-                  </div>
+              <div className="modal-actions">
+                {projects[selectedProject].gallery && (
+                  <button 
+                    className={`action-button gallery-button ${showGallery ? 'active' : ''}`}
+                    onClick={() => setShowGallery(!showGallery)}
+                  >
+                    <i className="fas fa-images"></i>
+                    {showGallery ? 'Hide Gallery' : 'View Gallery'}
+                  </button>
                 )}
+
               </div>
+                <div className="journal-section">
+                  <button className={`action-button journal-button ${showJournal ? 'active' : ''}`} onClick={toggleJournal}>
+                    <i className={`fas ${showJournal ? 'fa-book-open' : 'fa-book'}`}></i>
+                    {showJournal ? 'Hide Journal' : 'View Journal'}
+                  </button>
+                  
+                  {showGallery && projects[selectedProject].gallery && (
+                    <div className="project-section project-gallery-section">
+                      <h3>Project Gallery</h3>
+                      <ImageGallery 
+                        images={projects[selectedProject].gallery}
+                        projectName={projects[selectedProject].title}
+                      />
+                    </div>
+                  )}
+                  
+                  {showJournal && (
+                    <div className="project-journal">
+                      <h3>Development Journal</h3>
+                      <div className="journal-entries">
+                        {journalEntries.length > 0 ? (
+                          journalEntries.map((entry, idx) => {
+                            const typeStyle = getEntryTypeStyle(entry.type);
+                            return (
+                              <div 
+                                key={idx} 
+                                className="journal-entry"
+                                style={{ borderLeftColor: typeStyle.borderColor }}
+                              >
+                                <div 
+                                  className="journal-date"
+                                  style={{ color: typeStyle.color }}
+                                >
+                                  <i className={`fas fa-${typeStyle.icon} entry-icon`} style={{ color: typeStyle.color }}></i>
+                                  {entry.date}
+                                  <span className="entry-type" style={{ 
+                                    color: typeStyle.color,
+                                    backgroundColor: `${typeStyle.color}20`,
+                                    borderColor: typeStyle.color
+                                  }}>
+                                    {entry.type.charAt(0).toUpperCase() + entry.type.slice(1)}
+                                  </span>
+                                </div>
+                                <div className="journal-content">{entry.entry}</div>
+                              </div>
+                            );
+                          })
+                        ) : (
+                          <div className="no-entries">No journal entries available.</div>
+                        )}
+                      </div>
+                    </div>
+                  )}
+                </div>
             </div>
           </div>
         )}
@@ -479,4 +555,4 @@ export default function Home() {
       </footer>
     </main>
   );
-} 
+}

@@ -1,0 +1,87 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import NavBar from '../components/NavBar';
+import ProjectGrid from '../components/ProjectGrid';
+import { projects } from '../data/projects';
+
+export default function Projects() {
+  const [showHiddenMessage, setShowHiddenMessage] = useState(false);
+  const [typedText, setTypedText] = useState('');
+
+  useEffect(() => {
+    const handleKeyPress = (e: KeyboardEvent) => {
+      setTypedText(prev => {
+        const newText = prev + e.key.toLowerCase();
+        if (newText.includes('bas-rocketry')) {
+          setShowHiddenMessage(true);
+          return '';
+        }
+        return newText.slice(-20);
+      });
+    };
+
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setShowHiddenMessage(false);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    window.addEventListener('keydown', handleEscape);
+    return () => {
+      window.removeEventListener('keydown', handleKeyPress);
+      window.removeEventListener('keydown', handleEscape);
+    };
+  }, []);
+
+  const closeHiddenMessage = (e: React.MouseEvent) => {
+    if (e.target === e.currentTarget) {
+      setShowHiddenMessage(false);
+    }
+  };
+
+  return (
+    <main>
+      {showHiddenMessage && (
+        <div className="hidden-message" onClick={closeHiddenMessage}>
+          <div className="hidden-message-content">
+            <button className="close-hidden-message" onClick={() => setShowHiddenMessage(false)}>&times;</button>
+            <h3>Welcome to the club!</h3>
+            <p>Email us at <a href="mailto:rocketry@bastoronto.org">rocketry@bastoronto.org</a>, we would love to hear and work with you!</p>
+          </div>
+        </div>
+      )}
+      <NavBar />
+      <section className="team-hero">
+        <div className="hero-content">
+          <h1>Our Rocketry Plans</h1>
+        </div>
+      </section>
+
+      <section className="projects">
+        <ProjectGrid projects={projects} />
+      </section>
+
+      <footer>
+        <div className="footer-content">
+          <div className="footer-section">
+            <h3>BAS ROCKETRY</h3>
+            <p>Don't over think it - we already did</p>
+          </div>
+          <div className="footer-section">
+            <h3>QUICK LINKS</h3>
+            <div className="footer-links">
+              <a href="/">Home</a>
+              <a href="/#about">About</a>
+              <a href="/team">Team</a>
+              <a href="/projects">Projects</a>
+              <a href="/contact">Contact</a>
+              <a href="/sponsors">Sponsors</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </main>
+  );
+}

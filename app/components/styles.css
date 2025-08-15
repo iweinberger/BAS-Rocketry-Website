@@ -1,0 +1,50 @@
+.card-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+  border: none;
+}
+
+.card-actions button {
+  border: none;
+  margin: 0;
+}
+
+.card-actions::before,
+.card-actions::after {
+  display: none;
+}
+
+.action-button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.gallery-button {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.journal-button {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+.action-button:hover {
+  opacity: 0.9;
+}
+
+.action-button.active {
+  background-color: #444;
+}
+
+.action-button i {
+  margin-right: 5px;
+}
