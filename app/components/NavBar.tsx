@@ -17,7 +17,14 @@ export default function NavBar() {
 
   const isActive = (path: string) => {
     if (path.startsWith('/#')) {
-      return pathname === '/';
+      const hash = path.split('#')[1];
+      if (pathname === '/') {
+        // Only match the specific hash on home page
+        if (typeof window !== 'undefined') {
+          return window.location.hash === '#' + hash;
+        }
+      }
+      return false;
     }
     return pathname === path;
   };
