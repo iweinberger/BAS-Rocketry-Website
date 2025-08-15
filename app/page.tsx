@@ -425,6 +425,7 @@ export default function Home() {
                                     onClick={(e) => {
                                       e.stopPropagation();
                                       openProjectModal(index);
+                                      setShowJournal(false);  // Close journal when opening gallery
                                       setShowGallery(true);
                                       setTimeout(() => {
                                         const el = document.getElementById('modal-gallery-section');
@@ -454,8 +455,10 @@ export default function Home() {
                                     onClick={(e) => {
                                       e.stopPropagation();
                                       openProjectModal(index);
+                                      setShowGallery(false);  // Close gallery when opening journal
                                       loadJournalData(project.journalFile);
                                       setShowJournal(true);
+                                      setShowGallery(false);  // Close gallery when opening journal
                                     }}
                                   >
                                     <i className="fas fa-book"></i>
@@ -496,25 +499,12 @@ export default function Home() {
                   <button 
                     className={`action-button gallery-button ${showGallery ? 'active' : ''}`}
                     onClick={() => {
-                      setShowGallery(!showGallery);
-                      setTimeout(() => {
-                        if (!showGallery) {
-                          const el = document.getElementById('modal-gallery-section');
-                          if (el) {
-                            el.scrollIntoView({ behavior: 'smooth', block: 'end' });
-                            // Auto scroll to bottom of the modal content after gallery loads
-                            setTimeout(() => {
-                              const modalContent = document.querySelector('.modal-content');
-                              if (modalContent) {
-                                modalContent.scrollTo({
-                                  top: modalContent.scrollHeight,
-                                  behavior: 'smooth'
-                                });
-                              }
-                            }, 300);
-                          }
-                        }
-                      }, 100);
+                      if (showGallery) {
+                        setShowGallery(false);
+                      } else {
+                        setShowGallery(true);
+                        setShowJournal(false); // Close journal when opening gallery
+                      }
                     }}
                   >
                     <i className="fas fa-images"></i>
@@ -523,60 +513,60 @@ export default function Home() {
                 )}
 
               </div>
-                <div className="journal-section">
-                  <button className={`action-button journal-button ${showJournal ? 'active' : ''}`} onClick={toggleJournal}>
-                    <i className={`fas ${showJournal ? 'fa-book-open' : 'fa-book'}`}></i>
-                    {showJournal ? 'Hide Journal' : 'View Journal'}
-                  </button>
-                  
-                  {showGallery && projects[selectedProject].gallery && (
-                    <div className="project-section project-gallery-section" id="modal-gallery-section">
-                      <h3>Project Gallery</h3>
-                      <ImageGallery 
-                        images={projects[selectedProject].gallery}
-                        projectName={projects[selectedProject].title}
-                      />
-                    </div>
-                  )}
-                  
-                  {showJournal && (
-                    <div className="project-journal">
-                      <h3>Development Journal</h3>
-                      <div className="journal-entries">
-                        {journalEntries.length > 0 ? (
-                          journalEntries.map((entry, idx) => {
-                            const typeStyle = getEntryTypeStyle(entry.type);
-                            return (
+              <div className="journal-section">
+                <button className={`action-button journal-button journal-button1 ${showJournal ? 'active' : ''}`} onClick={toggleJournal}>
+                  <i className={`fas ${showJournal ? 'fa-book-open' : 'fa-book'}`}></i>
+                  {showJournal ? 'Hide Journal' : 'View Journal'}
+                </button>
+                
+                {showGallery && projects[selectedProject].gallery && (
+                  <div className="project-section project-gallery-section" id="modal-gallery-section">
+                    <h3>Project Gallery</h3>
+                    <ImageGallery 
+                      images={projects[selectedProject].gallery}
+                      projectName={projects[selectedProject].title}
+                    />
+                  </div>
+                )}
+                
+                {showJournal && (
+                  <div className="project-journal">
+                    <h3>Development Journal</h3>
+                    <div className="journal-entries">
+                      {journalEntries.length > 0 ? (
+                        journalEntries.map((entry, idx) => {
+                          const typeStyle = getEntryTypeStyle(entry.type);
+                          return (
+                            <div 
+                              key={idx} 
+                              className="journal-entry"
+                              style={{ borderLeftColor: typeStyle.borderColor }}
+                            >
                               <div 
-                                key={idx} 
-                                className="journal-entry"
-                                style={{ borderLeftColor: typeStyle.borderColor }}
+                                className="journal-date"
+                                style={{ color: typeStyle.color }}
                               >
-                                <div 
-                                  className="journal-date"
-                                  style={{ color: typeStyle.color }}
-                                >
-                                  <i className={`fas fa-${typeStyle.icon} entry-icon`} style={{ color: typeStyle.color }}></i>
-                                  {entry.date}
-                                  <span className="entry-type" style={{ 
-                                    color: typeStyle.color,
-                                    backgroundColor: `${typeStyle.color}20`,
-                                    borderColor: typeStyle.color
-                                  }}>
-                                    {entry.type.charAt(0).toUpperCase() + entry.type.slice(1)}
-                                  </span>
-                                </div>
-                                <div className="journal-content">{entry.entry}</div>
+                                <i className={`fas fa-${typeStyle.icon} entry-icon`} style={{ color: typeStyle.color }}></i>
+                                {entry.date}
+                                <span className="entry-type" style={{ 
+                                  color: typeStyle.color,
+                                  backgroundColor: `${typeStyle.color}20`,
+                                  borderColor: typeStyle.color
+                                }}>
+                                  {entry.type.charAt(0).toUpperCase() + entry.type.slice(1)}
+                                </span>
                               </div>
-                            );
-                          })
-                        ) : (
-                          <div className="no-entries">No journal entries available.</div>
-                        )}
-                      </div>
+                              <div className="journal-content">{entry.entry}</div>
+                            </div>
+                          );
+                        })
+                      ) : (
+                        <div className="no-entries">No journal entries available.</div>
+                      )}
                     </div>
-                  )}
-                </div>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         )}

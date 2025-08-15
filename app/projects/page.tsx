@@ -178,10 +178,15 @@ export default function Home() {
   };
 
   const toggleJournal = () => {
-    if (!showJournal && selectedProject !== null) {
-      loadJournalData(projects[selectedProject].journalFile);
+    if (showJournal) {
+      setShowJournal(false);
+    } else {
+      if (selectedProject !== null) {
+        loadJournalData(projects[selectedProject].journalFile);
+      }
+      setShowJournal(true);
+      setShowGallery(false);
     }
-    setShowJournal(!showJournal);
     
     // Auto-scroll to journal section and then to bottom after content loads
     if (!showJournal) {
@@ -278,7 +283,8 @@ export default function Home() {
   };
 
   return (
-    <main>
+    <div className="page-container">
+      <main>
       {showHiddenMessage && (
         <div className="hidden-message" onClick={closeHiddenMessage}>
           <div className="hidden-message-content">
@@ -295,96 +301,92 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="projects">
+      <section id="projects" className="projects">
+        <h2>Our Rocketry Plans</h2>
         <div className="project-grid">
           {projects.map((project, index) => (
             <div 
-              key={index} 
-              className={`project-card ${project.comingSoon ? 'coming-soon' : ''}`} 
-              onClick={() => !project.comingSoon && openProjectModal(index)}
-            >
-              {project.comingSoon ? (
-                <div className="coming-soon-content">
-                  <div className="coming-soon-icon">
-                    <i className="fas fa-rocket"></i>
-                  </div>
-                  <div className="coming-soon-text">Coming Soon</div>
-                </div>
-              ) : (
-                <>
-                  <div className="project-image">
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      width={400}
-                      height={200}
-                      className={`project-img ${loadedImages[`project-${index}`] ? 'loaded' : 'loading'}`}
-                      onLoadingComplete={() => setLoadedImages(prev => ({ ...prev, [`project-${index}`]: true }))}
-                      priority
-                    />
-                  </div>
-                  <p>{project.description}</p>
-                  <div className="project-title">{project.title}</div>
-                  <div className="project-eta">ETA: {project.eta}</div>
-                  <div className="progress-bar">
-                    <div className="progress" style={{ width: `${project.progress}%` }}></div>
-                  </div>
-                  <div className="card-actions">
-                    {project.gallery && project.gallery.length > 0 && (
-                      <button 
-                        className="action-button gallery-button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          openProjectModal(index);
-                          setShowGallery(true);
-                          // Scroll to gallery section after a brief delay to allow modal to open
-                          setTimeout(() => {
-                            const gallerySection = document.querySelector('.project-gallery-section');
-                            if (gallerySection) {
-                              gallerySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                              // Auto scroll to bottom of the modal content after gallery loads
-                              setTimeout(() => {
-                                const modalContent = document.querySelector('.modal-content');
-                                if (modalContent) {
-                                  modalContent.scrollTo({
-                                    top: modalContent.scrollHeight,
-                                    behavior: 'smooth'
-                                  });
-                                }
-                              }, 300);
-                            }
-                          }, 100);
-                        }}
-                      >
-                        <i className="fas fa-images"></i>
-                        Gallery
-                      </button>
-                    )}
-                    {project.journalFile && (
-                      <button 
-                        className="action-button journal-button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          openProjectModal(index);
-                          loadJournalData(project.journalFile);
-                          setShowJournal(true);
-                          // Scroll to journal section after a brief delay to allow modal to open and content to load
-                          setTimeout(() => {
-                            const journalSection = document.querySelector('.project-journal-section');
-                            if (journalSection) {
-                              journalSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            }
-                          }, 100);
-                        }}
-                      >
-                        <i className="fas fa-book"></i>
-                        Journal
-                      </button>
-                    )}
-                  </div>
-                </>
-              )}
-            </div>
+                          key={index} 
+                          className={`project-card ${project.comingSoon ? 'coming-soon' : ''}`} 
+                          onClick={() => !project.comingSoon && openProjectModal(index)}
+                        >
+                          {project.comingSoon ? (
+                            <div className="coming-soon-content">
+                              <div className="coming-soon-icon">
+                                <i className="fas fa-rocket"></i>
+                              </div>
+                              <div className="coming-soon-text">Coming Soon</div>
+                            </div>
+                          ) : (
+                            <>
+                              <div className="project-image">
+                                <Image
+                                  src={project.image}
+                                  alt={project.title}
+                                  width={400}
+                                  height={200}
+                                  className={`project-img ${loadedImages[`project-${index}`] ? 'loaded' : 'loading'}`}
+                                  onLoadingComplete={() => setLoadedImages(prev => ({ ...prev, [`project-${index}`]: true }))}
+                                  priority
+                                />
+                              </div>
+                              <p>{project.description}</p>
+                              <div className="project-title">{project.title}</div>
+                              <div className="project-eta">ETA: {project.eta}</div>
+                              <div className="progress-bar">
+                                <div className="progress" style={{ width: `${project.progress}%` }}></div>
+                              </div>
+                              <div className="card-actions">
+                                {project.gallery && project.gallery.length > 0 && (
+                                  <button 
+                                    className="action-button gallery-button"
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      openProjectModal(index);
+                                      setShowJournal(false);  // Close journal when opening gallery
+                                      setShowGallery(true);
+                                      setTimeout(() => {
+                                        const el = document.getElementById('modal-gallery-section');
+                                        if (el) {
+                                          el.scrollIntoView({ behavior: 'smooth', block: 'end' });
+                                          // Auto scroll to bottom of the modal content after gallery loads
+                                          setTimeout(() => {
+                                            const modalContent = document.querySelector('.modal-content');
+                                            if (modalContent) {
+                                              modalContent.scrollTo({
+                                                top: modalContent.scrollHeight,
+                                                behavior: 'smooth'
+                                              });
+                                            }
+                                          }, 300);
+                                        }
+                                      }, 200);
+                                    }}
+                                  >
+                                    <i className="fas fa-images"></i>
+                                    Gallery
+                                  </button>
+                                )}
+                                {project.journalFile && (
+                                  <button 
+                                    className="action-button journal-button"
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      openProjectModal(index);
+                                      setShowGallery(false);  // Close gallery when opening journal
+                                      loadJournalData(project.journalFile);
+                                      setShowJournal(true);
+                                      setShowGallery(false);  // Close gallery when opening journal
+                                    }}
+                                  >
+                                    <i className="fas fa-book"></i>
+                                    Journal
+                                  </button>
+                                )}
+                              </div>
+                            </>
+                          )}
+                        </div>
           ))}
         </div>
 
@@ -394,9 +396,6 @@ export default function Home() {
               <button className="close-modal" onClick={closeProjectModal}>&times;</button>
               <h2>{projects[selectedProject].title}</h2>
               <p>{projects[selectedProject].description}</p>
-              
-              
-
               <div className="modal-progress">
                 <h3>Development Progress</h3>
                 <div className="progress-bar">
@@ -404,7 +403,6 @@ export default function Home() {
                 </div>
                 <span>{projects[selectedProject].progress}% Complete</span>
               </div>
-
               <div className="key-points">
                 <h3>Key Points</h3>
                 <ul>
@@ -413,32 +411,17 @@ export default function Home() {
                   ))}
                 </ul>
               </div>
-
               <div className="eta">Estimated Completion: {projects[selectedProject].eta}</div>
-              
               <div className="modal-actions">
                 {projects[selectedProject].gallery && (
                   <button 
                     className={`action-button gallery-button ${showGallery ? 'active' : ''}`}
                     onClick={() => {
-                      setShowGallery(!showGallery);
-                      if (!showGallery) {
-                        setTimeout(() => {
-                          const gallerySection = document.querySelector('.project-gallery-section');
-                          if (gallerySection) {
-                            gallerySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            // Auto scroll to bottom of the modal content after gallery loads
-                            setTimeout(() => {
-                              const modalContent = document.querySelector('.modal-content');
-                              if (modalContent) {
-                                modalContent.scrollTo({
-                                  top: modalContent.scrollHeight,
-                                  behavior: 'smooth'
-                                });
-                              }
-                            }, 300);
-                          }
-                        }, 100);
+                      if (showGallery) {
+                        setShowGallery(false);
+                      } else {
+                        setShowGallery(true);
+                        setShowJournal(false); // Close journal when opening gallery
                       }
                     }}
                   >
@@ -446,77 +429,62 @@ export default function Home() {
                     {showGallery ? 'Hide Gallery' : 'View Gallery'}
                   </button>
                 )}
-                {projects[selectedProject].journalFile && (
-                  <button 
-                    className={`action-button journal-button ${showJournal ? 'active' : ''}`}
-                    onClick={() => {
-                      if (!showJournal) {
-                        loadJournalData(projects[selectedProject].journalFile);
-                      }
-                      setShowJournal(!showJournal);
-                      if (!showJournal) {
-                        setTimeout(() => {
-                          const journalSection = document.querySelector('.project-journal-section');
-                          if (journalSection) {
-                            journalSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                          }
-                        }, 100);
-                      }
-                    }}
-                  >
-                    <i className={`fas ${showJournal ? 'fa-book-open' : 'fa-book'}`}></i>
-                    {showJournal ? 'Hide Journal' : 'View Journal'}
-                  </button>
+
+              </div>
+              <div className="journal-section">
+                <button className={`action-button journal-button journal-button1 ${showJournal ? 'active' : ''}`} onClick={toggleJournal}>
+                  <i className={`fas ${showJournal ? 'fa-book-open' : 'fa-book'}`}></i>
+                  {showJournal ? 'Hide Journal' : 'View Journal'}
+                </button>
+                
+                {showGallery && projects[selectedProject].gallery && (
+                  <div className="project-section project-gallery-section" id="modal-gallery-section">
+                    <h3>Project Gallery</h3>
+                    <ImageGallery 
+                      images={projects[selectedProject].gallery}
+                      projectName={projects[selectedProject].title}
+                    />
+                  </div>
+                )}
+                
+                {showJournal && (
+                  <div className="project-journal">
+                    <h3>Development Journal</h3>
+                    <div className="journal-entries">
+                      {journalEntries.length > 0 ? (
+                        journalEntries.map((entry, idx) => {
+                          const typeStyle = getEntryTypeStyle(entry.type);
+                          return (
+                            <div 
+                              key={idx} 
+                              className="journal-entry"
+                              style={{ borderLeftColor: typeStyle.borderColor }}
+                            >
+                              <div 
+                                className="journal-date"
+                                style={{ color: typeStyle.color }}
+                              >
+                                <i className={`fas fa-${typeStyle.icon} entry-icon`} style={{ color: typeStyle.color }}></i>
+                                {entry.date}
+                                <span className="entry-type" style={{ 
+                                  color: typeStyle.color,
+                                  backgroundColor: `${typeStyle.color}20`,
+                                  borderColor: typeStyle.color
+                                }}>
+                                  {entry.type.charAt(0).toUpperCase() + entry.type.slice(1)}
+                                </span>
+                              </div>
+                              <div className="journal-content">{entry.entry}</div>
+                            </div>
+                          );
+                        })
+                      ) : (
+                        <div className="no-entries">No journal entries available.</div>
+                      )}
+                    </div>
+                  </div>
                 )}
               </div>
-
-              {showGallery && projects[selectedProject].gallery && (
-                <div className="project-section project-gallery-section">
-                  <h3>Project Gallery</h3>
-                  <ImageGallery 
-                    images={projects[selectedProject].gallery}
-                    projectName={projects[selectedProject].title}
-                  />
-                </div>
-              )}
-              
-              {showJournal && (
-                <div className="project-section project-journal-section">
-                  <h3>Development Journal</h3>
-                  <div className="journal-entries">
-                    {journalEntries.length > 0 ? (
-                      journalEntries.map((entry, idx) => {
-                        const typeStyle = getEntryTypeStyle(entry.type);
-                        return (
-                          <div 
-                            key={idx} 
-                            className="journal-entry"
-                            style={{ borderLeftColor: typeStyle.borderColor }}
-                          >
-                            <div 
-                              className="journal-date"
-                              style={{ color: typeStyle.color }}
-                            >
-                              <i className={`fas fa-${typeStyle.icon} entry-icon`} style={{ color: typeStyle.color }}></i>
-                              {entry.date}
-                              <span className="entry-type" style={{ 
-                                color: typeStyle.color,
-                                backgroundColor: `${typeStyle.color}20`,
-                                borderColor: typeStyle.color
-                              }}>
-                                {entry.type.charAt(0).toUpperCase() + entry.type.slice(1)}
-                              </span>
-                            </div>
-                            <div className="journal-content">{entry.entry}</div>
-                          </div>
-                        );
-                      })
-                    ) : (
-                      <div className="no-entries">No journal entries available.</div>
-                    )}
-                  </div>
-                </div>
-              )}
             </div>
           </div>
         )}
@@ -541,6 +509,7 @@ export default function Home() {
           </div>
         </div>
       </footer>
-    </main>
+      </main>
+    </div>
   );
 } 

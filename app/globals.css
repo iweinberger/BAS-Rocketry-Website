@@ -788,7 +788,6 @@ html {
 /* Journal Section */
 .journal-section {
     margin-top: 30px;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
     padding-top: 20px;
 }
 
@@ -2214,6 +2213,11 @@ body {
 
 .gallery-button.active {
     background: rgba(19, 19, 66, 0.8);
+}
+
+.journal-button1 {
+    margin-left: 31%;
+    margin-top: -5%;
 }
 
 .journal-button {
