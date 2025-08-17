@@ -25,7 +25,7 @@ export default function SponsorshipPackage() {
     { letter: 'S', phrase: 'Student-led aerospace innovation' },
     { letter: 'T', phrase: 'Technology advancing education' },
     { letter: 'E', phrase: 'Engineering excellence in rocketry' },
-    { letter: 'M', phrase: 'Modern STEM inspiration' }
+    { letter: 'M', phrase: 'Making future leaders in STEM' }
   ];
 
   return (
