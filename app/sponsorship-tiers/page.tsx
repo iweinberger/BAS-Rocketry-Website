@@ -159,7 +159,7 @@ export default function SponsorshipTiers() {
           document.getElementById('tiersTable')?.scrollIntoView({ behavior: 'smooth' });
         }}><i className="fas fa-arrow-down"></i></a></p>
       
-      <div className={styles.donateButtonContainer} Style="margin-top: -25px;">
+      <div className={styles.donateButtonContainer + ' ' + styles.compareButton}>
         <Link href="#compareCorporate" className={styles.donateButton}>
           Compare All
         </Link>
