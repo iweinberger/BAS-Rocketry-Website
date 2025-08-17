@@ -27,7 +27,6 @@ export default function SponsorshipPackage() {
     { number: '50+', label: 'Student Engineers', icon: 'fas fa-users' },
     { number: '3', label: 'Active Projects', icon: 'fas fa-rocket' },
     { number: '10K+', label: 'Social Media Reach', icon: 'fas fa-chart-line' },
-    { number: '5+', label: 'University Partners', icon: 'fas fa-graduation-cap' }
   ];
 
   const benefits = [
@@ -37,19 +36,14 @@ export default function SponsorshipPackage() {
       description: 'Logo placement on rockets, website, and merchandise with exposure to aerospace enthusiasts'
     },
     {
-      icon: 'fas fa-handshake',
-      title: 'Talent Pipeline',
-      description: 'Direct access to top engineering students for internships and full-time positions'
-    },
-    {
-      icon: 'fas fa-award',
-      title: 'Industry Recognition',
-      description: 'Position your company as a leader in supporting STEM education and innovation'
+      icon: 'fa-solid fa-rocket',
+      title: 'Supporting Youth',
+      description: 'Support the next generation of aerospace engineers.'
     },
     {
       icon: 'fas fa-users',
       title: 'Community Impact',
-      description: 'Support the next generation of aerospace engineers and technical leaders'
+      description: 'Support youth in STEM through ...'
     }
   ];
 
@@ -57,25 +51,25 @@ export default function SponsorshipPackage() {
     {
       title: 'Student Development',
       items: [
-        '40+ students trained in aerospace engineering',
-        '15+ technical workshops conducted annually',
-        '5+ industry partnerships established'
+        '40+ students',
+        '...',
+        '...'
       ]
     },
     {
       title: 'Technical Achievement',
       items: [
-        'TVC system development and testing',
-        'Advanced telemetry and control systems',
-        'Multi-stage rocket design capability'
+        '...',
+        'Advanced Avionics Board',
+        '...'
       ]
     },
     {
       title: 'Community Outreach',
       items: [
-        '1000+ students reached through demos',
-        '10+ school presentations annually',
-        'STEM workshop leadership'
+        '...',
+        '...',
+        '...'
       ]
     }
   ];
@@ -230,22 +224,8 @@ export default function SponsorshipPackage() {
                     <a href="mailto:partnerships@basrocketry.com">partnerships@basrocketry.com</a>
                   </div>
                 </div>
-                <div className={styles.contactItem}>
-                  <i className="fas fa-phone"></i>
-                  <div>
-                    <span className={styles.contactLabel}>Phone</span>
-                    <span>(416) 555-ROCKET</span>
-                  </div>
-                </div>
-                <div className={styles.contactItem}>
-                  <i className="fas fa-clock"></i>
-                  <div>
-                    <span className={styles.contactLabel}>Response Time</span>
-                    <span>Within 48 hours</span>
-                  </div>
-                </div>
-              </div>
             </div>
+          </div>
             
             <div className={styles.sponsorshipCTA}>
               <h4>Interested in Sponsoring?</h4>
