@@ -291,7 +291,7 @@ html {
     margin-top: -60px;
     padding-top: 60px;
     background: linear-gradient(rgba(19, 19, 66, 0.8), rgba(19, 19, 66, 0.8)),
-                url('https://images.unsplash.com/photo-1516849677043-ef67c9557e16?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+                url('/Home-BG.png');
     background-size: cover;
     background-position: center;
     display: flex;
