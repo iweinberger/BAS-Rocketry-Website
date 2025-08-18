@@ -6,7 +6,8 @@
 .pageContent {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 6rem 2rem 2rem;
+  padding: 7rem 2rem 2rem;
+  margin-top: -4rem;
 }
 
 /* Hero Section */
