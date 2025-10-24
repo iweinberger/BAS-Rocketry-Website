@@ -272,7 +272,7 @@ export default function Home() {
             <div className="improved-member-image">
               <Image
                 src="https://ori-photo.pages.dev/IMG_3988.png"
-                alt="Ori Barda"
+                alt="Eyal Benjamin"
                 width={180}
                 height={180}
                 className={`member-img ${loadedImages['ori'] ? 'loaded' : 'loading'}`}
@@ -281,7 +281,7 @@ export default function Home() {
               />
             </div>
             <div className="improved-member-info">
-              <h3>Ori Barda</h3>
+              <h3>Eyal Benjamin</h3>
               <span className="improved-member-role">Media & Outreach Manager</span>
             </div>
           </div>
